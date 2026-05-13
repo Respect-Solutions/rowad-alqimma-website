@@ -1,0 +1,8 @@
+node_modules
+.next
+out
+dist
+*.tsbuildinfo
+desktop-check.png
+mobile-check.png
+.env*.local

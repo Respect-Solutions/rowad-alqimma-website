@@ -1,0 +1,22 @@
+export const assets = {
+  logoAbout: "/assets/logoAbout.png",
+  logoContact: "/assets/logoContact.png",
+  heroPerson: "/assets/heroPerson.png",
+  testimonialAvatar: "/assets/testimonialAvatar.png",
+  contactAura: "/assets/contactAura.png",
+  arrowDown: "/assets/arrowDown.png",
+  featurePin: "/assets/featurePin.png",
+  featureRegulation: "/assets/featureRegulation.png",
+  featureSupport: "/assets/featureSupport.png",
+  arrowRight: "/assets/arrowRight.png",
+  vision: "/assets/vision.png",
+  mission: "/assets/mission.png",
+  sequenceOne: "/assets/sequenceOne.png",
+  sequenceTwo: "/assets/sequenceTwo.png",
+  sequenceThree: "/assets/sequenceThree.png",
+  sequenceFour: "/assets/sequenceFour.png",
+  quoteMark: "/assets/quoteMark.png",
+  location: "/assets/location.png",
+  phone: "/assets/phone.png",
+  email: "/assets/email.png"
+} as const;
