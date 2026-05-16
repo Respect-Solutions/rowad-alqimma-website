@@ -1,5 +1,8 @@
+"use client";
+
 import { stats } from "@/data/site";
 import { Container } from "@/components/ui/Container";
+import { useLocale } from "@/hooks/useLocale";
 
 type StatsProps = {
   variant?: "default" | "secondary";
@@ -9,6 +12,44 @@ export function Stats({
   variant = "default",
 }: StatsProps) {
   const isSecondary = variant === "secondary";
+
+  const { isArabic } = useLocale();
+
+  const translatedLabels = {
+    Companies: isArabic
+      ? "شركة تم تأسيسها"
+      : "Companies established",
+
+    Years: isArabic
+      ? "مستثمر دولي"
+      : "International Investors",
+
+    "Global Offices": isArabic
+      ? "قطاع مخدوم"
+      : "Industries Served",
+
+    "Success Rate": isArabic
+      ? "معدل نجاح التنفيذ"
+      : "Execution Success Rate",
+  };
+
+  const translatedValues = {
+    "10B+": isArabic
+      ? "+٥٠٠"
+      : "500+",
+
+    "500+": isArabic
+      ? "+١٢٠"
+      : "120+",
+
+    "15+": isArabic
+      ? "+١٥"
+      : "15+",
+
+    "99%": isArabic
+      ? "٩٩٪"
+      : "99%",
+  };
 
   return (
     <section
@@ -56,7 +97,11 @@ export function Stats({
                   }
                 `}
               >
-                {value}
+                {
+                  translatedValues[
+                    value as keyof typeof translatedValues
+                  ]
+                }
               </strong>
 
               <span
@@ -71,7 +116,11 @@ export function Stats({
                   }
                 `}
               >
-                {label}
+                {
+                  translatedLabels[
+                    label as keyof typeof translatedLabels
+                  ]
+                }
               </span>
             </div>
           ))}

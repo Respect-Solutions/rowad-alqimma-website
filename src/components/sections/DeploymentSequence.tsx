@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useLocale } from "@/hooks/useLocale";
 
 const steps = [
   {
@@ -36,6 +39,8 @@ const steps = [
 ];
 
 export function DeploymentSequence() {
+  const { isArabic } = useLocale();
+
   return (
     <section className="relative overflow-hidden bg-[#14263D] max-w-[1152px] mx-auto px-6 py-24">
       
@@ -47,57 +52,112 @@ export function DeploymentSequence() {
         {/* Heading */}
         <div className="text-center">
           <h2 className="text-[56px] font-bold leading-none text-white">
-            Deployment Sequence
+            {isArabic
+              ? "مراحل التنفيذ"
+              : "Deployment Sequence"}
           </h2>
 
           <p className="mt-4 text-lg text-white/55">
-            From onboarding to operational excellence.
+            {isArabic
+              ? "من البداية وحتى التشغيل الكامل."
+              : "From onboarding to operational excellence."}
           </p>
         </div>
 
         {/* Cards */}
         <div className="mt-16 grid items-end gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {steps.map((step) => (
-            <div
-              key={step.id}
-              className={`
-                relative
-                overflow-hidden
-                rounded-[32px]
-                bg-[#223552]
-                px-6
-                py-8
-                ${step.height}
-              `}
-            >
-              
-              {/* Number */}
-              <span className="absolute right-6 top-6 text-[56px] font-bold leading-none text-white/70">
-                {step.id}
-              </span>
+          {steps.map((step) => {
+            const translatedTitle =
+              step.title === "Consultation"
+                ? isArabic
+                  ? "الاستشارة"
+                  : step.title
+                : step.title === "Documentation"
+                  ? isArabic
+                    ? "التوثيق"
+                    : step.title
+                  : step.title === "Processing"
+                    ? isArabic
+                      ? "المعالجة"
+                      : step.title
+                    : step.title === "Completion"
+                      ? isArabic
+                        ? "الإنجاز"
+                        : step.title
+                      : step.title;
 
-              {/* Icon */}
-              <div className="flex h-[44px] w-[44px] items-center justify-center rounded-[12px]">
-                <Image
-                  src={step.icon}
-                  alt={step.title}
-                  width={24}
-                  height={24}
-                />
+            const translatedDescription =
+              step.title === "Consultation"
+                ? isArabic
+                  ? "دراسة الجدوى الأولية والتوافق التنظيمي لنشاطك."
+                  : step.description
+                : step.title === "Documentation"
+                  ? isArabic
+                    ? "إعداد العقود وكافة المستندات والمتطلبات القانونية."
+                    : step.description
+                  : step.title === "Processing"
+                    ? isArabic
+                      ? "التنسيق مع الجهات السعودية لإتمام التراخيص والاعتمادات."
+                      : step.description
+                    : step.title === "Completion"
+                      ? isArabic
+                        ? "تسليم السجل التجاري والحسابات التشغيلية النهائية."
+                        : step.description
+                      : step.description;
+
+            return (
+              <div
+                key={step.id}
+                className={`
+                  relative
+                  overflow-hidden
+                  rounded-[32px]
+                  bg-[#223552]
+                  px-6
+                  py-8
+                  ${step.height}
+                  ${isArabic ? "text-right" : ""}
+                `}
+              >
+                
+                {/* Number */}
+                <span
+                  className={`absolute top-6 text-[56px] font-bold leading-none text-white/70 ${
+                    isArabic ? "left-6" : "right-6"
+                  }`}
+                >
+                  {step.id}
+                </span>
+
+                {/* Icon */}
+                <div
+                  className={`flex h-[44px] w-[44px] items-center rounded-[12px] ${
+                    isArabic
+                      ? "justify-end"
+                      : "justify-center"
+                  }`}
+                >
+                  <Image
+                    src={step.icon}
+                    alt={translatedTitle}
+                    width={24}
+                    height={24}
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="mt-14">
+                  <h3 className="text-[24px] font-bold leading-[1.1] text-white">
+                    {translatedTitle}
+                  </h3>
+
+                  <p className="mt-5 text-[16px] font-normal leading-[1.7] text-white/55">
+                    {translatedDescription}
+                  </p>
+                </div>
               </div>
-
-              {/* Content */}
-              <div className="mt-14">
-                <h3 className="text-[24px] font-bold leading-[1.1] text-white">
-                  {step.title}
-                </h3>
-
-                <p className="mt-5 text-[16px] font-normal leading-[1.7] text-white/55">
-                  {step.description}
-                </p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

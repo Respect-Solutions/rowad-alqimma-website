@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { navItems } from "@/data/site";
+import { Header } from "../layout/Header";
+import { useLocale } from "@/hooks/useLocale";
 
 export function HomeHero() {
+  const { isArabic, locale } = useLocale();
+
   return (
     <section className="relative flex min-h-dvh w-full flex-col overflow-hidden bg-[#14263D]">
       {/* Background image */}
@@ -33,77 +38,53 @@ export function HomeHero() {
       {/* Content wrapper */}
       <div className="relative z-10 flex flex-1 flex-col">
         {/* Navbar */}
-        <header className="px-6 pt-10 md:px-16 md:pt-10">
-          <nav className="mx-auto flex max-w-[1152px] items-center justify-between">
-            {/* Logo */}
-            <Link
-              aria-label="Rowad Elqimma home"
-              className="block shrink-0"
-              href="/"
-            >
-              <Image
-                alt="Rowad Elqimma logo"
-                height={62}
-                src="/assets/navLogo.png"
-                width={56}
-              />
-            </Link>
-
-            {/* Nav links */}
-            <div className="hidden items-center gap-2 md:flex">
-              {navItems.map((item) => (
-                <Link
-                  className={`rounded-lg px-5 py-2 text-base font-medium leading-[1.4] transition ${
-                    item.label === "Home"
-                      ? "border border-white/20 bg-white/10 text-white backdrop-blur-sm"
-                      : "text-white/70 hover:text-white"
-                  }`}
-                  href={item.href}
-                  key={item.label}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-
-            {/* CTA button */}
-            <Link
-              className="hidden h-[44px] w-[180px] shrink-0 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-sm font-semibold leading-[1.2] text-white backdrop-blur-sm transition hover:bg-white/15 md:flex"
-              href="/projects"
-            >
-              Book Consultation
-            </Link>
-          </nav>
-        </header>
+        <div className="px-6 pt-4 md:px-16 md:pt-4">
+          <Header active="Home" />
+        </div>
 
         {/* Hero content */}
         <div className="mt-auto px-6 pb-24 text-center md:px-8">
           <div className="mx-auto">
             <h1 className="text-[40px] font-bold leading-[1.15] text-white md:text-[56px]">
-              Build, Operate, and Scale Your Business
-              <br className="hidden md:block" />
-              Legally and Strategically.
+              {isArabic ? (
+                <>
+                  ابنِ وأدر وطوّر أعمالك
+                  <br className="hidden md:block" />
+                  قانونيًا واستراتيجيًا
+                </>
+              ) : (
+                <>
+                  Build, Operate, and Scale Your Business
+                  <br className="hidden md:block" />
+                  Legally and Strategically.
+                </>
+              )}
             </h1>
 
             <p className="mx-auto mt-6 text-base leading-[1.6] text-white/80 md:text-lg">
-              We go beyond legal consulting. We execute, structure, and support
-              your business from setup to growth in Saudi Arabia.
+              {isArabic
+                ? "نحن لا نقدم الاستشارات القانونية فقط، بل ننفذ ونبني وندعم أعمالك من التأسيس وحتى النمو داخل المملكة العربية السعودية."
+                : "We go beyond legal consulting. We execute, structure, and support your business from setup to growth in Saudi Arabia."}
             </p>
 
             {/* Buttons */}
             <div className="mx-auto mt-10 grid max-w-[640px] gap-4 md:grid-cols-2">
               <Link
                 className="flex h-[62px] items-center justify-center rounded-[14px] bg-white text-sm font-bold leading-[1.2] text-[#00132A] transition hover:bg-white/90"
-                href="/projects"
+                href={`/${locale}/projects`}
               >
-                Start Your Company
+                {isArabic
+                  ? "ابدأ شركتك"
+                  : "Start Your Company"}
               </Link>
 
               <Link
                 className="flex h-[62px] items-center justify-center rounded-[14px] border border-white/20 bg-white/10 text-sm font-bold leading-[1.2] text-white backdrop-blur-sm transition hover:bg-white/15"
-                href="/projects"
+                href={`/${locale}/projects`}
               >
-                Start Your Company
+                {isArabic
+                  ? "استكشف خدماتنا"
+                  : "Explore Our Services"}
               </Link>
             </div>
           </div>
