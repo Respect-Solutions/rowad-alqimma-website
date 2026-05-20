@@ -1,7 +1,68 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { motion, Variants } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
+
+// Animation variants
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
+const buttonHoverVariants: Variants = {
+  hover: {
+    scale: 1.02,
+    y: -2,
+    transition: { duration: 0.2, ease: "easeOut" },
+  },
+  tap: { scale: 0.98 },
+};
+
+const modalVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.95,
+    y: 20,
+    transition: { duration: 0.2 },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4 },
+  },
+  hover: {
+    y: -4,
+    borderColor: "rgba(201, 214, 255, 0.4)",
+    transition: { duration: 0.2 },
+  },
+};
 
 export function MarketReadinessIndex() {
   const { isArabic } = useLocale();
@@ -18,7 +79,7 @@ export function MarketReadinessIndex() {
 
   const result = useMemo(() => {
     const score = Math.round(
-      capital * 0.3 + regulatory * 0.4 + operational * 0.3
+      capital * 0.3 + regulatory * 0.4 + operational * 0.3,
     );
 
     let level = "";
@@ -44,11 +105,7 @@ export function MarketReadinessIndex() {
         : "You are well-positioned to enter the market. Our team can support you in accelerating execution.";
     }
 
-    const lowestFactor = Math.min(
-      capital,
-      regulatory,
-      operational
-    );
+    const lowestFactor = Math.min(capital, regulatory, operational);
 
     let insight = "";
 
@@ -78,175 +135,188 @@ export function MarketReadinessIndex() {
     <>
       <section
         dir={isArabic ? "rtl" : "ltr"}
-        className="relative overflow-hidden bg-[#14263D] px-6 py-16"
+        className="relative overflow-hidden bg-[#14263D] px-4 py-12 sm:px-6 sm:py-16"
       >
-        <div className="mx-auto max-w-[1152px] rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,#23395B_0%,#1D304A_100%)] px-10 py-12">
-          
-          {/* Header */}
-          <div className="flex items-start justify-between gap-6">
-            <h2 className="text-[52px] font-bold leading-none text-white">
-              {isArabic
-                ? "مؤشر الجاهزية السوقية"
-                : "Market Readiness Index"}
-            </h2>
-
-            <span className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-white/45">
-              {isArabic
-                ? "محرك التحليل"
-                : "Analysis Engine"}
-            </span>
-          </div>
-
-          {/* Sliders */}
-          <div className="mt-14 flex flex-col gap-10">
-            
-            {/* Capital */}
-            <div>
-              <div className="mb-3 flex items-center justify-between">
-                <span className="text-sm font-semibold text-white/90">
-                  {isArabic
-                    ? "تقييم رأس المال"
-                    : "Capital Requirement Audit"}
-                </span>
-
-                <span className="text-sm font-semibold text-white/70">
-                  {capital}%
-                </span>
-              </div>
-
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={capital}
-                onChange={(e) =>
-                  setCapital(Number(e.target.value))
-                }
-                className="slider"
-                style={{
-                  background: sliderBg(capital),
-                }}
-              />
-            </div>
-
-            {/* Regulatory */}
-            <div>
-              <div className="mb-3 flex items-center justify-between">
-                <span className="text-sm font-semibold text-white/90">
-                  {isArabic
-                    ? "التوافق التنظيمي"
-                    : "Regulatory Alignment"}
-                </span>
-
-                <span className="text-sm font-semibold text-white/70">
-                  {regulatory}%
-                </span>
-              </div>
-
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={regulatory}
-                onChange={(e) =>
-                  setRegulatory(Number(e.target.value))
-                }
-                className="slider"
-                style={{
-                  background: sliderBg(regulatory),
-                }}
-              />
-            </div>
-
-            {/* Operational */}
-            <div>
-              <div className="mb-3 flex items-center justify-between">
-                <span className="text-sm font-semibold text-white/90">
-                  {isArabic
-                    ? "الجاهزية التشغيلية"
-                    : "Operational Viability"}
-                </span>
-
-                <span className="text-sm font-semibold text-white/70">
-                  {operational}%
-                </span>
-              </div>
-
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={operational}
-                onChange={(e) =>
-                  setOperational(Number(e.target.value))
-                }
-                className="slider"
-                style={{
-                  background: sliderBg(operational),
-                }}
-              />
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-16 flex justify-center">
-            <button
-              onClick={() => setShowModal(true)}
-              className="flex h-[64px] items-center justify-center rounded-full bg-white px-10 text-sm font-bold text-[#14263D] transition hover:bg-white/90"
+        <div className="mx-auto max-w-[1152px] rounded-[28px] border border-white/10 bg-[#27354CB2] px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
+          >
+            {/* Header */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-start justify-between gap-4"
             >
-              {isArabic
-                ? "احسب جاهزية شركتك"
-                : "Calculate Your Readiness"}
-            </button>
-          </div>
+              <h2 className="text-3xl font-bold leading-none text-white sm:text-4xl md:text-5xl lg:text-[52px]">
+                {isArabic ? "مؤشر الجاهزية السوقية" : "Market Readiness Index"}
+              </h2>
+
+              <span className="text-xs font-semibold uppercase tracking-[0.12em] text-white/45 sm:text-sm">
+                {isArabic ? "محرك التحليل" : "Analysis Engine"}
+              </span>
+            </motion.div>
+
+            {/* Sliders */}
+            <motion.div
+              variants={containerVariants}
+              className="mt-10 flex flex-col gap-8 sm:mt-12 sm:gap-10 md:mt-14"
+            >
+              {/* Capital */}
+              <motion.div variants={itemVariants}>
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-sm font-semibold text-white/90">
+                    {isArabic ? "تقييم رأس المال" : "Capital Requirement Audit"}
+                  </span>
+
+                  <span className="text-sm font-semibold text-white/70">
+                    {capital}%
+                  </span>
+                </div>
+
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={capital}
+                  onChange={(e) => setCapital(Number(e.target.value))}
+                  className="slider w-full cursor-pointer"
+                  style={{
+                    background: sliderBg(capital),
+                  }}
+                />
+              </motion.div>
+
+              {/* Regulatory */}
+              <motion.div variants={itemVariants}>
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-sm font-semibold text-white/90">
+                    {isArabic ? "التوافق التنظيمي" : "Regulatory Alignment"}
+                  </span>
+
+                  <span className="text-sm font-semibold text-white/70">
+                    {regulatory}%
+                  </span>
+                </div>
+
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={regulatory}
+                  onChange={(e) => setRegulatory(Number(e.target.value))}
+                  className="slider w-full cursor-pointer"
+                  style={{
+                    background: sliderBg(regulatory),
+                  }}
+                />
+              </motion.div>
+
+              {/* Operational */}
+              <motion.div variants={itemVariants}>
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-sm font-semibold text-white/90">
+                    {isArabic ? "الجاهزية التشغيلية" : "Operational Viability"}
+                  </span>
+
+                  <span className="text-sm font-semibold text-white/70">
+                    {operational}%
+                  </span>
+                </div>
+
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={operational}
+                  onChange={(e) => setOperational(Number(e.target.value))}
+                  className="slider w-full cursor-pointer"
+                  style={{
+                    background: sliderBg(operational),
+                  }}
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-12 flex justify-center sm:mt-14 md:mt-16"
+            >
+              <motion.button
+                onClick={() => setShowModal(true)}
+                variants={buttonHoverVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className="flex h-[56px] items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-[#14263D] transition-shadow hover:shadow-lg sm:h-[60px] sm:px-8 md:h-[64px] md:px-10"
+              >
+                {isArabic ? "احسب جاهزية شركتك" : "Calculate Your Readiness"}
+              </motion.button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Modal with animation */}
       {showModal && (
-        <div
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={modalVariants}
           onClick={() => setShowModal(false)}
-          className="fixed inset-0 z-[999] overflow-y-auto bg-black/60 px-6 py-10 backdrop-blur-sm"
+          className="fixed inset-0 z-[999] overflow-y-auto bg-black/60 px-4 py-8 backdrop-blur-sm sm:px-6"
         >
           <div className="flex min-h-full items-center justify-center">
-            
-            {/* Modal Content */}
-            <div
+            <motion.div
               dir={isArabic ? "rtl" : "ltr"}
               onClick={(e) => e.stopPropagation()}
-              className={`relative w-full max-w-[780px] rounded-[28px] border border-white/10 bg-[#14263D] p-7 ${
+              variants={modalVariants}
+              className={`relative w-full max-w-[780px] rounded-[28px] border border-white/10 bg-[#14263D] p-5 shadow-2xl sm:p-6 md:p-7 ${
                 isArabic ? "text-right" : ""
               }`}
             >
-              
-              {/* Close */}
-              <button
+              {/* Close button */}
+              <motion.button
                 onClick={() => setShowModal(false)}
-                className={`absolute top-5 text-3xl text-white/50 transition hover:text-white ${
-                  isArabic ? "left-5" : "right-5"
-                }`}
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                className={`absolute top-4 text-3xl text-white/50 transition-colors hover:text-white ${
+                  isArabic ? "left-4" : "right-4"
+                } sm:top-5 sm:left-5 sm:right-5`}
               >
                 ×
-              </button>
+              </motion.button>
 
               {/* Score */}
-              <h2 className="text-center text-[34px] font-bold leading-[1.2] text-white">
+              <motion.h2
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-center text-2xl font-bold leading-[1.2] text-white sm:text-3xl md:text-[34px]"
+              >
                 {isArabic
                   ? "درجة جاهزية شركتك:"
                   : "Your Market Readiness Score:"}{" "}
-                <span className="text-[#C9D6FF]">
-                  {result.score}%
-                </span>
-              </h2>
+                <span className="text-[#C9D6FF]">{result.score}%</span>
+              </motion.h2>
 
               {/* Cards */}
-              <div className="mt-6 flex flex-col gap-3">
-                
-                {/* Current Level */}
-                <div className="rounded-[20px] border border-[#C9D6FF] bg-[#27354C] p-4">
-                  <div className="flex items-start justify-between gap-5">
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="mt-6 flex flex-col gap-3"
+              >
+                <motion.div
+                  variants={cardVariants}
+                  whileHover="hover"
+                  className="rounded-[20px] border border-[#C9D6FF] bg-[#27354C] p-3 transition-shadow hover:shadow-lg sm:p-4"
+                >
+                  <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
                     <div>
-                      <h3 className="text-[22px] font-bold text-white">
+                      <h3 className="text-xl font-bold text-white sm:text-[22px]">
                         {result.level}
                       </h3>
 
@@ -255,32 +325,75 @@ export function MarketReadinessIndex() {
                       </p>
                     </div>
 
-                    <span className="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white/70">
+                    <span className="rounded-full bg-white/10 px-3 py-1 text-sm font-semibold text-white/70 sm:px-4 sm:py-2">
                       {result.score}%
                     </span>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Insight */}
-              <div className="mt-5 text-center">
-                <p className="text-base text-[#C9D6FF]">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="mt-5 text-center"
+              >
+                <p className="text-sm text-[#C9D6FF] sm:text-base">
                   {result.insight}
                 </p>
-              </div>
+              </motion.div>
 
               {/* CTA */}
-              <div className="mt-5 flex justify-center">
-                <button className="flex h-[54px] items-center justify-center rounded-full bg-[#C9D6FF] px-10 text-sm font-bold text-[#14263D] transition hover:bg-[#dbe4ff]">
-                  {isArabic
-                    ? "ابدأ دخول السوق"
-                    : "Start Your Market Entry"}
-                </button>
-              </div>
-            </div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="mt-5 flex justify-center"
+              >
+                <motion.button
+                  variants={buttonHoverVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className="flex h-[48px] items-center justify-center rounded-full bg-[#C9D6FF] px-6 text-sm font-bold text-[#14263D] transition-shadow hover:shadow-lg sm:h-[52px] sm:px-8 md:h-[54px] md:px-10"
+                >
+                  {isArabic ? "ابدأ دخول السوق" : "Start Your Market Entry"}
+                </motion.button>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       )}
+
+      {/* Add global styles for range input if not already present */}
+      <style jsx>{`
+        .slider {
+          -webkit-appearance: none;
+          appearance: none;
+          height: 6px;
+          border-radius: 6px;
+          outline: none;
+        }
+        .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #c9d6ff;
+          cursor: pointer;
+          border: 2px solid white;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .slider::-moz-range-thumb {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #c9d6ff;
+          cursor: pointer;
+          border: 2px solid white;
+        }
+      `}</style>
     </>
   );
 }

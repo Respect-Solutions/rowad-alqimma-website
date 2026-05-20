@@ -2,15 +2,83 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion, type Variants } from "framer-motion";
 import { Header } from "../layout/Header";
 import { useLocale } from "@/hooks/useLocale";
 
 export function HomeHero() {
   const { isArabic, locale } = useLocale();
 
+  // ─── Animation Variants ─────────────────────────────────────────────
+
+  const containerVariants: Variants = {
+    hidden: {
+      opacity: 0,
+    },
+
+    visible: {
+      opacity: 1,
+
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 24,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const buttonVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+
+    hover: {
+      scale: 1.02,
+
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut",
+      },
+    },
+
+    tap: {
+      scale: 0.98,
+    },
+  };
+
+  // ─── Render ─────────────────────────────────────────────────────────
+
   return (
-    <section className="relative flex min-h-dvh w-full flex-col overflow-hidden bg-[#14263D]">
-      {/* Background image */}
+    <section className="relative flex min-h-dvh w-full flex-col overflow-hidden overflow-x-hidden bg-[#14263D]">
+      
+      {/* Background Image */}
       <div className="absolute inset-0">
         <Image
           alt=""
@@ -20,10 +88,10 @@ export function HomeHero() {
           src="/assets/home-hero-bg.jpg"
         />
 
-        {/* Dark overlay to match Figma image darkness */}
+        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-[#00132A]/25" />
 
-        {/* Figma gradient — exact values, single div, no extra opacity */}
+        {/* Gradient Overlay */}
         <div
           className="absolute inset-0"
           style={{
@@ -33,19 +101,45 @@ export function HomeHero() {
         />
       </div>
 
-      <div className="absolute bottom-[-1100px] left-1/2 z-[1] h-[1585px] w-[1409px] -translate-x-1/2 rounded-full border-t-[120px] border-[#acbef8] blur-[75px]" />
+      {/* Decorative Glow */}
+      <div className="pointer-events-none absolute bottom-[-1100px] left-1/2 z-[1] h-[1585px] w-[1409px] -translate-x-1/2 rounded-full border-t-[120px] border-[#acbef8] blur-[75px]" />
 
-      {/* Content wrapper */}
+      {/* Content Wrapper */}
       <div className="relative z-10 flex flex-1 flex-col">
-        {/* Navbar */}
-        <div className="px-6 pt-4 md:px-16 md:pt-4">
+        
+        {/* Header */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: -20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.6,
+            ease: "easeOut",
+          }}
+          className="px-4 pt-4 sm:px-6 md:px-12 lg:px-16"
+        >
           <Header active="Home" />
-        </div>
+        </motion.div>
 
-        {/* Hero content */}
-        <div className="mt-auto px-6 pb-24 text-center md:px-8">
+        {/* Hero Content */}
+        <motion.div
+          className="mt-auto px-6 pb-24 text-center sm:px-8 md:px-12 lg:px-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="mx-auto">
-            <h1 className="text-[40px] font-bold leading-[1.15] text-white md:text-[56px]">
+            
+            {/* Heading */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-[40px] font-bold leading-[1.15] text-white sm:text-[44px] md:text-[52px] lg:text-[56px] xl:text-[60px]"
+            >
               {isArabic ? (
                 <>
                   ابنِ وأدر وطوّر أعمالك
@@ -59,36 +153,58 @@ export function HomeHero() {
                   Legally and Strategically.
                 </>
               )}
-            </h1>
+            </motion.h1>
 
-            <p className="mx-auto mt-6 text-base leading-[1.6] text-white/80 md:text-lg">
+            {/* Description */}
+            <motion.p
+              variants={itemVariants}
+              className="mx-auto mt-6 text-base leading-[1.6] text-white/80 sm:text-[17px] md:text-lg lg:max-w-3xl"
+            >
               {isArabic
                 ? "نحن لا نقدم الاستشارات القانونية فقط، بل ننفذ ونبني وندعم أعمالك من التأسيس وحتى النمو داخل المملكة العربية السعودية."
                 : "We go beyond legal consulting. We execute, structure, and support your business from setup to growth in Saudi Arabia."}
-            </p>
+            </motion.p>
 
             {/* Buttons */}
-            <div className="mx-auto mt-10 grid max-w-[640px] gap-4 md:grid-cols-2">
-              <Link
-                className="flex h-[62px] items-center justify-center rounded-[14px] bg-white text-sm font-bold leading-[1.2] text-[#00132A] transition hover:bg-white/90"
-                href={`/${locale}/projects`}
+            <motion.div
+              variants={itemVariants}
+              className="mx-auto mt-10 grid max-w-[640px] gap-4 md:grid-cols-2"
+            >
+              
+              {/* Primary Button */}
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
               >
-                {isArabic
-                  ? "ابدأ شركتك"
-                  : "Start Your Company"}
-              </Link>
+                <Link
+                  className="flex h-[62px] w-full items-center justify-center rounded-[14px] bg-white text-sm font-bold leading-[1.2] text-[#00132A] transition-shadow hover:shadow-lg hover:shadow-white/10 active:shadow-md"
+                  href={`/${locale}/projects`}
+                >
+                  {isArabic
+                    ? "ابدأ شركتك"
+                    : "Start Your Company"}
+                </Link>
+              </motion.div>
 
-              <Link
-                className="flex h-[62px] items-center justify-center rounded-[14px] border border-white/20 bg-white/10 text-sm font-bold leading-[1.2] text-white backdrop-blur-sm transition hover:bg-white/15"
-                href={`/${locale}/projects`}
+              {/* Secondary Button */}
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
               >
-                {isArabic
-                  ? "استكشف خدماتنا"
-                  : "Explore Our Services"}
-              </Link>
-            </div>
+                <Link
+                  className="flex h-[62px] w-full items-center justify-center rounded-[14px] border border-white/20 bg-white/10 text-sm font-bold leading-[1.2] text-white backdrop-blur-sm transition-shadow hover:bg-white/15 hover:shadow-md active:bg-white/20"
+                  href={`/${locale}/projects`}
+                >
+                  {isArabic
+                    ? "استكشف خدماتنا"
+                    : "Explore Our Services"}
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 
 export const metadata: Metadata = {
   title: "Rowad Elqimma",
@@ -16,11 +17,10 @@ export default function LocaleLayout({
   };
 }) {
   return (
-    <div
-      lang={params.locale}
-      dir={params.locale === "ar" ? "rtl" : "ltr"}
-    >
-      {children}
-    </div>
+    <NextIntlClientProvider locale={params.locale} messages={{}}>
+      <div lang={params.locale} dir={params.locale === "ar" ? "rtl" : "ltr"}>
+        {children}
+      </div>
+    </NextIntlClientProvider>
   );
 }

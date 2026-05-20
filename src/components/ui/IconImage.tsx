@@ -17,7 +17,7 @@ export function IconImage({ name, size = 24, width, height, className = "" }: Ic
       alt=""
       className={className}
       height={height ?? size}
-      src='./assets/navLogo.png'
+      src='/assets/navLogo.png'
       unoptimized
       width={width ?? size}
     />

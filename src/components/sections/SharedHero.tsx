@@ -28,9 +28,23 @@ export function SharedHero({
 
   const { isArabic } = useLocale();
 
+  const handleScrollDown = () => {
+    const allSections = Array.from(document.querySelectorAll("section"));
+    const currentSection = document.querySelector("section");
+    const currentIndex = allSections.findIndex(
+      (section) => section === currentSection,
+    );
+    const nextSection = allSections[currentIndex + 1];
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative overflow-hidden bg-[#14263D] pb-24">
-      
       {/* Glow */}
       <div className="absolute left-1/2 top-[55%] h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[75px]" />
 
@@ -38,27 +52,17 @@ export function SharedHero({
       <div className="absolute bottom-[-550px] left-1/2 z-[1] h-[1100px] w-[1409px] -translate-x-1/2 rounded-full border-t-[120px] border-[#acbef8] blur-[75px]" />
 
       <div className="relative z-10 flex flex-1 flex-col">
-        
         {/* Header */}
         <div className="px-6 pt-4 md:px-16 md:pt-4">
           <Header
-            active={
-              activeNav as
-                | "Home"
-                | "About"
-                | "Services"
-                | "Projects"
-            }
+            active={activeNav as "Home" | "About" | "Services" | "Projects"}
           />
         </div>
 
         {/* Hero Content */}
         <div
-          className={`relative text-center ${
-            isProjects ? "pt-48" : "pt-28"
-          }`}
+          className={`relative text-center ${isProjects ? "pt-48" : "pt-28"}`}
         >
-          
           {/* Heading */}
           <h1 className="mx-auto max-w-[900px] text-[64px] font-bold leading-[1.05]">
             {title}
@@ -67,14 +71,11 @@ export function SharedHero({
           {/* Cards */}
           <div
             className={`relative mx-auto mt-10 flex items-center justify-center ${
-              isProjects
-                ? "h-[180px]"
-                : "h-[320px] max-w-[1152px]"
+              isProjects ? "h-[180px]" : "h-[320px] max-w-[1152px]"
             }`}
           >
             {cards.map((card) => {
-              const isCenter =
-                card.position === "center";
+              const isCenter = card.position === "center";
 
               return (
                 <div
@@ -134,11 +135,7 @@ export function SharedHero({
                             : ""
                         }
 
-                        ${
-                          card.position === "center"
-                            ? "relative"
-                            : ""
-                        }
+                        ${card.position === "center" ? "relative" : ""}
                       `
                   }
                 >
@@ -154,32 +151,34 @@ export function SharedHero({
                     {card.title}
                   </h3>
 
-                  {!isProjects &&
-                    card.description && (
-                      <p
-                        className={`mt-4 text-white/65 ${
-                          isCenter
-                            ? "text-lg leading-[1.7]"
-                            : "text-base leading-[1.6]"
-                        }`}
-                      >
-                        {card.description}
-                      </p>
-                    )}
+                  {!isProjects && card.description && (
+                    <p
+                      className={`mt-4 text-white/65 ${
+                        isCenter
+                          ? "text-lg leading-[1.7]"
+                          : "text-base leading-[1.6]"
+                      }`}
+                    >
+                      {card.description}
+                    </p>
+                  )}
                 </div>
               );
             })}
           </div>
 
           {/* Explore */}
-          <div className="mt-10 flex justify-center">
-            <button className="group flex flex-col items-center text-center text-white">
+          <div className="mt-4 flex justify-center">
+            <button
+              onClick={handleScrollDown}
+              className="group flex flex-col items-center text-center text-white"
+            >
               <span className="text-[22px] font-semibold tracking-[-0.02em]">
                 {exploreText}
               </span>
 
               {/* Arrow */}
-              <span className="mt-4 flex animate-float-arrow items-center justify-center text-white/80 transition duration-300 group-hover:text-white">
+              <span className="mt-2 flex animate-float-arrow items-center justify-center text-white/80 transition duration-300 group-hover:text-white">
                 <svg
                   width="22"
                   height="12"

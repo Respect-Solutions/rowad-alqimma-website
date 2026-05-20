@@ -21,16 +21,18 @@ export function LanguageSwitcher() {
       href={redirectedPathname}
       className="
         flex
-        h-[44px]
-        w-[44px]
+        h-[46px]
+        min-w-[46px]
         items-center
         justify-center
         rounded-full
         border
         border-white/15
         bg-white/10
-        text-sm
-        font-bold
+        px-3
+        text-[13px]
+        font-semibold
+        tracking-[0.08em]
         text-white
         backdrop-blur-md
         transition
@@ -41,4 +43,3 @@ export function LanguageSwitcher() {
     </Link>
   );
 }
-;

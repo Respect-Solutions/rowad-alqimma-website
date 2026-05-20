@@ -1,14 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "www.figma.com",
-        pathname: "/api/mcp/asset/**"
-      }
-    ]
-  }
-};
-
-export default nextConfig;
+import createNextIntlPlugin from "next-intl/plugin";
+const withNextIntl = createNextIntlPlugin();
+const nextConfig = {};
+export default withNextIntl(nextConfig);

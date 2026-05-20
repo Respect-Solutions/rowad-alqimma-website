@@ -15,23 +15,24 @@ export const bentoCards = [
   {
     title: "Command Center System",
     body: "Our integrated system gives you full visibility over every step from documentation to execution ensuring your business is structured, compliant, and ready to scale.",
-    action: "Explore System",
-    className: "lg:col-span-2"
+    className: "lg:col-span-2 bg-main",
   },
   {
     title: "Speed & Efficiency",
     body: "We accelerate your setup through optimized processes and direct regulatory channels reducing delays and getting you operational faster.",
-    light: true
+    light: true,
+    // className: "bg-[#B9C7E4]",
   },
   {
     title: "Transparency",
-    body: "Every step, document, and cost is clearly structured and shared giving you full control and confidence throughout the process."
+    body: "Every step, document, and cost is clearly structured and shared giving you full control and confidence throughout the process.",
+    // className: "bg-[#27354CB2]",
   },
   {
     title: "Execution First",
     body: "We don’t stop at advice. We execute, manage, and deliver turning plans into fully operational businesses.",
-    className: "lg:col-span-2"
-  }
+    className: "lg:col-span-2",
+  },
 ] as const;
 
 export const stats = [

@@ -1,17 +1,14 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { useLocale as useNextIntlLocale } from "next-intl";
+import type { Locale } from "@/types";
 
 export function useLocale() {
-  const pathname = usePathname();
-
-  const locale = pathname.split("/")[1];
-
-  const isArabic = locale === "ar";
+  const locale = useNextIntlLocale() as Locale;
 
   return {
     locale,
-    isArabic,
+    isArabic: locale === "ar",
     isEnglish: locale === "en",
   };
 }

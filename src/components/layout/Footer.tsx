@@ -1,100 +1,380 @@
 "use client";
 
-import { footerColumns } from "@/data/site";
+import Link from "next/link";
+import {
+FaFacebookF,
+FaInstagram,
+FaTiktok,
+FaXTwitter,
+FaSnapchat,
+FaWhatsapp,
+} from "react-icons/fa6";
+
+import { motion, Variants } from "framer-motion";
 import { Container } from "@/components/ui/Container";
+import { IconImage } from "@/components/ui/IconImage";
 import { useLocale } from "@/hooks/useLocale";
 
+// Animation variants
+const containerVariants: Variants = {
+hidden: { opacity: 0 },
+visible: {
+opacity: 1,
+transition: {
+staggerChildren: 0.08,
+delayChildren: 0.1,
+},
+},
+};
+
+const itemVariants: Variants = {
+hidden: { opacity: 0, y: 15 },
+visible: {
+opacity: 1,
+y: 0,
+transition: {
+duration: 0.4,
+ease: [0.25, 0.1, 0.25, 1],
+},
+},
+};
+
 export function Footer() {
-  const { isArabic } = useLocale();
+const { isArabic, locale } = useLocale();
 
-  const translatedColumns = {
-    Links: isArabic ? "الروابط" : "Links",
-
-    Legal: isArabic ? "الخدمات القانونية" : "Legal",
-
-    Contacts: isArabic ? "التواصل" : "Contacts",
-  };
-
-  const translatedLinks: Record<string, string> = {
-    "Foreign Investment": isArabic
-      ? "الاستثمار الأجنبي"
-      : "Foreign Investment",
-
-    "Mergers & Acquisitions": isArabic
-      ? "الاندماج والاستحواذ"
-      : "Mergers & Acquisitions",
-
-    "Dispute Resolution": isArabic
-      ? "حل النزاعات"
-      : "Dispute Resolution",
-
-    "Fintech Law": isArabic
-      ? "قانون التقنية المالية"
-      : "Fintech Law",
-
-    "Privacy Policy": isArabic
-      ? "سياسة الخصوصية"
-      : "Privacy Policy",
-
-    "Terms of Service": isArabic
-      ? "شروط الخدمة"
-      : "Terms of Service",
-  };
-
-  return (
-    <footer className="rounded-t-3xl border-2 border-white/10 bg-main px-6 py-12 md:px-16 md:py-12">
+return (
+  <footer className="pt-10">
+    {" "}
+    <div className="rounded-[32px] border border-white/10 bg-[#14263D] px-6 py-10 sm:px-8 md:px-10 lg:px-14 lg:py-14">
+      {" "}
       <Container>
-        <div
-          className={`grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-0 ${
-            isArabic ? "text-right" : ""
-          }`}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+          className="
+grid
+gap-10
+lg:grid-cols-[1.3fr_1fr_1fr_1fr_0.8fr]
+"
         >
           {/* Brand */}
-          <div>
-            <h2 className="text-lg font-bold leading-[1.2] text-ink">
-              {isArabic ? "رواد القمة" : "Rowad Elqimma"}
-            </h2>
-
-            <p className="mt-3 max-w-[283px] text-sm leading-[1.8] text-soft">
+          <motion.div
+            variants={itemVariants}
+            className={isArabic ? "text-right" : ""}
+          >
+            {" "}
+            <Link href="/" className="flex items-center gap-3">
+              {" "}
+              <IconImage name="logoAbout" width={46} height={46} />
+              <span className="text-xl font-bold text-white">
+                {isArabic ? "رواد القمة" : "Rowad Al Qimma"}
+              </span>
+            </Link>
+            <p className="mt-5 max-w-[280px] text-sm leading-[1.8] text-white/55">
               {isArabic
                 ? "نبني الأسس القانونية لمستقبل التجارة والابتكار داخل المملكة العربية السعودية."
                 : "Building the legal foundations for the future of trade and innovation in Saudi Arabia."}
             </p>
-          </div>
+          </motion.div>
 
-          {/* Columns */}
-          {footerColumns.map((column) => (
-            <div
-              className="flex flex-col gap-3"
-              key={column.title}
-            >
-              <h3 className="text-lg font-bold leading-[1.2] text-ink">
+          {/* Services */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-lg font-bold text-white">
+              {isArabic ? "الخدمات" : "Services"}
+            </h3>
+
+            <div className="mt-5 flex flex-col gap-3">
+              
+              <Link
+                href={`/${locale}/services?service=market-entry#our-services`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "استراتيجية دخول السوق" : "Market Entry Strategy"}
+              </Link>
+              <Link
+                href={`/${locale}/services?service=business-setup#our-services`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "تأسيس الشركات" : "Business Setup"}
+              </Link>
+              <Link
+                href={`/${locale}/services?service=legal-consulting#our-services`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "الاستشارات القانونية" : "Legal Consulting"}
+              </Link>
+              <Link
+                href={`/${locale}/services?service=business-consulting#our-services`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "استشارات الأعمال" : "Business Consulting"}
+              </Link>
+              <Link
+                href={`/${locale}/services?service=marketing-services#our-services`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "الخدمات التسويقية" : "Marketing Services"}
+              </Link>
+              
+            </div>
+          </motion.div>
+
+          {/* Links */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-lg font-bold text-white">
+              {isArabic ? "الروابط" : "Links"}
+            </h3>
+
+            <div className="mt-5 flex flex-col gap-3">
+              <Link
+                href={`/${locale}/`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "الرئيسية" : "Home"}
+              </Link>
+
+              <Link
+                href={`/${locale}/about`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "من نحن" : "About Us"}
+              </Link>
+
+              <Link
+                href={`/${locale}/services`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "الخدمات" : "Services"}
+              </Link>
+
+              <Link
+                href={`/${locale}/projects`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "المشاريع" : "Projects"}
+              </Link>
+
+              <Link
+                href={`/${locale}/contact-us`}
+                className="text-sm text-white/55 transition hover:text-white"
+              >
+                {isArabic ? "تواصل معنا" : "Contact"}
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Legal */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-lg font-bold text-white">
+              {isArabic ? "القوانين" : "Legal"}
+            </h3>
+
+            <div className="mt-5 flex flex-col gap-3">
+              {[
                 {
-                  translatedColumns[
-                    column.title as keyof typeof translatedColumns
-                  ]
-                }
-              </h3>
-
-              {column.links.map((link, index) => (
+                  en: "Privacy Policy",
+                  ar: "سياسة الخصوصية",
+                },
+                {
+                  en: "Terms of Service",
+                  ar: "شروط الخدمة",
+                },
+              ].map((item) => (
                 <a
-                  className="text-sm leading-[1.8] text-soft transition hover:text-ink"
+                  key={item.en}
                   href="#"
-                  key={`${link}-${index}`}
+                  className="text-sm text-white/55 transition hover:text-white"
                 >
-                  {translatedLinks[link] || link}
+                  {isArabic ? item.ar : item.en}
                 </a>
               ))}
             </div>
-          ))}
-        </div>
+          </motion.div>
 
-        <p className="mt-12 text-center text-base font-bold leading-[1.2] text-ink">
-          {isArabic
-            ? "© 2024 رواد القمة. جميع الحقوق محفوظة."
-            : "© 2024 Rowad Elqimma. All Rights Reserved."}
-        </p>
+          {/* Social */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-lg font-bold text-white">
+              {isArabic ? "السوشيال" : "Social"}
+            </h3>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a
+                href="https://www.facebook.com/share/18aWrmRnDH/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                flex
+                h-[46px]
+                w-[46px]
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-white/10
+                bg-white/[0.03]
+                text-white
+                transition
+                duration-300
+                hover:-translate-y-1
+                hover:border-white/20
+                hover:bg-white/[0.06]
+              "
+              >
+                <FaFacebookF size={16} />
+              </a>
+
+              <a
+                href="https://www.instagram.com/rowadalqimmaa?igsh=YjFkZjJvdTUwbm5s"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                flex
+                h-[46px]
+                w-[46px]
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-white/10
+                bg-white/[0.03]
+                text-white
+                transition
+                duration-300
+                hover:-translate-y-1
+                hover:border-white/20
+                hover:bg-white/[0.06]
+              "
+              >
+                <FaInstagram size={16} />
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@rowadalqimma"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                flex
+                h-[46px]
+                w-[46px]
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-white/10
+                bg-white/[0.03]
+                text-white
+                transition
+                duration-300
+                hover:-translate-y-1
+                hover:border-white/20
+                hover:bg-white/[0.06]
+              "
+              >
+                <FaTiktok size={16} />
+              </a>
+
+              <a
+                href="https://x.com/Rowadalqimmaa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                flex
+                h-[46px]
+                w-[46px]
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-white/10
+                bg-white/[0.03]
+                text-white
+                transition
+                duration-300
+                hover:-translate-y-1
+                hover:border-white/20
+                hover:bg-white/[0.06]
+              "
+              >
+                <FaXTwitter size={16} />
+              </a>
+
+              <a
+                href="https://www.snapchat.com/add/rowadrlqimmaa?share_id=IpvW_LbkMGQ&locale=en-US"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                flex
+                h-[46px]
+                w-[46px]
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-white/10
+                bg-white/[0.03]
+                text-white
+                transition
+                duration-300
+                hover:-translate-y-1
+                hover:border-white/20
+                hover:bg-white/[0.06]
+              "
+              >
+                <FaSnapchat size={16} />
+              </a>
+
+              <a
+                href="https://wa.me/966553768622"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                flex
+                h-[46px]
+                w-[46px]
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-white/10
+                bg-white/[0.03]
+                text-white
+                transition
+                duration-300
+                hover:-translate-y-1
+                hover:border-white/20
+                hover:bg-white/[0.06]
+              "
+              >
+                <FaWhatsapp size={16} />
+              </a>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Bottom */}
+        <motion.div
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="
+          mt-12
+          border-t
+          border-white/10
+          pt-6
+          text-center
+        "
+        >
+          <p className="text-sm font-semibold text-white/70">
+            {isArabic
+              ? "© 2026 رواد القمة. جميع الحقوق محفوظة."
+              : "© 2026 Rowad Al Qimma. All rights reserved."}
+          </p>
+        </motion.div>
       </Container>
-    </footer>
-  );
+    </div>
+  </footer>
+);
 }
