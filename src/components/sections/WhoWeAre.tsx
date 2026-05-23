@@ -61,9 +61,8 @@ export function WhoWeAre() {
   // ─── Render ─────────────────────────────────────────────────────────
 
   return (
-    <section className="rounded-[32px] bg-main px-5 py-14 sm:px-6 md:rounded-[48px] md:px-10 md:py-16 lg:px-16">
+    <section className="rounded-[32px] bg-main px-5 py-12 sm:px-6 sm:py-14 md:rounded-[48px] md:px-10 md:py-16 lg:px-16">
       <div className="mx-auto max-w-[1152px]">
-        
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -73,7 +72,6 @@ export function WhoWeAre() {
           }}
           variants={containerVariants}
         >
-          
           {/* Section Title */}
           <motion.div variants={itemVariants}>
             <SectionTitle
@@ -88,17 +86,13 @@ export function WhoWeAre() {
 
           {/* Cards */}
           <motion.div
-            className="mt-10 grid gap-5 sm:gap-6 lg:grid-cols-3"
+            className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3"
             variants={containerVariants}
           >
             {bentoCards.map((card) => {
-              const isLight =
-                "light" in card && card.light;
+              const isLight = "light" in card && card.light;
 
-              const className =
-                "className" in card
-                  ? card.className
-                  : "";
+              const className = "className" in card ? card.className : "";
 
               // ─── Translations ─────────────────────────────
 
@@ -111,9 +105,7 @@ export function WhoWeAre() {
                   ? "السرعة والكفاءة"
                   : "Speed & Efficiency",
 
-                Transparency: isArabic
-                  ? "الشفافية"
-                  : "Transparency",
+                Transparency: isArabic ? "الشفافية" : "Transparency",
 
                 "Execution First": isArabic
                   ? "التنفيذ أولاً"
@@ -138,15 +130,9 @@ export function WhoWeAre() {
                   : card.body,
               };
 
-              const translatedTitle =
-                titles[
-                  card.title as keyof typeof titles
-                ];
+              const translatedTitle = titles[card.title as keyof typeof titles];
 
-              const translatedBody =
-                bodies[
-                  card.title as keyof typeof bodies
-                ];
+              const translatedBody = bodies[card.title as keyof typeof bodies];
 
               return (
                 <motion.article
@@ -154,20 +140,17 @@ export function WhoWeAre() {
                   variants={itemVariants}
                   whileHover="hover"
                   whileTap="tap"
-                  className={`flex min-h-[260px] flex-col justify-center rounded-[28px] border-2 p-6 transition-all sm:min-h-[280px] sm:p-8 ${
+                  className={`flex flex-col justify-center rounded-[24px] border-2 p-5 transition-all sm:rounded-[28px] sm:p-6 md:min-h-[260px] md:p-7 lg:min-h-[280px] lg:p-8 ${
                     isLight
                       ? "border-transparent bg-accent text-main"
                       : "border-white/10 bg-card/70 text-ink"
                   } ${className}`}
                 >
                   <motion.div variants={cardHoverVariants}>
-                    
                     {/* Title */}
                     <h3
-                      className={`text-[28px] font-bold leading-[1.2] sm:text-[32px] ${
-                        isLight
-                          ? "text-main"
-                          : "text-ink"
+                      className={`text-[22px] font-bold leading-[1.2] sm:text-[26px] md:text-[28px] lg:text-[32px] ${
+                        isLight ? "text-main" : "text-ink"
                       }`}
                     >
                       {translatedTitle}
@@ -175,10 +158,8 @@ export function WhoWeAre() {
 
                     {/* Description */}
                     <p
-                      className={`mt-4 text-base leading-[1.6] sm:text-lg ${
-                        isLight
-                          ? "text-graphite"
-                          : "text-soft"
+                      className={`mt-3 text-sm leading-[1.7] sm:mt-4 sm:text-base md:leading-[1.6] lg:text-lg ${
+                        isLight ? "text-graphite" : "text-soft"
                       }`}
                     >
                       {translatedBody}
@@ -187,7 +168,7 @@ export function WhoWeAre() {
                     {/* Arrow */}
                     {"action" in card ? (
                       <motion.a
-                        className="mt-8 flex items-center gap-2 text-base font-bold leading-[1.2] text-ink"
+                        className="mt-6 flex items-center gap-2 text-base font-bold leading-[1.2] text-ink sm:mt-8"
                         href="#"
                         whileHover={{
                           x: 4,
@@ -196,10 +177,7 @@ export function WhoWeAre() {
                           duration: 0.2,
                         }}
                       >
-                        <IconImage
-                          name="arrowRight"
-                          size={14}
-                        />
+                        <IconImage name="arrowRight" size={14} />
                       </motion.a>
                     ) : null}
                   </motion.div>

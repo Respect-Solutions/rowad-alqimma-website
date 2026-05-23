@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -128,13 +129,18 @@ export function Stats({ variant = "default" }: StatsProps) {
         px-4
         sm:px-6
         md:px-16
-        ${isSecondary ? "py-16 sm:py-20 md:py-24" : "py-8 sm:py-12"}
+        ${isSecondary ? "py-12 sm:py-16 md:py-24" : "py-6 sm:py-8 md:py-12"}
       `}
     >
       <Container
         className={`
-          rounded-3xl
-          ${isSecondary ? "bg-[#27354C] py-12 sm:py-16 md:py-20" : "py-8 sm:py-10 md:py-12"}
+          rounded-2xl
+          sm:rounded-3xl
+          ${
+            isSecondary
+              ? "bg-[#27354C] py-10 sm:py-16 md:py-20"
+              : "py-6 sm:py-10 md:py-12"
+          }
         `}
       >
         <motion.div
@@ -144,30 +150,41 @@ export function Stats({ variant = "default" }: StatsProps) {
           variants={containerVariants}
           className={`
             grid
+            grid-cols-1
             text-center
             sm:grid-cols-2
             lg:grid-cols-4
-            ${isSecondary ? "gap-8 sm:gap-10" : "gap-5 sm:gap-6"}
+            ${
+              isSecondary
+                ? "gap-6 sm:gap-10"
+                : "gap-4 sm:gap-6"
+            }
           `}
         >
           {stats.map(([value, label]) => {
             const targetRaw =
               translatedValues[value as keyof typeof translatedValues];
+
             return (
               <motion.div
                 key={label}
                 variants={itemVariants}
                 whileHover="hover"
                 whileTap="tap"
+                className="flex flex-col items-center justify-center"
               >
                 <motion.strong
                   variants={numberHoverVariants}
                   className={`
                     block
                     font-bold
-                    leading-[1.2]
+                    leading-none
                     text-ink
-                    ${isSecondary ? "text-5xl sm:text-6xl" : "text-4xl sm:text-5xl"}
+                    ${
+                      isSecondary
+                        ? "text-3xl sm:text-5xl md:text-6xl"
+                        : "text-2xl sm:text-4xl md:text-5xl"
+                    }
                   `}
                   style={{ willChange: "transform" }}
                 >
@@ -180,9 +197,14 @@ export function Stats({ variant = "default" }: StatsProps) {
                 <span
                   className={`
                     block
-                    leading-[1.2]
+                    max-w-[220px]
+                    leading-snug
                     text-soft
-                    ${isSecondary ? "mt-2 text-lg sm:text-xl" : "mt-0.5 text-base sm:text-lg"}
+                    ${
+                      isSecondary
+                        ? "mt-2 text-sm sm:text-lg md:text-xl"
+                        : "mt-1 text-sm sm:text-base md:text-lg"
+                    }
                   `}
                 >
                   {translatedLabels[label as keyof typeof translatedLabels]}
@@ -195,3 +217,4 @@ export function Stats({ variant = "default" }: StatsProps) {
     </section>
   );
 }
+

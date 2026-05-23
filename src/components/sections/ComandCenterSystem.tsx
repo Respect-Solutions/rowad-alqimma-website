@@ -66,7 +66,7 @@ const features = [
   },
 ];
 
-// Animation variants with explicit TypeScript typing
+// Animation variants
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -109,28 +109,30 @@ export function CommandCenterSystem() {
   const { isArabic } = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-[#14263D] py-16 sm:py-24 lg:py-32">
-      <div className="mx-4 rounded-[32px] border border-white/10 bg-[#27354CB2] px-4 py-10 sm:mx-6 sm:px-6 sm:py-12 md:mx-8 md:px-8 md:py-14 lg:mx-auto  lg:px-8">
+    <section className="relative overflow-hidden bg-[#14263D] py-12 sm:py-20 lg:py-28">
+      <div className="mx-4 rounded-[24px] border border-white/10 bg-[#27354CB2] px-4 py-8 sm:mx-6 sm:rounded-[28px] sm:px-6 sm:py-10 md:mx-8 md:px-8 md:py-12 lg:mx-auto lg:rounded-[32px] lg:px-10 lg:py-14">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
+          {/* Heading */}
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-[56px]">
+            <h2 className="text-[30px] font-bold leading-[1.15] text-white sm:text-4xl md:text-5xl lg:text-[56px]">
               {isArabic ? "نظام مركز التحكم" : "The Command Center System"}
             </h2>
 
-            <p className="mt-4 text-base font-medium text-[#B4C5FF]/70 sm:text-lg">
+            <p className="mt-3 text-sm font-medium text-[#B4C5FF]/70 sm:mt-4 sm:text-base md:text-lg">
               {isArabic
                 ? "خمس مراحل متكاملة للتحول المؤسسي."
                 : "Five distinct phases of institutional transformation."}
             </p>
           </motion.div>
 
+          {/* Phase Cards */}
           <motion.div
-            className="mx-auto mt-12 grid max-w-[1152px] gap-6 sm:mt-16 md:grid-cols-2 lg:mt-20 xl:grid-cols-5"
+            className="mx-auto mt-10 grid max-w-[1152px] gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:mt-16 lg:grid-cols-3 lg:gap-5 xl:grid-cols-5"
             variants={containerVariants}
           >
             {phases.map((phase) => (
@@ -139,7 +141,7 @@ export function CommandCenterSystem() {
                 variants={itemVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="group relative flex min-h-[130px] flex-col justify-between gap-4 rounded-[12px] border-2 border-white/10 bg-[#27354C] p-4 text-center backdrop-blur-[12px]"
+                className="group relative flex flex-col justify-between gap-4 rounded-[12px] border-2 border-white/10 bg-[#27354C] p-4 text-center backdrop-blur-[12px] sm:min-h-[140px] sm:p-5 lg:min-h-[150px]"
               >
                 <motion.div
                   variants={cardHoverVariants}
@@ -147,16 +149,16 @@ export function CommandCenterSystem() {
                   style={{ willChange: "transform" }}
                 >
                   <div>
-                    <h3 className="text-lg font-bold text-white sm:text-[20px]">
+                    <h3 className="text-base font-bold text-white sm:text-[18px] lg:text-[20px]">
                       {isArabic ? phase.titleAr : phase.title}
                     </h3>
 
-                    <p className="mt-3 text-xs leading-[1.5] text-[#BEC1C4]/65 sm:mt-4 sm:text-sm">
+                    <p className="mt-2 text-xs leading-[1.6] text-[#BEC1C4]/65 sm:mt-3 sm:text-sm">
                       {isArabic ? phase.descriptionAr : phase.description}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  <div className="mt-4 flex items-center justify-between sm:mt-5">
                     <Image
                       src={phase.icon}
                       alt={phase.title}
@@ -165,7 +167,7 @@ export function CommandCenterSystem() {
                       className="opacity-80 transition-opacity duration-200 group-hover:opacity-100"
                     />
 
-                    <span className="text-xl font-bold text-[#D7C29A] sm:text-[24px]">
+                    <span className="text-lg font-bold text-[#D7C29A] sm:text-xl lg:text-[24px]">
                       {phase.id}
                     </span>
                   </div>
@@ -174,20 +176,21 @@ export function CommandCenterSystem() {
             ))}
           </motion.div>
 
+          {/* Features Strip */}
           <motion.div
             variants={containerVariants}
-            className="mt-10 rounded-[18px] border border-white/10 bg-white/[0.02] px-4 py-5 sm:px-6 sm:py-6 md:px-8  max-w-[1152px] mx-auto"
+            className="mx-auto mt-8 max-w-[1152px] rounded-[14px] border border-white/10 bg-white/[0.02] px-4 py-4 sm:mt-10 sm:rounded-[18px] sm:px-6 sm:py-5 md:px-8 md:py-6"
           >
-            <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-3 sm:gap-x-16 max-w-[1152px] mx-auto">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 sm:gap-x-10 md:gap-x-14 lg:gap-x-16">
               {features.map((feature) => (
                 <motion.div
                   key={feature.en}
                   variants={featureItemVariants}
                   className="flex items-center gap-2 sm:gap-3"
                 >
-                  <span className="h-[5px] w-[5px] rounded-full bg-[#D7C29A] sm:h-[6px] sm:w-[6px]" />
+                  <span className="h-[5px] w-[5px] flex-shrink-0 rounded-full bg-[#D7C29A] sm:h-[6px] sm:w-[6px]" />
 
-                  <span className="text-xs font-semibold tracking-[0.08em] text-white/80 sm:text-sm">
+                  <span className="text-[11px] font-semibold tracking-[0.08em] text-white/80 sm:text-xs md:text-sm">
                     {isArabic ? feature.ar : feature.en}
                   </span>
                 </motion.div>

@@ -35,8 +35,8 @@ export function CompanyFormationBanner() {
   const { isArabic } = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-[#14263D] px-6 py-10">
-      <div className="mx-auto max-w-[1152px] rounded-[24px] border-2 border-white/10 bg-[#27354CB2] px-8 py-12 text-center backdrop-blur-[4px]">
+    <section className="relative overflow-hidden bg-[#14263D] px-4 py-8 sm:px-6 sm:py-10">
+      <div className="mx-auto max-w-[1152px] rounded-[20px] border-2 border-white/10 bg-[#27354CB2] px-5 py-8 text-center backdrop-blur-[4px] sm:rounded-[24px] sm:px-8 sm:py-12">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -45,7 +45,7 @@ export function CompanyFormationBanner() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-[56px] font-bold leading-[1.1] text-white"
+            className="text-[30px] font-bold leading-[1.15] text-white sm:text-[44px] md:text-[56px]"
           >
             {isArabic
               ? "أكثر من مجرد تأسيس شركة"
@@ -55,7 +55,7 @@ export function CompanyFormationBanner() {
           <motion.div variants={itemVariants} whileHover="hover">
             <motion.p
               variants={bannerHoverVariants}
-              className="mx-auto mt-6 max-w-[620px] text-[24px] leading-[1.5] text-white/55"
+              className="mx-auto mt-4 max-w-[620px] text-[16px] leading-[1.7] text-white/55 sm:mt-6 sm:text-[22px] md:text-[24px]"
               style={{ willChange: "transform" }}
             >
               {isArabic ? (
@@ -82,3 +82,4 @@ export function CompanyFormationBanner() {
     </section>
   );
 }
+;

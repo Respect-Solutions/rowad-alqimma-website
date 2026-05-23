@@ -58,7 +58,7 @@ export function WhyChooseApproach() {
   const { isArabic } = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-[#14263D] px-4 py-16 sm:px-6 md:py-24">
+    <section className="relative overflow-hidden bg-[#14263D] px-4 py-12 sm:px-6 sm:py-16 md:py-24">
       <div className="mx-auto max-w-[1152px]">
         <motion.div
           initial="hidden"
@@ -68,11 +68,13 @@ export function WhyChooseApproach() {
         >
           {/* Heading */}
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-[56px]">
-              {isArabic ? "لماذا تختار هذا النهج" : "Why Choose This Approach"}
+            <h2 className="text-[30px] font-bold leading-[1.15] text-white sm:text-5xl md:text-[56px]">
+              {isArabic
+                ? "لماذا تختار هذا النهج"
+                : "Why Choose This Approach"}
             </h2>
 
-            <p className="mx-auto mt-4 max-w-[980px] text-xl leading-[1.4] text-white/55 sm:mt-5 sm:text-2xl md:text-[24px] md:leading-[1.5]">
+            <p className="mx-auto mt-3 max-w-[980px] text-[16px] leading-[1.7] text-white/55 sm:mt-5 sm:text-2xl md:text-[24px] md:leading-[1.5]">
               {isArabic
                 ? "تفشل العديد من الشركات العالمية بسبب تعدد الجهات الاستشارية وتشتتها، بينما نقدم نحن نهجًا موحدًا ومتكاملًا لإطلاق الأعمال وبنائها."
                 : "Global firms often falter due to fragmented advisory. We provide a single, unified Command Center approach to institutional setup."}
@@ -81,7 +83,7 @@ export function WhyChooseApproach() {
 
           {/* Cards */}
           <motion.div
-            className="mt-12 grid gap-6 md:mt-16 lg:grid-cols-[1.5fr_0.9fr_0.9fr]"
+            className="mt-8 grid gap-4 sm:mt-12 sm:gap-6 lg:mt-16 lg:grid-cols-[1.5fr_0.9fr_0.9fr]"
             variants={containerVariants}
           >
             {approachCards.map((card) => {
@@ -122,16 +124,17 @@ export function WhyChooseApproach() {
                   whileHover="hover"
                   whileTap="tap"
                   className={`
-                    rounded-[28px]
+                    rounded-[22px]
                     border
                     border-white/10
                     backdrop-blur-[4px]
                     transition-all
                     duration-300
+                    sm:rounded-[28px]
                     ${
                       card.size === "large"
-                        ? "bg-[#14263D] min-h-[260px] px-6 py-8 sm:px-8 sm:py-10 lg:px-10"
-                        : "bg-[#27354CB2] hover:bg-[#31425D] min-h-[260px] px-5 py-6 sm:px-6 sm:py-8 lg:px-8"
+                        ? "bg-[#14263D] px-5 py-6 sm:px-8 sm:py-10 lg:px-10"
+                        : "bg-[#27354CB2] px-5 py-6 hover:bg-[#31425D] sm:px-6 sm:py-8 lg:px-8"
                     }
                   `}
                 >
@@ -145,19 +148,19 @@ export function WhyChooseApproach() {
                     <h3
                       className={`
                         font-bold
-                        leading-[1.1]
+                        leading-[1.15]
                         text-white
                         ${
                           card.size === "large"
-                            ? "text-3xl sm:text-4xl md:text-[42px]"
-                            : "text-2xl sm:text-3xl md:text-[36px]"
+                            ? "text-[28px] sm:text-4xl md:text-[42px]"
+                            : "text-[24px] sm:text-3xl md:text-[36px]"
                         }
                       `}
                     >
                       {translatedTitle}
                     </h3>
 
-                    <p className="mt-4 max-w-[320px] text-base leading-[1.6] text-white/55 sm:mt-5 sm:text-lg md:mt-6">
+                    <p className="mt-3 max-w-[320px] text-sm leading-[1.8] text-white/55 sm:mt-5 sm:text-lg md:mt-6">
                       {translatedDescription}
                     </p>
                   </motion.div>
@@ -170,3 +173,4 @@ export function WhyChooseApproach() {
     </section>
   );
 }
+

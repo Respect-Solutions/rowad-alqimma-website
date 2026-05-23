@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useEffect } from "react";
-import { motion, Variants, useInView } from "framer-motion";
+import { useRef } from "react";
+import { motion, Variants } from "framer-motion";
 import { assets } from "@/lib/assets";
-import { IconImage } from "@/components/ui/IconImage";
 import { useLocale } from "@/hooks/useLocale";
 
 // Animation variants
@@ -42,7 +41,7 @@ function TestimonialCard() {
   return (
     <motion.article
       whileHover="hover"
-      className={`w-[560px] shrink-0 rounded-3xl border-2 border-white/10 bg-[#27354C] p-[34px] ${
+      className={`w-[85vw] shrink-0 rounded-3xl border-2 border-white/10 bg-[#27354C] p-5 sm:w-[420px] sm:p-7 md:w-[560px] md:p-[34px] ${
         isArabic ? "text-right" : ""
       }`}
     >
@@ -51,7 +50,7 @@ function TestimonialCard() {
         className="h-full"
         style={{ willChange: "transform" }}
       >
-        <p className="text-lg leading-[1.8] text-soft">
+        <p className="text-base leading-[1.8] text-soft sm:text-lg">
           {isArabic
             ? '"قدمت لنا رواد القمة الوضوح الاستراتيجي الذي احتجناه لإدارة شراكات واستثمارات ضخمة داخل السوق السعودي، بخبرة قانونية وتنفيذية عالية."'
             : '"NEOM Justice provided the clarity we needed to navigate a multi-billion dollar joint venture. Their technical expertise is matched only by their local strategic foresight."'}
@@ -87,12 +86,10 @@ export function Trust() {
   const { isArabic } = useLocale();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Optional: auto-scroll hint or just keep as is
-
   return (
-    <section className="relative overflow-hidden px-4 py-12 sm:px-6 md:px-16 md:py-16">
-      {/* Background glow - responsive size */}
-      <div className="absolute left-1/2 top-6 h-[400px] w-[90%] max-w-[732px] -translate-x-1/2 rounded-full blur-[75px] sm:h-[500px] md:h-[732px] md:w-[732px]" />
+    <section className="relative overflow-hidden px-4 py-10 sm:px-6 sm:py-12 md:px-16 md:py-16">
+      {/* Background glow */}
+      <div className="absolute left-1/2 top-6 h-[300px] w-[90%] max-w-[732px] -translate-x-1/2 rounded-full blur-[75px] sm:h-[400px] md:h-[732px] md:w-[732px]" />
 
       <div className="relative mx-auto max-w-[1152px]">
         <motion.div
@@ -116,15 +113,15 @@ export function Trust() {
               className="h-auto w-auto"
             />
 
-            <h2 className="text-3xl font-bold leading-[1.2] text-ink sm:text-4xl md:text-5xl">
+            <h2 className="text-2xl font-bold leading-[1.2] text-ink sm:text-4xl md:text-5xl">
               {isArabic ? "ثقة راسخة" : "Sovereign Trust"}
             </h2>
           </motion.div>
 
-          {/* Cards - responsive horizontal scroll on mobile, preserved layout on desktop */}
+          {/* Cards */}
           <motion.div
             variants={containerVariants}
-            className={`mt-8 flex gap-4 overflow-x-auto rounded-2xl pb-4 ${
+            className={`mt-6 flex gap-4 overflow-x-auto rounded-2xl pb-4 sm:mt-8 ${
               isArabic ? "flex-row-reverse" : ""
             }`}
             style={{
@@ -137,7 +134,7 @@ export function Trust() {
             <TestimonialCard />
           </motion.div>
 
-          {/* Optional: subtle scroll hint for mobile */}
+          {/* Scroll hint dots */}
           <div className="mt-2 flex justify-center gap-1 md:hidden">
             <span className="h-1 w-6 rounded-full bg-white/30"></span>
             <span className="h-1 w-2 rounded-full bg-white/10"></span>

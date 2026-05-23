@@ -38,20 +38,20 @@ export function CTASection() {
   const { isArabic, locale } = useLocale();
 
   return (
-    <section className="px-4 py-12 sm:px-6 md:px-16 md:py-16">
+    <section className="px-4 py-10 sm:px-6 sm:py-12 md:px-16 md:py-16">
       <div className="mx-auto max-w-[1152px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
-          className={`rounded-3xl border-2 border-white/10 bg-accent px-6 py-10 text-center sm:px-8 sm:py-12 ${
+          className={`rounded-[28px] border-2 border-white/10 bg-accent px-5 py-8 text-center sm:rounded-3xl sm:px-8 sm:py-12 ${
             isArabic ? "rtl" : ""
           }`}
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl font-bold leading-[1.2] text-main sm:text-4xl md:text-5xl"
+            className="text-[28px] font-bold leading-[1.2] text-main sm:text-4xl md:text-5xl"
           >
             {isArabic
               ? "هل أنت مستعد لبناء منظومتك القانونية؟"
@@ -60,7 +60,7 @@ export function CTASection() {
 
           <motion.p
             variants={itemVariants}
-            className="mt-2 text-base leading-[1.7] text-graphite sm:text-lg"
+            className="mx-auto mt-3 max-w-[760px] text-sm leading-[1.8] text-graphite sm:mt-2 sm:text-lg"
           >
             {isArabic ? (
               <>
@@ -80,15 +80,16 @@ export function CTASection() {
 
           <motion.div
             variants={itemVariants}
-            className="mt-10 flex justify-center sm:mt-12"
+            className="mt-8 flex justify-center sm:mt-12"
           >
             <motion.div
               variants={buttonHoverVariants}
               whileHover="hover"
               whileTap="tap"
+              className="w-full sm:w-auto"
             >
               <Button
-                className="h-[56px] w-full max-w-[438px] sm:h-[60px] md:h-[62px]"
+                className="h-[52px] w-full sm:min-w-[260px] sm:w-auto md:h-[62px] md:min-w-[438px]"
                 variant="dark"
               >
                 {isArabic ? "ابدأ تأسيس شركتك" : "Start Your Company"}
@@ -100,3 +101,4 @@ export function CTASection() {
     </section>
   );
 }
+

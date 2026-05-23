@@ -80,7 +80,7 @@ export function DeploymentSequence() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#14263D] px-5 py-16 sm:px-6 md:px-10 md:py-20 lg:px-12 xl:px-0 xl:py-24">
+    <section className="relative overflow-hidden bg-[#14263D] px-4 py-12 sm:px-6 sm:py-16 md:px-10 md:py-20 lg:px-12 xl:px-0 xl:py-24">
       
       {/* Glow */}
       {/* <div className="absolute bottom-[-250px] left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-[#8FA8FF] blur-[180px]" /> */}
@@ -100,7 +100,7 @@ export function DeploymentSequence() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-[38px] font-bold leading-none text-white sm:text-[44px] md:text-[50px] lg:text-[56px]"
+            className="text-[30px] font-bold leading-none text-white sm:text-[44px] md:text-[50px] lg:text-[56px]"
           >
             {isArabic
               ? "مراحل التنفيذ"
@@ -109,7 +109,7 @@ export function DeploymentSequence() {
 
           <motion.p
             variants={itemVariants}
-            className="mx-auto mt-4 max-w-[650px] text-base leading-[1.7] text-white/55 sm:text-lg"
+            className="mx-auto mt-3 max-w-[650px] text-sm leading-[1.7] text-white/55 sm:mt-4 sm:text-lg"
           >
             {isArabic
               ? "من البداية وحتى التشغيل الكامل."
@@ -119,7 +119,7 @@ export function DeploymentSequence() {
 
         {/* Cards */}
         <motion.div
-          className="mt-14 grid items-stretch gap-6 md:grid-cols-2 xl:mt-16 xl:grid-cols-4 xl:items-end"
+          className="mt-10 grid items-stretch gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-6 xl:mt-16 xl:grid-cols-4 xl:items-end"
           initial="hidden"
           whileInView="visible"
           viewport={{
@@ -183,15 +183,17 @@ export function DeploymentSequence() {
                 className={`
                   relative
                   overflow-hidden
-                  rounded-[32px]
+                  rounded-[24px]
                   bg-[#27354CB2]
-                  px-6
-                  py-8
-                  min-h-[300px]
+                  px-5
+                  py-6
                   backdrop-blur-[4px]
                   transition-all
                   duration-300
                   hover:bg-[#31415CB2]
+                  sm:rounded-[32px]
+                  sm:px-6
+                  sm:py-8
                   md:min-h-[320px]
                   xl:rounded-[48px]
                   ${step.height}
@@ -201,10 +203,10 @@ export function DeploymentSequence() {
                 
                 {/* Number */}
                 <span
-                  className={`absolute top-6 text-[46px] font-bold leading-none text-white/70 sm:text-[56px] ${
+                  className={`absolute top-5 text-[38px] font-bold leading-none text-white/70 sm:top-6 sm:text-[56px] ${
                     isArabic
-                      ? "left-6"
-                      : "right-6"
+                      ? "left-5 sm:left-6"
+                      : "right-5 sm:right-6"
                   }`}
                 >
                   {step.id}
@@ -219,7 +221,7 @@ export function DeploymentSequence() {
                   transition={{
                     duration: 0.2,
                   }}
-                  className={`flex h-[44px] w-[44px] items-center ${
+                  className={`flex h-[40px] w-[40px] items-center sm:h-[44px] sm:w-[44px] ${
                     isArabic
                       ? "justify-end"
                       : "justify-center"
@@ -230,16 +232,17 @@ export function DeploymentSequence() {
                     alt={translatedTitle}
                     width={24}
                     height={24}
+                    className="h-5 w-5 sm:h-6 sm:w-6"
                   />
                 </motion.div>
 
                 {/* Content */}
-                <div className="mt-14">
-                  <h3 className="text-[24px] font-bold leading-[1.2] text-white sm:text-[28px]">
+                <div className="mt-10 sm:mt-14">
+                  <h3 className="text-[22px] font-bold leading-[1.2] text-white sm:text-[28px]">
                     {translatedTitle}
                   </h3>
 
-                  <p className="mt-5 text-[15px] leading-[1.8] text-white/55 sm:text-[16px]">
+                  <p className="mt-4 text-sm leading-[1.8] text-white/55 sm:mt-5 sm:text-[16px]">
                     {translatedDescription}
                   </p>
                 </div>
@@ -251,3 +254,4 @@ export function DeploymentSequence() {
     </section>
   );
 }
+

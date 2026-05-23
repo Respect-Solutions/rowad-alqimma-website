@@ -1,9 +1,7 @@
 "use client";
-
 import { motion, Variants } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
 
-// Animation variants with explicit TypeScript typing
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -50,7 +48,7 @@ export function MarketArchitectureBanner() {
               variants={bannerHoverVariants}
               style={{ willChange: "transform" }}
             >
-              <h2 className="text-2xl font-bold leading-[1.2] text-white sm:text-3xl md:text-[32px]">
+              <h2 className="text-xl font-bold leading-[1.2] text-white sm:text-3xl md:text-[32px]">
                 {isArabic ? (
                   <>
                     دخول السوق السعودي يعتمد على بنية تنظيمية
@@ -66,7 +64,6 @@ export function MarketArchitectureBanner() {
                   </>
                 )}
               </h2>
-
               <p className="mx-auto mt-4 max-w-[1050px] text-sm leading-[1.7] text-white/55 sm:mt-5 sm:text-base">
                 {isArabic
                   ? "العديد من الشركات العالمية تتعثر بسبب تعدد الجهات الاستشارية. نحن نقدم نهجًا موحدًا من خلال نظام Command Center لإدارة التأسيس المؤسسي بالكامل."

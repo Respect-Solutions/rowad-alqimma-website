@@ -2,6 +2,7 @@
 
 import { Footer } from "@/components/layout/Footer";
 import { CTASection } from "@/components/sections/CTASection";
+import { ProjectsCarousel } from "@/components/sections/ProjectsShowcase";
 import { SharedHero } from "@/components/sections/SharedHero";
 import { useLocale } from "@/hooks/useLocale";
 
@@ -14,16 +15,12 @@ export default function ProjectsPage() {
         activeNav="Projects"
         variant="projects"
         exploreText={
-          isArabic
-            ? "استكشف دراسات الحالة"
-            : "Explore Our Case Studies"
+          isArabic ? "استكشف مشاريعنا" : "Explore Projects"
         }
         title={
           <>
             <span className="text-[#EFF0F1]">
-              {isArabic
-                ? "قصص نجاحنا"
-                : "Our Success Stories"}
+              {isArabic ? "قصص نجاحنا" : "Our Success Stories"}
             </span>
           </>
         }
@@ -36,6 +33,8 @@ export default function ProjectsPage() {
           },
         ]}
       />
+
+      <ProjectsCarousel />
 
       <CTASection />
 

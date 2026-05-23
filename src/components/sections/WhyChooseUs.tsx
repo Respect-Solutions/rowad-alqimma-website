@@ -33,7 +33,6 @@ const features = [
   },
 ];
 
-// Animation variants with explicit TypeScript typing
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -67,8 +66,8 @@ export function WhyChooseUs() {
   const { isArabic } = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-[#14263D] px-4 py-16 sm:px-6 sm:py-20 lg:px-6 lg:py-24">
-      <div className="mx-auto max-w-[1152px] rounded-[20px] border border-white/10 bg-[#27354CB2] px-4 py-8 sm:px-6 sm:py-10 md:px-8 lg:px-10">
+    <section className="relative overflow-hidden bg-[#14263D] px-4 py-12 sm:px-6 sm:py-16 lg:px-6 lg:py-24">
+      <div className="mx-auto max-w-[1152px] rounded-[20px] border border-white/10 bg-[#27354CB2] px-4 py-7 sm:px-6 sm:py-9 md:px-8 md:py-10 lg:px-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -82,7 +81,7 @@ export function WhyChooseUs() {
           >
             <div>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <h2 className="text-4xl font-bold leading-none text-white sm:text-5xl lg:text-[52px]">
+                <h2 className="text-[30px] font-bold leading-none text-white sm:text-4xl md:text-5xl lg:text-[52px]">
                   {isArabic ? "لماذا نحن" : "Why Choose Us"}
                 </h2>
 
@@ -93,7 +92,7 @@ export function WhyChooseUs() {
                 </span>
               </div>
 
-              <p className="mt-5 max-w-[820px] text-sm leading-[1.8] text-white/55">
+              <p className="mt-4 max-w-[820px] text-sm leading-[1.8] text-white/55 sm:mt-5">
                 {isArabic
                   ? "نقدم خدمات قانونية متخصصة للغاية للمشاريع الطموحة، من قلب الرياض وحتى مشاريع المستقبل مثل نيوم."
                   : "We provide hyper-specialized legal services for the world's most ambitious projects. From the heart of Riyadh to the frontiers of NEOM."}
@@ -103,7 +102,7 @@ export function WhyChooseUs() {
 
           {/* Cards */}
           <motion.div
-            className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+            className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
             variants={containerVariants}
           >
             {features.map((feature) => (
@@ -112,26 +111,15 @@ export function WhyChooseUs() {
                 variants={itemVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="
-                  flex
-                  min-h-[120px]
-                  flex-col
-                  justify-between
-                  rounded-[12px]
-                  border
-                  border-white/10
-                  bg-[#14263D]
-                  p-5
-                  backdrop-blur-[12px]
-                "
+                className="flex flex-col justify-between rounded-[12px] border border-white/10 bg-[#14263D] p-4 backdrop-blur-[12px] sm:p-5"
               >
                 <motion.div
                   variants={cardHoverVariants}
                   className="flex h-full flex-col justify-between"
                   style={{ willChange: "transform" }}
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center justify-center rounded-[10px] bg-[#31425D] p-3">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="flex shrink-0 items-center justify-center rounded-[10px] bg-[#31425D] p-2.5 sm:p-3">
                       <Image
                         src={feature.icon}
                         alt={feature.title}
@@ -141,12 +129,12 @@ export function WhyChooseUs() {
                       />
                     </div>
 
-                    <h3 className="text-lg font-semibold text-white sm:text-[20px]">
+                    <h3 className="text-base font-semibold text-white sm:text-lg lg:text-[20px]">
                       {isArabic ? feature.titleAr : feature.title}
                     </h3>
                   </div>
 
-                  <p className="mt-2 text-center text-sm leading-[1.7] text-white/55">
+                  <p className="mt-3 text-sm leading-[1.7] text-white/55 sm:mt-4">
                     {isArabic ? feature.descriptionAr : feature.description}
                   </p>
                 </motion.div>

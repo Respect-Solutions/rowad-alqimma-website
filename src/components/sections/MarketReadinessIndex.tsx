@@ -135,9 +135,9 @@ export function MarketReadinessIndex() {
     <>
       <section
         dir={isArabic ? "rtl" : "ltr"}
-        className="relative overflow-hidden bg-[#14263D] px-4 py-12 sm:px-6 sm:py-16"
+        className="relative overflow-hidden bg-[#14263D] px-4 py-10 sm:px-6 sm:py-16"
       >
-        <div className="mx-auto max-w-[1152px] rounded-[28px] border border-white/10 bg-[#27354CB2] px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-10">
+        <div className="mx-auto max-w-[1152px] rounded-[24px] border border-white/10 bg-[#27354CB2] px-4 py-6 sm:rounded-[28px] sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -147,13 +147,13 @@ export function MarketReadinessIndex() {
             {/* Header */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap items-start justify-between gap-4"
+              className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between"
             >
-              <h2 className="text-3xl font-bold leading-none text-white sm:text-4xl md:text-5xl lg:text-[52px]">
+              <h2 className="max-w-[700px] text-2xl font-bold leading-[1.1] text-white sm:text-4xl md:text-5xl lg:text-[52px]">
                 {isArabic ? "مؤشر الجاهزية السوقية" : "Market Readiness Index"}
               </h2>
 
-              <span className="text-xs font-semibold uppercase tracking-[0.12em] text-white/45 sm:text-sm">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-white/45 sm:text-sm">
                 {isArabic ? "محرك التحليل" : "Analysis Engine"}
               </span>
             </motion.div>
@@ -161,16 +161,16 @@ export function MarketReadinessIndex() {
             {/* Sliders */}
             <motion.div
               variants={containerVariants}
-              className="mt-10 flex flex-col gap-8 sm:mt-12 sm:gap-10 md:mt-14"
+              className="mt-8 flex flex-col gap-6 sm:mt-12 sm:gap-10 md:mt-14"
             >
               {/* Capital */}
               <motion.div variants={itemVariants}>
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-white/90">
+                <div className="mb-3 flex items-center justify-between gap-3">
+                  <span className="text-sm font-semibold text-white/90 sm:text-base">
                     {isArabic ? "تقييم رأس المال" : "Capital Requirement Audit"}
                   </span>
 
-                  <span className="text-sm font-semibold text-white/70">
+                  <span className="shrink-0 text-sm font-semibold text-white/70">
                     {capital}%
                   </span>
                 </div>
@@ -190,12 +190,12 @@ export function MarketReadinessIndex() {
 
               {/* Regulatory */}
               <motion.div variants={itemVariants}>
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-white/90">
+                <div className="mb-3 flex items-center justify-between gap-3">
+                  <span className="text-sm font-semibold text-white/90 sm:text-base">
                     {isArabic ? "التوافق التنظيمي" : "Regulatory Alignment"}
                   </span>
 
-                  <span className="text-sm font-semibold text-white/70">
+                  <span className="shrink-0 text-sm font-semibold text-white/70">
                     {regulatory}%
                   </span>
                 </div>
@@ -215,12 +215,12 @@ export function MarketReadinessIndex() {
 
               {/* Operational */}
               <motion.div variants={itemVariants}>
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-white/90">
+                <div className="mb-3 flex items-center justify-between gap-3">
+                  <span className="text-sm font-semibold text-white/90 sm:text-base">
                     {isArabic ? "الجاهزية التشغيلية" : "Operational Viability"}
                   </span>
 
-                  <span className="text-sm font-semibold text-white/70">
+                  <span className="shrink-0 text-sm font-semibold text-white/70">
                     {operational}%
                   </span>
                 </div>
@@ -242,14 +242,14 @@ export function MarketReadinessIndex() {
             {/* CTA */}
             <motion.div
               variants={itemVariants}
-              className="mt-12 flex justify-center sm:mt-14 md:mt-16"
+              className="mt-10 flex justify-center sm:mt-14 md:mt-16"
             >
               <motion.button
                 onClick={() => setShowModal(true)}
                 variants={buttonHoverVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="flex h-[56px] items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-[#14263D] transition-shadow hover:shadow-lg sm:h-[60px] sm:px-8 md:h-[64px] md:px-10"
+                className="flex h-[52px] w-full items-center justify-center rounded-full bg-white px-5 text-sm font-bold text-[#14263D] transition-shadow hover:shadow-lg sm:h-[60px] sm:w-auto sm:px-8 md:h-[64px] md:px-10"
               >
                 {isArabic ? "احسب جاهزية شركتك" : "Calculate Your Readiness"}
               </motion.button>
@@ -374,6 +374,7 @@ export function MarketReadinessIndex() {
           border-radius: 6px;
           outline: none;
         }
+
         .slider::-webkit-slider-thumb {
           -webkit-appearance: none;
           appearance: none;
@@ -385,6 +386,7 @@ export function MarketReadinessIndex() {
           border: 2px solid white;
           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
+
         .slider::-moz-range-thumb {
           width: 20px;
           height: 20px;
@@ -397,3 +399,4 @@ export function MarketReadinessIndex() {
     </>
   );
 }
+

@@ -42,13 +42,13 @@ export function VisionMission() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#14263D] px-5 py-16 sm:px-6 md:px-10 md:py-20 lg:px-12 xl:px-0 xl:py-24">
+    <section className="relative overflow-hidden bg-[#14263D] px-4 py-12 sm:px-6 sm:py-16 md:px-10 md:py-20 lg:px-12 xl:px-0 xl:py-24">
       
       {/* Glow */}
       {/* <div className="absolute left-1/2 top-1/2 h-[500px] w-[1152px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8FA8FF] blur-[180px]" /> */}
 
       <motion.div
-        className="relative z-10 mx-auto grid max-w-[1125px] gap-6 lg:grid-cols-2 lg:gap-8"
+        className="relative z-10 mx-auto grid max-w-[1125px] gap-5 sm:gap-6 lg:grid-cols-2 lg:gap-8"
         initial="hidden"
         whileInView="visible"
         viewport={{
@@ -67,18 +67,18 @@ export function VisionMission() {
               duration: 0.25,
             },
           }}
-          className={`relative min-h-[420px] rounded-[28px] border border-white/10 bg-[#27354C] px-6 py-8 backdrop-blur-[12px] sm:px-8 md:px-10 md:py-10 lg:min-h-[520px] ${
+          className={`relative rounded-[24px] border border-white/10 bg-[#27354C] px-5 py-6 backdrop-blur-[12px] sm:rounded-[28px] sm:px-8 md:px-10 md:py-10 lg:min-h-[520px] ${
             isArabic ? "text-right" : ""
           }`}
         >
           
           {/* Header */}
           <div
-            className={`flex items-center  gap-4 ${
+            className={`flex items-center gap-3 sm:gap-4 ${
               isArabic ? "flex-row-reverse" : ""
             }`}
           >
-            <h2 className="text-[34px] font-bold text-white sm:text-[40px] lg:text-[48px]">
+            <h2 className="text-[28px] font-bold text-white sm:text-[40px] lg:text-[48px]">
               {isArabic
                 ? "رؤيتنا"
                 : "Our Vision"}
@@ -89,11 +89,12 @@ export function VisionMission() {
               alt="Vision"
               width={34}
               height={34}
+              className="h-7 w-7 sm:h-[34px] sm:w-[34px]"
             />
           </div>
 
           {/* Content */}
-          <p className="mt-8 max-w-[520px] text-[20px] leading-[1.7] text-white/80 sm:text-[24px] lg:mt-10 lg:text-[28px]">
+          <p className="mt-6 max-w-[520px] text-[16px] leading-[1.8] text-white/80 sm:mt-8 sm:text-[24px] lg:mt-10 lg:text-[28px]">
             {isArabic
               ? "أن نكون المعماري الأول للنجاح التجاري في الشرق الأوسط، وأن نحول السوق السعودي إلى مركز عالمي للتكامل التجاري السلس والابتكار الاستثنائي."
               : "To be the premier architect of commercial success in the Middle East, transforming the Saudi Arabian market into a global hub of seamless business integration and unparalleled innovation."}
@@ -112,18 +113,18 @@ export function VisionMission() {
           className="flex items-center"
         >
           <div
-            className={`relative w-full rounded-[28px] border border-white/10 bg-[#27354C] px-6 py-8 backdrop-blur-[12px] sm:px-8 md:px-10 md:py-10 ${
+            className={`relative w-full rounded-[24px] border border-white/10 bg-[#27354C] px-5 py-6 backdrop-blur-[12px] sm:rounded-[28px] sm:px-8 md:px-10 md:py-10 ${
               isArabic ? "text-right" : ""
             }`}
           >
             
             {/* Header */}
             <div
-              className={`flex items-center gap-4 ${
+              className={`flex items-center gap-3 sm:gap-4 ${
                 isArabic ? "flex-row-reverse" : ""
               }`}
             >
-              <h2 className="text-[34px] font-bold text-white sm:text-[40px] lg:text-[48px]">
+              <h2 className="text-[28px] font-bold text-white sm:text-[40px] lg:text-[48px]">
                 {isArabic
                   ? "مهمتنا"
                   : "Our Mission"}
@@ -134,11 +135,12 @@ export function VisionMission() {
                 alt="Mission"
                 width={34}
                 height={34}
+                className="h-7 w-7 sm:h-[34px] sm:w-[34px]"
               />
             </div>
 
             {/* Content */}
-            <p className="mt-8 max-w-[520px] text-[18px] leading-[1.8] text-white/70 sm:text-[21px] lg:text-[24px]">
+            <p className="mt-6 max-w-[520px] text-[15px] leading-[1.9] text-white/70 sm:mt-8 sm:text-[21px] lg:text-[24px]">
               {isArabic
                 ? "تمكين الشركات العالمية من خلال استراتيجيات قانونية دقيقة، وحوكمة شفافة، وتميز تشغيلي يضمن لكل عميل تأسيس قاعدة قوية ومستدامة ومربحة."
                 : "Empowering global enterprises through rigorous legal strategy, transparent governance, and operational excellence, ensuring every client builds a foundation that is both permanent and profitable."}
@@ -149,3 +151,4 @@ export function VisionMission() {
     </section>
   );
 }
+

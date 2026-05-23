@@ -3,6 +3,7 @@
 import { Footer } from "@/components/layout/Footer";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { FAQSection } from "@/components/sections/FAQ";
 import { SharedHero } from "@/components/sections/SharedHero";
 import { useLocale } from "@/hooks/useLocale";
 
@@ -40,6 +41,8 @@ export default function ContactUsPage() {
       />
 
       <ContactSection />
+
+      <FAQSection/>
 
       <CTASection />
 

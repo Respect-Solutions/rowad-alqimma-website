@@ -25,7 +25,6 @@ export function SharedHero({
   variant = "services",
 }: SharedHeroProps) {
   const isProjects = variant === "projects";
-
   const { isArabic } = useLocale();
 
   const handleScrollDown = () => {
@@ -44,7 +43,7 @@ export function SharedHero({
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#14263D] pb-24">
+    <section className="relative overflow-hidden bg-[#14263D] pb-12 md:pb-24">
       {/* Glow */}
       <div className="absolute left-1/2 top-[55%] h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[75px]" />
 
@@ -53,7 +52,7 @@ export function SharedHero({
 
       <div className="relative z-10 flex flex-1 flex-col">
         {/* Header */}
-        <div className="px-6 pt-4 md:px-16 md:pt-4">
+        <div className="px-4 pt-4 sm:px-6 md:px-16 md:pt-4">
           <Header
             active={activeNav as "Home" | "About" | "Services" | "Projects"}
           />
@@ -61,61 +60,81 @@ export function SharedHero({
 
         {/* Hero Content */}
         <div
-          className={`relative text-center ${isProjects ? "pt-48" : "pt-28"}`}
+          className={`relative text-center ${
+            isProjects
+              ? "pt-14 sm:pt-20 md:pt-48"
+              : "pt-12 sm:pt-16 md:pt-28"
+          }`}
         >
           {/* Heading */}
-          <h1 className="mx-auto max-w-[900px] text-[64px] font-bold leading-[1.05]">
+          <h1 className="mx-auto max-w-[900px] px-4 text-[32px] font-bold leading-[1.1] sm:px-6 sm:text-[48px] md:text-[56px] lg:text-[64px] md:leading-[1.05]">
             {title}
           </h1>
 
-          {/* Cards */}
-          <div
-            className={`relative mx-auto mt-10 flex items-center justify-center ${
-              isProjects ? "h-[180px]" : "h-[320px] max-w-[1152px]"
-            }`}
-          >
-            {cards.map((card) => {
-              const isCenter = card.position === "center";
-
-              return (
+          {/* ── Cards ── */}
+          {isProjects ? (
+            <div className="relative mx-auto mt-8 flex items-center justify-center px-4 sm:mt-10 sm:px-6">
+              {cards.map((card) => (
                 <div
                   key={card.title}
-                  className={
-                    isProjects
-                      ? `
-                        relative
-                        flex
-                        h-[120px]
-                        w-full
-                        max-w-[1152px]
-                        items-center
-                        justify-center
-                        rounded-[32px]
-                        border-2
-                        border-[#B9C7E4]
-                        bg-[#EBF1FF1A]
-                        px-10
-                        text-center
-                        backdrop-blur-[64px]
-                      `
-                      : `
-                        absolute
-                        flex
-                        flex-col
-                        justify-center
-                        rounded-[28px]
-                        border-2
-                        border-[#B9C7E4]
-                        bg-[#EBF1FF1A]
-                        backdrop-blur-[64px]
-                        transition
-                        duration-500
-                        hover:z-20
-                        hover:scale-[1.05]
+                  className="
+                    relative flex w-full max-w-[1152px]
+                    items-center justify-center rounded-[24px]
+                    border-2 border-[#B9C7E4] bg-[#EBF1FF1A]
+                    px-5 py-6 text-center backdrop-blur-[64px]
+                    sm:rounded-[32px] sm:px-10 sm:py-8
+                    md:min-h-[120px]
+                  "
+                >
+                  <h3 className="max-w-[900px] text-[18px] font-bold leading-[1.7] text-white sm:text-[24px] md:text-[28px] md:leading-[1.4]">
+                    {card.title}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              {/* ── Mobile & small tablets: stacked ── */}
+              <div className="mt-8 flex flex-col items-center gap-4 px-4 sm:px-6 md:hidden">
+                {cards.map((card) => (
+                  <div
+                    key={card.title}
+                    className="
+                      w-full max-w-[480px] rounded-[24px]
+                      border-2 border-[#B9C7E4] bg-[#EBF1FF1A]
+                      p-5 backdrop-blur-[64px]
+                    "
+                  >
+                    <h3 className="text-[22px] font-bold text-white">
+                      {card.title}
+                    </h3>
+
+                    {card.description && (
+                      <p className="mt-3 text-base leading-[1.6] text-white/65">
+                        {card.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* ── md+: original absolute layout ── */}
+              <div className="relative mx-auto mt-10 hidden h-[320px] max-w-[1152px] items-center justify-center md:flex">
+                {cards.map((card) => {
+                  const isCenter = card.position === "center";
+
+                  return (
+                    <div
+                      key={card.title}
+                      className={`
+                        absolute flex flex-col justify-center
+                        rounded-[28px] border-2 border-[#B9C7E4]
+                        bg-[#EBF1FF1A] backdrop-blur-[64px]
+                        transition duration-500 hover:z-20 hover:scale-[1.05]
 
                         ${
                           isCenter
-                            ? "z-10 h-[220px] w-[540px] p-5"
+                            ? "relative z-10 h-[220px] w-[540px] p-5"
                             : "h-[180px] w-[360px] p-5"
                         }
 
@@ -136,48 +155,44 @@ export function SharedHero({
                         }
 
                         ${card.position === "center" ? "relative" : ""}
-                      `
-                  }
-                >
-                  <h3
-                    className={`font-bold text-white ${
-                      isProjects
-                        ? "max-w-[900px] text-[28px] leading-[1.4]"
-                        : isCenter
-                          ? "text-[42px]"
-                          : "text-[30px]"
-                    }`}
-                  >
-                    {card.title}
-                  </h3>
-
-                  {!isProjects && card.description && (
-                    <p
-                      className={`mt-4 text-white/65 ${
-                        isCenter
-                          ? "text-lg leading-[1.7]"
-                          : "text-base leading-[1.6]"
-                      }`}
+                      `}
                     >
-                      {card.description}
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                      <h3
+                        className={`font-bold text-white ${
+                          isCenter ? "text-[42px]" : "text-[30px]"
+                        }`}
+                      >
+                        {card.title}
+                      </h3>
+
+                      {card.description && (
+                        <p
+                          className={`mt-4 text-white/65 ${
+                            isCenter
+                              ? "text-lg leading-[1.7]"
+                              : "text-base leading-[1.6]"
+                          }`}
+                        >
+                          {card.description}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
 
           {/* Explore */}
-          <div className="mt-4 flex justify-center">
+          <div className="mt-8 flex justify-center md:mt-4">
             <button
               onClick={handleScrollDown}
               className="group flex flex-col items-center text-center text-white"
             >
-              <span className="text-[22px] font-semibold tracking-[-0.02em]">
+              <span className="text-[16px] font-semibold tracking-[-0.02em] sm:text-[18px] md:text-[22px]">
                 {exploreText}
               </span>
 
-              {/* Arrow */}
               <span className="mt-2 flex animate-float-arrow items-center justify-center text-white/80 transition duration-300 group-hover:text-white">
                 <svg
                   width="22"
@@ -202,3 +217,4 @@ export function SharedHero({
     </section>
   );
 }
+
