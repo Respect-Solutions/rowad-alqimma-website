@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-import { aboutFeatures } from "@/data/site";
 import { assets } from "@/lib/assets";
 import { Header } from "../layout/Header";
 import { useLocale } from "@/hooks/useLocale";
@@ -52,19 +51,37 @@ export function AboutHero() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
-        className="mx-auto mt-10 grid max-w-[1152px] items-center gap-8 sm:mt-12 sm:gap-10 md:mt-16 lg:grid-cols-[1fr_528px] lg:gap-12"
+        className="mx-auto mt-10 grid max-w-[1152px] items-center gap-8 sm:mt-12 sm:gap-10 md:mt-16 lg:grid-cols-[1.1fr_420px] lg:gap-12"
       >
         {/* Left Content */}
         <motion.div variants={itemVariants}>
           <div className="py-2 sm:py-4 md:py-6">
             <motion.h1
               variants={itemVariants}
-              className="max-w-[576px] text-[30px] font-bold leading-[1.2] text-ink sm:text-4xl md:text-[40px]"
+              className="text-[42px] font-bold text-white sm:text-[52px]"
             >
-              {isArabic
-                ? "نقود الأنظمة القانونية بدقة واحترافية"
-                : "Navigating Regulations with Precision"}
+              {isArabic ? "من نحن" : "About Us"}
             </motion.h1>
+
+            <div className="mt-8 max-w-[620px] space-y-8">
+              <p className="text-lg leading-[1.6] text-white/65">
+                {isArabic
+                  ? "رواد القمة شركة متخصصة في تأسيس الشركات الأجنبية داخل المملكة العربية السعودية، وتقديم الاستشارات الإدارية والقانونية والتسويقية للمستثمرين الراغبين في دخول السوق السعودي."
+                  : "Rowad Al Qimma is a specialized firm in establishing foreign companies inside the Kingdom of Saudi Arabia, providing administrative, legal, and marketing consultations to investors seeking to enter the Saudi market."}
+              </p>
+
+              <p className="text-lg leading-[1.6] text-white/65">
+                {isArabic
+                  ? "تأسست الشركة بهدف أن تكون الجسر الموثوق بين المستثمرين العرب والدوليين وبين الفرص الاستثمارية الهائلة التي توفرها المملكة العربية السعودية ضمن رؤية 2030."
+                  : "We were founded with one clear goal: to be the trusted bridge connecting Arab and international investors with the immense growth opportunities offered by the Saudi market under Vision 2030."}
+              </p>
+
+              <p className="text-lg leading-[1.6] text-white/65">
+                {isArabic
+                  ? "في أقل من عام، ساعدنا على تأسيس أكثر من 150 شركة لمستثمرين من جنسيات مختلفة حول العالم وما زلنا نواصل النمو."
+                  : "In less than a year, we launched over 150 companies for investors of different nationalities around the world — and we're still growing."}
+              </p>
+            </div>
 
             <motion.p
               variants={itemVariants}
@@ -72,76 +89,9 @@ export function AboutHero() {
             >
               {isArabic
                 ? "تقف رواد القمة عند نقطة التقاء القيم السعودية الأصيلة والمعايير العالمية الحديثة للأعمال، لنقدم البنية المؤسسية التي تساعد المستثمرين المحليين والدوليين على النجاح ضمن رؤية 2030."
-                : "ROAD ELQAMA Consultancy stands at the intersection of traditional Saudi values and modern global business standards. We provide the structural backbone for foreign and domestic investors to thrive within Vision 2030's framework."}
+                : "Rowad Al Qimma Consultancy stands at the intersection of traditional Saudi values and modern global business standards. We provide the structural backbone for foreign and domestic investors to thrive within Vision 2030's framework."}
             </motion.p>
           </div>
-
-          {/* Features */}
-          <motion.div
-            variants={containerVariants}
-            className="mt-2 flex flex-col gap-5 py-2 sm:mt-4 sm:gap-6 sm:py-4 md:gap-8 md:py-6"
-          >
-            {aboutFeatures.map((feature) => {
-              const currentFeature = feature as {
-                label: string;
-                icon: "featurePin" | "featureRegulation" | "featureSupport";
-              };
-
-              const translatedLabel =
-                currentFeature.label === "Fast company formation"
-                  ? isArabic
-                    ? "تأسيس سريع للشركات"
-                    : currentFeature.label
-                  : currentFeature.label ===
-                      "Deep knowledge of Saudi regulations"
-                    ? isArabic
-                      ? "خبرة عميقة بالأنظمة السعودية"
-                      : currentFeature.label
-                    : currentFeature.label === "End-to-end support"
-                      ? isArabic
-                        ? "دعم متكامل من البداية للنهاية"
-                        : currentFeature.label
-                      : currentFeature.label;
-
-              return (
-                <motion.div
-                  key={currentFeature.label}
-                  variants={itemVariants}
-                  whileHover="hover"
-                  className={`flex items-center gap-3 sm:gap-6 ${
-                    isArabic ? "justify-start text-right" : ""
-                  }`}
-                >
-                  <motion.span
-                    variants={featureHoverVariants}
-                    className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#ebf1ff]/10 sm:size-12"
-                  >
-                    <Image
-                      src={
-                        currentFeature.icon === "featurePin"
-                          ? "/assets/featurePin.svg"
-                          : currentFeature.icon === "featureRegulation"
-                            ? "/assets/featureRegulation.svg"
-                            : "/assets/featureSupport.svg"
-                      }
-                      alt={translatedLabel}
-                      width={22}
-                      height={22}
-                      className="h-5 w-5 sm:h-[22px] sm:w-[22px]"
-                    />
-                  </motion.span>
-
-                  <span
-                    className={`text-lg font-bold leading-[1.3] text-soft sm:text-[22px] ${
-                      isArabic ? "order-1" : ""
-                    }`}
-                  >
-                    {translatedLabel}
-                  </span>
-                </motion.div>
-              );
-            })}
-          </motion.div>
         </motion.div>
 
         {/* Right Image */}

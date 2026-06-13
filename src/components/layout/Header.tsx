@@ -61,7 +61,6 @@ export function Header({
       className="relative z-50 px-4 py-4 sm:px-6 sm:py-5 md:px-10 md:py-6 lg:px-16 lg:py-8"
     >
       <nav className="mx-auto grid max-w-[1152px] grid-cols-[1fr_auto] items-center gap-4 lg:grid-cols-[90px_1fr_190px]">
-        
         {/* Logo */}
         <div className="flex justify-start">
           <Link
@@ -81,8 +80,7 @@ export function Header({
         <div className="hidden justify-center lg:flex">
           <div className="flex items-center justify-center gap-6 lg:gap-7">
             {navItems.map((item, index) => {
-              const translatedLabel =
-                labels[item.label as keyof typeof labels];
+              const translatedLabel = labels[item.label as keyof typeof labels];
 
               return item.label === active ? (
                 <Link
@@ -122,17 +120,9 @@ export function Header({
                     ? "bg-accent text-main"
                     : ""
               }`}
-              variant={
-                isContact
-                  ? "light"
-                  : lightButton
-                    ? "light"
-                    : "ghost"
-              }
+              variant={isContact ? "light" : lightButton ? "light" : "ghost"}
             >
-              {isArabic
-                ? "احجز استشارة"
-                : "Book Consultation"}
+              {isArabic ? "تحدث مع خبير" : "Talk to an Expert"}
             </Button>
           </Link>
 
@@ -156,25 +146,19 @@ export function Header({
             <div className="relative flex h-5 w-5 items-center justify-center">
               <span
                 className={`absolute h-[2px] w-5 rounded-full bg-white transition duration-300 ${
-                  isMenuOpen
-                    ? "rotate-45"
-                    : "-translate-y-[6px]"
+                  isMenuOpen ? "rotate-45" : "-translate-y-[6px]"
                 }`}
               />
 
               <span
                 className={`absolute h-[2px] w-5 rounded-full bg-white transition duration-300 ${
-                  isMenuOpen
-                    ? "opacity-0"
-                    : "opacity-100"
+                  isMenuOpen ? "opacity-0" : "opacity-100"
                 }`}
               />
 
               <span
                 className={`absolute h-[2px] w-5 rounded-full bg-white transition duration-300 ${
-                  isMenuOpen
-                    ? "-rotate-45"
-                    : "translate-y-[6px]"
+                  isMenuOpen ? "-rotate-45" : "translate-y-[6px]"
                 }`}
               />
             </div>
@@ -185,17 +169,13 @@ export function Header({
       {/* Mobile / Tablet Menu */}
       <div
         className={`overflow-hidden transition-all duration-500 lg:hidden ${
-          isMenuOpen
-            ? "mt-5 max-h-[700px] opacity-100"
-            : "max-h-0 opacity-0"
+          isMenuOpen ? "mt-5 max-h-[700px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="rounded-[24px] border border-white/10 bg-[#1D2D46]/95 p-4 shadow-2xl backdrop-blur-2xl sm:rounded-[28px] sm:p-6">
-          
           <div className="flex flex-col gap-3 sm:gap-4">
             {navItems.map((item, index) => {
-              const translatedLabel =
-                labels[item.label as keyof typeof labels];
+              const translatedLabel = labels[item.label as keyof typeof labels];
 
               return item.label === active ? (
                 <Link
@@ -233,9 +213,7 @@ export function Header({
                 className="mt-1 h-[52px] w-full rounded-xl text-sm transition duration-300 hover:scale-[1.01] sm:mt-2 sm:h-[56px]"
                 variant="light"
               >
-                {isArabic
-                  ? "احجز استشارة"
-                  : "Book Consultation"}
+                {isArabic ? "احجز استشارة" : "Book Consultation"}
               </Button>
             </Link>
           </div>

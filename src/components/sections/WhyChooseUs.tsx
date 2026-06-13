@@ -1,73 +1,84 @@
 "use client";
 
-import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
 
-const features = [
+const reasons = [
   {
-    title: "Foreign Investment",
-    titleAr: "الاستثمار الأجنبي",
-    description:
-      "We don't stop at consulting, we implement and deliver results.",
-    descriptionAr:
-      "نحن لا نتوقف عند الاستشارات فقط، بل ننفذ ونحقق نتائج حقيقية.",
-    icon: "/assets/foreign-investment.svg",
+    en: "+150 companies launched in the past year",
+    ar: "+150 شركة تم تأسيسها خلال العام الماضي",
   },
   {
-    title: "Beyond Legal Support",
-    titleAr: "أكثر من دعم قانوني",
-    description:
-      "We combine legal expertise with business strategy and operational execution.",
-    descriptionAr:
-      "نجمع بين الخبرة القانونية والاستراتيجية التجارية والتنفيذ التشغيلي.",
-    icon: "/assets/legal-support.svg",
+    en: "Specialized legal consultants",
+    ar: "مستشارون قانونيون متخصصون",
   },
   {
-    title: "One Integrated System",
-    titleAr: "نظام متكامل",
-    description:
-      "Everything your business needs under one structured framework.",
-    descriptionAr: "كل ما يحتاجه عملك ضمن إطار مؤسسي متكامل ومنظم.",
-    icon: "/assets/integrated-system.svg",
+    en: "Full transparency in all dealings",
+    ar: "شفافية كاملة في جميع التعاملات",
+  },
+  {
+    en: "Fast execution & delivery",
+    ar: "سرعة في التنفيذ والتسليم",
+  },
+  {
+    en: "Experience with multiple nationalities",
+    ar: "خبرة مع جنسيات متعددة",
+  },
+  {
+    en: "Honest and reliable information",
+    ar: "معلومات دقيقة وموثوقة",
   },
 ];
 
 const containerVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: {
+    opacity: 0,
+  },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: 0.1,
+      delayChildren: 0.15,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 25 },
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+    transition: {
+      duration: 0.45,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
   },
-};
-
-const cardHoverVariants: Variants = {
-  hover: {
-    y: -5,
-    borderColor: "rgba(180, 197, 255, 0.25)",
-    transition: { duration: 0.2, ease: "easeOut" },
-  },
-  tap: { scale: 0.98 },
 };
 
 export function WhyChooseUs() {
   const { isArabic } = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-[#14263D] px-4 py-12 sm:px-6 sm:py-16 lg:px-6 lg:py-24">
-      <div className="mx-auto max-w-[1152px] rounded-[20px] border border-white/10 bg-[#27354CB2] px-4 py-7 sm:px-6 sm:py-9 md:px-8 md:py-10 lg:px-10">
+    <section className="relative overflow-hidden bg-[#14263D] px-4 py-14 sm:px-6 sm:py-20 lg:py-24">
+      <div
+        className="
+          mx-auto
+          max-w-[1152px]
+          rounded-[28px]
+          border
+          border-white/10
+          bg-[#27354CB2]
+          px-6
+          py-8
+          sm:px-8
+          sm:py-10
+          lg:px-10
+          lg:py-12
+        "
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -75,69 +86,88 @@ export function WhyChooseUs() {
           variants={containerVariants}
         >
           {/* Heading */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"
-          >
-            <div>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <h2 className="text-[30px] font-bold leading-none text-white sm:text-4xl md:text-5xl lg:text-[52px]">
-                  {isArabic ? "لماذا نحن" : "Why Choose Us"}
-                </h2>
+          <motion.div variants={itemVariants}>
+            <div
+              className={`
+                flex
+                flex-wrap
+                items-end
+                gap-2
+                sm:gap-3
+                ${
+                  isArabic
+                    ? "justify-end text-right"
+                    : "justify-start text-left"
+                }
+              `}
+            >
+              <h2 className="text-[34px] font-bold leading-none text-white sm:text-4xl lg:text-[52px]">
+                {isArabic ? "لماذا رواد القمة" : "Why Choose Rowad Al Qimma "}
+              </h2>
 
-                <span className="text-xs font-medium text-white/45 sm:text-sm">
-                  {isArabic
-                    ? "مستقبل البنية القانونية"
-                    : "The Future of Legal Architecture"}
-                </span>
-              </div>
-
-              <p className="mt-4 max-w-[820px] text-sm leading-[1.8] text-white/55 sm:mt-5">
+              <span className="mb-1 text-sm text-white/45 sm:mb-2 sm:text-base">
                 {isArabic
-                  ? "نقدم خدمات قانونية متخصصة للغاية للمشاريع الطموحة، من قلب الرياض وحتى مشاريع المستقبل مثل نيوم."
-                  : "We provide hyper-specialized legal services for the world's most ambitious projects. From the heart of Riyadh to the frontiers of NEOM."}
-              </p>
+                  ? "مستقبل البنية القانونية"
+                  : "The Future of Legal Architecture"}
+              </span>
             </div>
+
+            <p
+              className={`
+                mt-4
+                max-w-[920px]
+                text-sm
+                leading-[1.7]
+                text-white/55
+                sm:text-base
+                ${isArabic ? "text-right" : "text-left"}
+              `}
+            >
+              {isArabic
+                ? "نقدم خدمات قانونية متخصصة للغاية للمشاريع الطموحة، من قلب الرياض وحتى مشاريع المستقبل مثل نيوم."
+                : "We provide hyper-specialized legal services for the world's most ambitious projects. From the heart of Riyadh to the frontiers of NEOM."}
+            </p>
           </motion.div>
 
           {/* Cards */}
           <motion.div
-            className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
             variants={containerVariants}
+            className="
+              mt-8
+              grid
+              gap-4
+              sm:mt-10
+              md:grid-cols-2
+              lg:grid-cols-3
+            "
           >
-            {features.map((feature) => (
+            {reasons.map((reason) => (
               <motion.div
-                key={feature.title}
+                key={reason.en}
                 variants={itemVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className="flex flex-col justify-between rounded-[12px] border border-white/10 bg-[#14263D] p-4 backdrop-blur-[12px] sm:p-5"
+                whileHover={{
+                  y: -4,
+                  borderColor: "rgba(180,197,255,0.2)",
+                }}
+                transition={{
+                  duration: 0.2,
+                }}
+                className="
+                  flex
+                  min-h-[88px]
+                  items-center
+                  justify-center
+                  rounded-[14px]
+                  border
+                  border-white/10
+                  bg-[#14263D]
+                  px-6
+                  text-center
+                "
               >
-                <motion.div
-                  variants={cardHoverVariants}
-                  className="flex h-full flex-col justify-between"
-                  style={{ willChange: "transform" }}
-                >
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="flex shrink-0 items-center justify-center rounded-[10px] bg-[#31425D] p-2.5 sm:p-3">
-                      <Image
-                        src={feature.icon}
-                        alt={feature.title}
-                        width={33}
-                        height={33}
-                        className="h-auto w-auto"
-                      />
-                    </div>
-
-                    <h3 className="text-base font-semibold text-white sm:text-lg lg:text-[20px]">
-                      {isArabic ? feature.titleAr : feature.title}
-                    </h3>
-                  </div>
-
-                  <p className="mt-3 text-sm leading-[1.7] text-white/55 sm:mt-4">
-                    {isArabic ? feature.descriptionAr : feature.description}
-                  </p>
-                </motion.div>
+                <span className="text-sm font-semibold leading-[1.5] text-white sm:text-base">
+                  {isArabic ? reason.ar : reason.en}
+                </span>
               </motion.div>
             ))}
           </motion.div>

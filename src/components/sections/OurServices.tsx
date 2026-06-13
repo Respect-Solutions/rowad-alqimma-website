@@ -9,47 +9,51 @@ import { useLocale } from "@/hooks/useLocale";
 
 const services = [
   {
-    title: "Market Entry",
+    slug: "company-formation",
+    title: "Company Formation",
     titleAr: "دخول السوق",
     description:
-      "We help you enter new markets with a clear, data-driven strategy that minimizes risk and maximizes growth.",
+      "We handle the entire process of establishing your foreign company inside the Kingdom from legal documents to issuing the commercial registration  with precision and professionalism.",
     descriptionAr:
       "مساعدة الشركات العالمية على دخول السوق السعودي بشكل استراتيجي.",
     icon: "/assets/market-entry.svg",
   },
   {
-    title: "Business Setup",
+    slug: "marketing-strategic-consulting",
+    title: "Marketing & Strategic Consulting",
     titleAr: "تأسيس الشركات",
     description:
-      "From idea to launch, we handle the entire setup process so you can start your business with confidence.",
+      "Every service can be purchased separately — or as part of a complete package that fits your budget and goals.",
     descriptionAr:
       "تأسيس الشركات وبناء الهيكل القانوني للشركات المحلية والعالمية.",
     icon: "/assets/business-setup.svg",
   },
   {
-    title: "Legal Consulting",
+    slug: "administrative-consulting",
+    title: "Administrative Consulting for Companies",
     titleAr: "الاستشارات القانونية",
     description:
-      "Expert legal guidance to ensure your business operates smoothly and stays fully compliant.",
+      "You've established your company in Saudi Arabia — now the real challenge begins.",
     descriptionAr: "استشارات قانونية احترافية للعقود والامتثال والتنظيمات.",
     icon: "/assets/legal-consulting.svg",
   },
   {
-    title: "Business Consulting",
+    slug: "corporate-legal-advisory",
+    title: "Corporate Legal Advisory",
     titleAr: "استشارات الأعمال",
     description:
-      "We provide strategic insights and solutions to help your business grow, scale, and succeed.",
+      "You've established your company in Saudi Arabia — now the real challenge begins.",
     descriptionAr: "تخطيط استراتيجي واستشارات تشغيلية لتطوير أعمالك.",
     icon: "/assets/business-consulting.svg",
   },
-  {
-    title: "Marketing Services",
-    titleAr: "الخدمات التسويقية",
-    description:
-      "Result-driven marketing solutions designed to boost your visibility and generate real leads.",
-    descriptionAr: "استراتيجيات تسويقية وحلول براندنج لتوسيع حضورك بالسوق.",
-    icon: "/assets/marketing-services.svg",
-  },
+  // {
+  //   title: "Marketing Services",
+  //   titleAr: "الخدمات التسويقية",
+  //   description:
+  //     "Result-driven marketing solutions designed to boost your visibility and generate real leads.",
+  //   descriptionAr: "استراتيجيات تسويقية وحلول براندنج لتوسيع حضورك بالسوق.",
+  //   icon: "/assets/marketing-services.svg",
+  // },
 ];
 
 const containerVariants: Variants = {
@@ -87,11 +91,10 @@ export function OurServices() {
     if (!serviceFromUrl) return;
 
     const serviceMap: Record<string, string> = {
-      "market-entry": "Market Entry",
-      "business-setup": "Business Setup",
-      "legal-consulting": "Legal Consulting",
-      "business-consulting": "Business Consulting",
-      "marketing-services": "Marketing Services",
+      "company-formation": "Company Formation",
+      "marketing-strategic-consulting": "Marketing & Strategic Consulting",
+      "administrative-consulting": "Administrative Consulting for Companies",
+      "corporate-legal-advisory": "Corporate Legal Advisory",
     };
 
     const matchedTitle = serviceMap[serviceFromUrl];
@@ -144,14 +147,24 @@ export function OurServices() {
             <p className="mx-auto mt-4 max-w-[90%] text-sm leading-[1.7] text-white/55 sm:mt-5 sm:max-w-[640px] sm:text-base">
               {isArabic
                 ? "نقدم خدمات قانونية وتجارية متخصصة لدعم الشركات الطموحة داخل المملكة العربية السعودية."
-                : "We provide hyper-specialized legal services for ambitious businesses entering Saudi Arabia."}
+                : "We offer a comprehensive suite of services designed specifically for the foreign investor — from the moment you decide to enter, until your company is fully launched inside the Kingdom."}
             </p>
           </motion.div>
 
           {/* Main Content */}
           <motion.div
             variants={containerVariants}
-            className="mt-10 grid gap-4 sm:mt-12 sm:gap-5 md:mt-14 lg:grid-cols-[1.5fr_1fr] lg:gap-6 max-w-[1152px] mx-auto"
+            className="
+mt-10
+grid
+items-stretch
+gap-4
+sm:mt-12
+sm:gap-5
+md:mt-14
+lg:grid-cols-[1.5fr_1fr]
+lg:gap-6
+"
           >
             {/* Featured Card */}
             <motion.div
@@ -196,7 +209,13 @@ export function OurServices() {
             {/* Side Services */}
             <motion.div
               variants={containerVariants}
-              className="flex flex-col justify-center gap-3 sm:gap-4"
+              className="
+flex
+h-full
+flex-col
+gap-3
+sm:gap-4
+"
             >
               {sideServices.map((service) => (
                 <motion.button
@@ -205,7 +224,22 @@ export function OurServices() {
                   whileHover={{ y: -2, backgroundColor: "#31425D" }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleServiceSwap(service)}
-                  className="flex h-[70px] items-center gap-3 rounded-[14px] border border-white/10 bg-[#27354CB2] px-4 text-left transition-all duration-300 sm:h-[76px] sm:gap-4 sm:rounded-[18px] sm:px-5 md:h-[82px]"
+                  className="
+flex
+flex-1
+items-center
+gap-3
+rounded-[14px]
+border
+border-white/10
+bg-[#27354CB2]
+px-4
+text-left
+transition-all
+duration-300
+sm:gap-4
+sm:px-5
+"
                 >
                   {/* Small Icon */}
                   <div className="flex h-[38px] w-[38px] shrink-0 items-center justify-center sm:h-[42px] sm:w-[42px]">
@@ -254,10 +288,10 @@ export function OurServices() {
               className="w-full sm:w-auto"
             >
               <Link
-                href={`/${locale}/projects`}
+                href={`/${locale}/services/${featuredService.slug}`}
                 className="flex h-[54px] w-full items-center justify-center rounded-[14px] border border-white/10 bg-transparent px-8 text-sm font-semibold text-white/80 transition-all duration-300 hover:border-white/20 hover:bg-white/5 hover:text-white sm:h-[58px] sm:min-w-[280px] md:min-w-[320px]"
               >
-                {isArabic ? "عرض المشاريع" : "View Projects"}
+                {isArabic ? "عرض الخدمة" : "View Service"}
               </Link>
             </motion.div>
           </motion.div>

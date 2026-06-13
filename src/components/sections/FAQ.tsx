@@ -11,47 +11,47 @@ import { useLocale } from "@/hooks/useLocale";
 const faqData = {
   en: [
     {
-      question:
-        "How long is the initial assessment?",
+      question: "How can I trust you as a company",
       answer:
-        "The initial assessment typically takes 24 to 48 hours. We evaluate your business model, objectives, and readiness level to provide a clear, structured entry or setup plan.",
+        " Your trust is the foundation of our work. We have a documented record of over 150 successfully established companies in the past year, and we operate with complete transparency at every step.",
     },
 
     {
-      question:
-        "Do you handle legal licensing?",
+      question: "Are there any hidden fees?",
       answer:
-        "Yes — we manage the entire licensing process end-to-end. This includes regulatory approvals, documentation, and coordination with relevant authorities to ensure full compliance.",
+        "Absolutely not. We are fully committed to transparency — all costs are determined upfront and clearly stated before any procedure begins.",
     },
 
     {
-      question:
-        "What sectors do you specialize in?",
+      question: "How long does the company formation process take?",
       answer:
-        "We work across multiple industries including technology, retail, consulting, and industrial sectors. Our approach is adaptable, allowing us to support a wide range of business models entering the Saudi market.",
+        " The process takes an average of 35 to 40 business days, covering all procedures from the very beginning until you receive the commercial registration.",
+    },
+
+    {
+      question: "Do you serve all nationalities?",
+      answer:
+        " Yes, we serve investors from various nationalities around the world, and we have extensive experience handling the specific requirements of different nationalities",
     },
   ],
 
   ar: [
     {
-      question:
-        "كم تستغرق مرحلة التقييم الأولي؟",
+      question: "كم تستغرق مرحلة التقييم الأولي؟",
 
       answer:
         "تستغرق مرحلة التقييم الأولي عادة من 24 إلى 48 ساعة. نقوم بدراسة نموذج عملك وأهدافك ومدى جاهزية المشروع لتقديم خطة واضحة ومنظمة للدخول أو التأسيس داخل السوق السعودي.",
     },
 
     {
-      question:
-        "هل تتولون إجراءات التراخيص القانونية؟",
+      question: "هل تتولون إجراءات التراخيص القانونية؟",
 
       answer:
         "نعم — نقوم بإدارة عملية التراخيص بالكامل من البداية وحتى النهاية، بما يشمل الموافقات التنظيمية وتجهيز المستندات والتنسيق مع الجهات المختصة لضمان الامتثال الكامل.",
     },
 
     {
-      question:
-        "ما القطاعات التي تتخصصون فيها؟",
+      question: "ما القطاعات التي تتخصصون فيها؟",
 
       answer:
         "نعمل مع العديد من القطاعات المختلفة مثل التقنية والتجزئة والاستشارات والقطاع الصناعي. كما أن منهجيتنا مرنة بما يسمح لنا بدعم مختلف نماذج الأعمال داخل السوق السعودي.",

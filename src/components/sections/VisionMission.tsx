@@ -97,7 +97,7 @@ export function VisionMission() {
           <p className="mt-6 max-w-[520px] text-[16px] leading-[1.8] text-white/80 sm:mt-8 sm:text-[24px] lg:mt-10 lg:text-[28px]">
             {isArabic
               ? "أن نكون المعماري الأول للنجاح التجاري في الشرق الأوسط، وأن نحول السوق السعودي إلى مركز عالمي للتكامل التجاري السلس والابتكار الاستثنائي."
-              : "To be the premier architect of commercial success in the Middle East, transforming the Saudi Arabian market into a global hub of seamless business integration and unparalleled innovation."}
+              : "To be the first choice for Arab and international investors seeking to enter the Saudi market — built on a reputation of trust, transparency, and results."}
           </p>
         </motion.div>
 
@@ -143,7 +143,7 @@ export function VisionMission() {
             <p className="mt-6 max-w-[520px] text-[15px] leading-[1.9] text-white/70 sm:mt-8 sm:text-[21px] lg:text-[24px]">
               {isArabic
                 ? "تمكين الشركات العالمية من خلال استراتيجيات قانونية دقيقة، وحوكمة شفافة، وتميز تشغيلي يضمن لكل عميل تأسيس قاعدة قوية ومستدامة ومربحة."
-                : "Empowering global enterprises through rigorous legal strategy, transparent governance, and operational excellence, ensuring every client builds a foundation that is both permanent and profitable."}
+                : "We believe every investor deserves a reliable partner who walks with them step by step — providing accurate information, protecting their interests, and delivering on every promise, on time."}
             </p>
           </div>
         </motion.div>

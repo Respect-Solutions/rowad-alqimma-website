@@ -136,9 +136,8 @@ export function HomeHero() {
                 </>
               ) : (
                 <>
-                  Build, Operate, and Scale Your Business
-                  <br className="hidden md:block" />
-                  Legally and Strategically.
+                  Rowad Al Qimma Your Strategic Partner to Enter the Saudi
+                  Market
                 </>
               )}
             </motion.h1>
@@ -150,39 +149,43 @@ export function HomeHero() {
             >
               {isArabic
                 ? "نحن لا نقدم الاستشارات القانونية فقط، بل ننفذ ونبني وندعم أعمالك من التأسيس وحتى النمو داخل المملكة العربية السعودية."
-                : "We go beyond legal consulting. We execute, structure, and support your business from setup to growth in Saudi Arabia."}
+                : "We turn your  investment ambition into reality. We establish your company inside the Kingdom of Saudi Arabia with trusted legal expertise, full transparency, and fast execution."}
             </motion.p>
 
-            {/* Buttons */}
             <motion.div
               variants={itemVariants}
-              className="mx-auto mt-8 flex flex-col gap-3 sm:mt-10 sm:grid sm:max-w-[640px] sm:grid-cols-2 sm:gap-4"
+              className="mx-auto mt-8 flex justify-center sm:mt-10"
             >
-              {/* Primary Button */}
               <motion.div
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
+                className="w-full max-w-[520px]"
               >
                 <Link
-                  className="flex h-[56px] w-full items-center justify-center rounded-[14px] bg-white text-sm font-bold leading-[1.2] text-[#00132A] transition-shadow hover:shadow-lg hover:shadow-white/10 active:shadow-md sm:h-[62px]"
-                  href={`/${locale}/projects`}
+                  href={`/${locale}/contact-us`}
+                  className="
+        flex
+        h-[62px]
+        w-full
+        items-center
+        justify-center
+        rounded-[14px]
+        border
+        border-white/20
+        bg-white/10
+        px-8
+        text-sm
+        font-bold
+        text-white
+        backdrop-blur-sm
+        transition-shadow
+        hover:bg-white/15
+        hover:shadow-md
+        active:bg-white/20
+      "
                 >
-                  {isArabic ? "ابدأ شركتك" : "Start Your Company"}
-                </Link>
-              </motion.div>
-
-              {/* Secondary Button */}
-              <motion.div
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
-              >
-                <Link
-                  className="flex h-[56px] w-full items-center justify-center rounded-[14px] border border-white/20 bg-white/10 text-sm font-bold leading-[1.2] text-white backdrop-blur-sm transition-shadow hover:bg-white/15 hover:shadow-md active:bg-white/20 sm:h-[62px]"
-                  href={`/${locale}/services`}
-                >
-                  {isArabic ? "استكشف خدماتنا" : "Explore Our Services"}
+                  {isArabic ? "ابدأ شركتك" : "Start Your Business"}
                 </Link>
               </motion.div>
             </motion.div>

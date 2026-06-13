@@ -81,12 +81,10 @@ export function DeploymentSequence() {
 
   return (
     <section className="relative overflow-hidden bg-[#14263D] px-4 py-12 sm:px-6 sm:py-16 md:px-10 md:py-20 lg:px-12 xl:px-0 xl:py-24">
-      
       {/* Glow */}
       {/* <div className="absolute bottom-[-250px] left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-[#8FA8FF] blur-[180px]" /> */}
 
       <div className="relative z-10 mx-auto max-w-[1152px]">
-        
         {/* Heading */}
         <motion.div
           className="text-center"
@@ -102,9 +100,7 @@ export function DeploymentSequence() {
             variants={itemVariants}
             className="text-[30px] font-bold leading-none text-white sm:text-[44px] md:text-[50px] lg:text-[56px]"
           >
-            {isArabic
-              ? "مراحل التنفيذ"
-              : "Deployment Sequence"}
+            {isArabic ? "كيف يعمل" : "HOW IT WORKS"}
           </motion.h2>
 
           <motion.p
@@ -200,13 +196,10 @@ export function DeploymentSequence() {
                   ${isArabic ? "text-right" : ""}
                 `}
               >
-                
                 {/* Number */}
                 <span
                   className={`absolute top-5 text-[38px] font-bold leading-none text-white/70 sm:top-6 sm:text-[56px] ${
-                    isArabic
-                      ? "left-5 sm:left-6"
-                      : "right-5 sm:right-6"
+                    isArabic ? "left-5 sm:left-6" : "right-5 sm:right-6"
                   }`}
                 >
                   {step.id}
@@ -222,9 +215,7 @@ export function DeploymentSequence() {
                     duration: 0.2,
                   }}
                   className={`flex h-[40px] w-[40px] items-center sm:h-[44px] sm:w-[44px] ${
-                    isArabic
-                      ? "justify-end"
-                      : "justify-center"
+                    isArabic ? "justify-end" : "justify-center"
                   }`}
                 >
                   <Image

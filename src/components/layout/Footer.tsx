@@ -90,38 +90,33 @@ export function Footer() {
 
               <div className="mt-4 flex flex-col gap-3 sm:mt-5">
                 <Link
-                  href={`/${locale}/services?service=market-entry#our-services`}
-                  className="text-sm text-white/55 transition hover:text-white"
+                  href={`/${locale}/services?service=company-formation#our-services`}
                 >
-                  {isArabic ? "استراتيجية دخول السوق" : "Market Entry Strategy"}
+                  {isArabic ? "تأسيس الشركات" : "Company Formation"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/services?service=business-setup#our-services`}
-                  className="text-sm text-white/55 transition hover:text-white"
+                  href={`/${locale}/services?service=corporate-legal-advisory#our-services`}
                 >
-                  {isArabic ? "تأسيس الشركات" : "Business Setup"}
+                  {isArabic
+                    ? "الاستشارات القانونية للشركات"
+                    : "Corporate Legal Advisory"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/services?service=legal-consulting#our-services`}
-                  className="text-sm text-white/55 transition hover:text-white"
+                  href={`/${locale}/services?service=marketing-strategic-consulting#our-services`}
                 >
-                  {isArabic ? "الاستشارات القانونية" : "Legal Consulting"}
+                  {isArabic
+                    ? "الاستشارات التسويقية والاستراتيجية"
+                    : "Marketing & Strategic Consulting"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/services?service=business-consulting#our-services`}
-                  className="text-sm text-white/55 transition hover:text-white"
+                  href={`/${locale}/services?service=administrative-consulting#our-services`}
                 >
-                  {isArabic ? "استشارات الأعمال" : "Business Consulting"}
-                </Link>
-
-                <Link
-                  href={`/${locale}/services?service=marketing-services#our-services`}
-                  className="text-sm text-white/55 transition hover:text-white"
-                >
-                  {isArabic ? "الخدمات التسويقية" : "Marketing Services"}
+                  {isArabic
+                    ? "الاستشارات الإدارية للشركات"
+                    : "Administrative Consulting for Companies"}
                 </Link>
               </div>
             </motion.div>

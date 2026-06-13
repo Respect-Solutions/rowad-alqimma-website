@@ -7,6 +7,7 @@ import { OurServices } from "@/components/sections/OurServices";
 import { SharedHero } from "@/components/sections/SharedHero";
 import { TrustedStats } from "@/components/sections/TrustedStats";
 import { WhyChooseApproach } from "@/components/sections/WhyChooseApproach";
+import { WhyChooseSaudiFormation } from "@/components/sections/WhyChooseSaudiFormation";
 import { useLocale } from "@/hooks/useLocale";
 
 export default function ServicePage() {
@@ -84,7 +85,9 @@ export default function ServicePage() {
 
       <OurServices />
 
-      <WhyChooseApproach />
+      <WhyChooseSaudiFormation/>
+
+      {/* <WhyChooseApproach /> */}
 
       <CTASection />
 

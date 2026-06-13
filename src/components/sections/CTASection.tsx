@@ -92,7 +92,7 @@ export function CTASection() {
                 className="h-[52px] w-full sm:min-w-[260px] sm:w-auto md:h-[62px] md:min-w-[438px]"
                 variant="dark"
               >
-                {isArabic ? "ابدأ تأسيس شركتك" : "Start Your Company"}
+                {isArabic ? "ابدأ تأسيس شركتك" : "Start Your Business"}
               </Button>
             </motion.div>
           </motion.div>

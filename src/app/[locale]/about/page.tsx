@@ -10,6 +10,10 @@ import { DeploymentSequence } from "@/components/sections/DeploymentSequence";
 import { Trust } from "@/components/sections/Trust";
 import { CTASection } from "@/components/sections/CTASection";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { ValuesSection } from "@/components/sections/ValuesSection";
+import { ValuesStats } from "@/components/sections/ValuesStats";
+import { WhySaudiMarket } from "@/components/sections/WhySaudiMarket";
 
 // Dynamic imports للمكونات التي تظهر أسفل الصفحة - تُحمّل عند الحاجة فقط
 const DynamicTrust = dynamic(() =>
@@ -149,11 +153,16 @@ export default function AboutPage({ params }: AboutPageProps) {
         role="main"
       >
         <AboutHero />
-        <WhoWeAre />
+        <AboutSection />
+        <Stats/>
+        {/* <WhoWeAre /> */}
         <VisionMission />
-        <Stats variant="secondary" />
-        <DeploymentSequence />
-        <DynamicTrust />
+        {/* <Stats variant="secondary" /> */}
+        <ValuesSection/>
+        <ValuesStats />
+        <WhySaudiMarket/>
+        {/* <DeploymentSequence /> */}
+        {/* <DynamicTrust /> */}
         <DynamicCTASection />
         <DynamicFooter />
       </main>
