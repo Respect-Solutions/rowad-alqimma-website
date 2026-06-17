@@ -150,7 +150,9 @@ export function MarketReadinessIndex() {
               className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between"
             >
               <h2 className="max-w-[700px] text-2xl font-bold leading-[1.1] text-white sm:text-4xl md:text-5xl lg:text-[52px]">
-                {isArabic ? "مؤشر الجاهزية السوقية" : "Market Readiness Index"}
+                {isArabic
+                  ? "مؤشر الجاهزية السوقية"
+                  : "Market Readiness Index"}{" "}
               </h2>
 
               <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-white/45 sm:text-sm">
@@ -167,7 +169,9 @@ export function MarketReadinessIndex() {
               <motion.div variants={itemVariants}>
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <span className="text-sm font-semibold text-white/90 sm:text-base">
-                    {isArabic ? "تقييم رأس المال" : "Capital Requirement Audit"}
+                    {isArabic
+                      ? "تقييم متطلبات رأس المال"
+                      : "Capital Requirement Audit"}
                   </span>
 
                   <span className="shrink-0 text-sm font-semibold text-white/70">

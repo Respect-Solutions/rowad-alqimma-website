@@ -83,7 +83,7 @@ export function WhyChooseSaudiFormation() {
           >
             {isArabic
               ? "لماذا تختار رواد القمة لتأسيس شركتك في المملكة العربية السعودية؟"
-              : "Why Choose Rawad Al Qimma to Establish Your Company in Saudi Arabia?"}
+              : "Why Choose Rowad Al Qimma to Establish Your Company in Saudi Arabia?"}
           </motion.h2>
 
           <motion.p
@@ -92,7 +92,7 @@ export function WhyChooseSaudiFormation() {
           >
             {isArabic
               ? "رواد القمة ليست مجرد شركة خدمات، بل شريكك الاستراتيجي. إليك ما يميزنا:"
-              : "Rawad Al Qimma is not just a service company — we are your strategic partner. Here's what sets us apart:"}
+              : "Rowad Al Qimma is not just a service company — we are your strategic partner. Here's what sets us apart:"}
           </motion.p>
         </motion.div>
 

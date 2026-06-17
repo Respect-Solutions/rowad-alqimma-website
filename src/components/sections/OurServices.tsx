@@ -11,49 +11,46 @@ const services = [
   {
     slug: "company-formation",
     title: "Company Formation",
-    titleAr: "دخول السوق",
+    titleAr: "تأسيس الشركات الأجنبية",
     description:
-      "We handle the entire process of establishing your foreign company inside the Kingdom from legal documents to issuing the commercial registration  with precision and professionalism.",
+      "We handle the entire process of establishing your foreign company inside the Kingdom from legal documents to issuing the commercial registration with precision and professionalism.",
     descriptionAr:
-      "مساعدة الشركات العالمية على دخول السوق السعودي بشكل استراتيجي.",
+      "نتولى جميع إجراءات تأسيس شركتك الأجنبية داخل المملكة العربية السعودية، بدءًا من تجهيز المستندات القانونية وحتى إصدار السجل التجاري، باحترافية ودقة في كل خطوة.",
     icon: "/assets/market-entry.svg",
   },
+
   {
     slug: "marketing-strategic-consulting",
     title: "Marketing & Strategic Consulting",
-    titleAr: "تأسيس الشركات",
+    titleAr: "الاستشارات التسويقية والاستراتيجية",
     description:
       "Every service can be purchased separately — or as part of a complete package that fits your budget and goals.",
     descriptionAr:
-      "تأسيس الشركات وبناء الهيكل القانوني للشركات المحلية والعالمية.",
+      "نوفر خدمات تسويقية واستراتيجية متكاملة، ويمكنك اختيار خدمة واحدة أو مجموعة خدمات بما يتناسب مع أهدافك وميزانيتك.",
     icon: "/assets/business-setup.svg",
   },
+
   {
     slug: "administrative-consulting",
     title: "Administrative Consulting for Companies",
-    titleAr: "الاستشارات القانونية",
+    titleAr: "الاستشارات الإدارية للشركات",
     description:
       "You've established your company in Saudi Arabia — now the real challenge begins.",
-    descriptionAr: "استشارات قانونية احترافية للعقود والامتثال والتنظيمات.",
+    descriptionAr:
+      "بعد تأسيس شركتك تبدأ التحديات الحقيقية، ونساعدك في بناء إدارة قوية وتطوير العمليات ورفع كفاءة التشغيل داخل السوق السعودي.",
     icon: "/assets/legal-consulting.svg",
   },
+
   {
     slug: "corporate-legal-advisory",
     title: "Corporate Legal Advisory",
-    titleAr: "استشارات الأعمال",
+    titleAr: "الاستشارات القانونية للشركات",
     description:
-      "You've established your company in Saudi Arabia — now the real challenge begins.",
-    descriptionAr: "تخطيط استراتيجي واستشارات تشغيلية لتطوير أعمالك.",
+      "Protect your business with comprehensive legal guidance covering contracts, compliance, governance, and corporate legal matters.",
+    descriptionAr:
+      "نوفر استشارات قانونية متخصصة تشمل العقود، والامتثال، والحوكمة، وإدارة المخاطر لضمان حماية أعمالك واستقرارها.",
     icon: "/assets/business-consulting.svg",
   },
-  // {
-  //   title: "Marketing Services",
-  //   titleAr: "الخدمات التسويقية",
-  //   description:
-  //     "Result-driven marketing solutions designed to boost your visibility and generate real leads.",
-  //   descriptionAr: "استراتيجيات تسويقية وحلول براندنج لتوسيع حضورك بالسوق.",
-  //   icon: "/assets/marketing-services.svg",
-  // },
 ];
 
 const containerVariants: Variants = {
@@ -146,7 +143,7 @@ export function OurServices() {
 
             <p className="mx-auto mt-4 max-w-[90%] text-sm leading-[1.7] text-white/55 sm:mt-5 sm:max-w-[640px] sm:text-base">
               {isArabic
-                ? "نقدم خدمات قانونية وتجارية متخصصة لدعم الشركات الطموحة داخل المملكة العربية السعودية."
+                ? "نقدم مجموعة متكاملة من الخدمات لدعم المستثمرين والشركات داخل المملكة العربية السعودية، بدءًا من التأسيس وحتى الإدارة والتوسع."
                 : "We offer a comprehensive suite of services designed specifically for the foreign investor — from the moment you decide to enter, until your company is fully launched inside the Kingdom."}
             </p>
           </motion.div>

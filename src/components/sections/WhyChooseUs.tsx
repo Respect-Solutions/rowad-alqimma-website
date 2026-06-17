@@ -6,7 +6,7 @@ import { useLocale } from "@/hooks/useLocale";
 const reasons = [
   {
     en: "+150 companies launched in the past year",
-    ar: "+150 شركة تم تأسيسها خلال العام الماضي",
+    ar: "+150 شركة تم إطلاقها خلال العام الماضي",
   },
   {
     en: "Specialized legal consultants",
@@ -22,7 +22,7 @@ const reasons = [
   },
   {
     en: "Experience with multiple nationalities",
-    ar: "خبرة مع جنسيات متعددة",
+    ar: "خبرة في التعامل مع جنسيات متعددة",
   },
   {
     en: "Honest and reliable information",
@@ -124,7 +124,7 @@ export function WhyChooseUs() {
               `}
             >
               {isArabic
-                ? "نقدم خدمات قانونية متخصصة للغاية للمشاريع الطموحة، من قلب الرياض وحتى مشاريع المستقبل مثل نيوم."
+                ? "نقدم خدمات قانونية متخصصة للمشروعات الطموحة، من قلب الرياض وصولًا إلى مشاريع المستقبل مثل نيوم."
                 : "We provide hyper-specialized legal services for the world's most ambitious projects. From the heart of Riyadh to the frontiers of NEOM."}
             </p>
           </motion.div>

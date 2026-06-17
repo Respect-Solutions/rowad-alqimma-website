@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 
 export const metadata: Metadata = {
-  title: "Rowad Elqimma",
+  title: "Rowad Al Qimma",
   description:
     "Building the legal foundations for the future of trade and innovation in Saudi Arabia.",
 };

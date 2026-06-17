@@ -51,7 +51,7 @@ export function MarketArchitectureBanner() {
               <h2 className="text-xl font-bold leading-[1.2] text-white sm:text-3xl md:text-[32px]">
                 {isArabic ? (
                   <>
-                    دخول السوق السعودي يعتمد على بنية تنظيمية
+                    دخول السوق السعودي يقوم على منظومة تنظيمية
                     <br className="hidden sm:block" />
                     متعددة المستويات، ويتطلب أكثر من مجرد وكيل محلي.
                   </>
@@ -66,7 +66,7 @@ export function MarketArchitectureBanner() {
               </h2>
               <p className="mx-auto mt-4 max-w-[1050px] text-sm leading-[1.7] text-white/55 sm:mt-5 sm:text-base">
                 {isArabic
-                  ? "العديد من الشركات العالمية تتعثر بسبب تعدد الجهات الاستشارية. نحن نقدم نهجًا موحدًا من خلال نظام Command Center لإدارة التأسيس المؤسسي بالكامل."
+                  ? "غالبًا ما تواجه الشركات العالمية تحديات بسبب تعدد الجهات الاستشارية. لذلك نقدم نهجًا موحدًا من خلال نظام Command Center لإدارة عملية التأسيس المؤسسي بالكامل."
                   : "Global firms often falter due to fragmented advisory. We provide a single, unified Command Center approach to institutional setup."}
               </p>
             </motion.div>

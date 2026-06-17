@@ -7,38 +7,45 @@ import { useLocale } from "@/hooks/useLocale";
 
 // Testimonials Data
 const testimonials = [
-{
-quote: {
-en: "They handled everything from setup to licensing with complete professionalism. The process was smooth, fast, and fully transparent.",
-ar: "قدمت لنا رواد القمة الوضوح الاستراتيجي الذي احتجناه لإدارة شراكات واستثمارات ضخمة داخل السوق السعودي، بخبرة قانونية وتنفيذية عالية.",
-},
-name: {
-en: "Ahmed Al-Qahtani",
-ar: "ألكسندر فانس",
-},
-role: {
-en: "CEO, Al Riyadah Group",
-ar: "الرئيس التنفيذي - البنية التحتية التقنية",
-},
-avatar: "/assets/client1.png",
-},
+  {
+    quote: {
+      en: "They handled everything from setup to licensing with complete professionalism. The process was smooth, fast, and fully transparent.",
+      ar: "تولّى فريق رواد القمة جميع إجراءات التأسيس والترخيص باحترافية عالية. كانت العملية واضحة وسريعة، وتم تنفيذ كل خطوة بشفافية كاملة.",
+    },
 
-{
-quote: {
-en: "Working with them made entering the Saudi market much easier. Clear guidance, fast execution, and real results.",
-ar: "وفرت لنا رواد القمة دعماً استثنائياً خلال رحلة دخول السوق السعودي، وساعدتنا خبرتهم القانونية والتشغيلية على اختصار أشهر من العمل.",
-},
-name: {
-en: "Khalid Al-Harbi",
-ar: "سارة ميتشل",
-},
-role: {
-en: "Managing Director, Gulf Vision Co.",
-ar: "المدير التنفيذي - جلوبال فنتشرز",
-},
-avatar: "/assets/client2.png",
-},
+    name: {
+      en: "Ahmed Al-Qahtani",
+      ar: "أحمد القحطاني",
+    },
+
+    role: {
+      en: "CEO, Al Riyadah Group",
+      ar: "الرئيس التنفيذي، مجموعة الريادة",
+    },
+
+    avatar: "/assets/client1.png",
+  },
+
+  {
+    quote: {
+      en: "Working with them made entering the Saudi market much easier. Clear guidance, fast execution, and real results.",
+      ar: "التعامل مع رواد القمة جعل دخولنا إلى السوق السعودي أكثر سهولة. حصلنا على توجيه واضح، وتنفيذ سريع، ونتائج حقيقية تجاوزت توقعاتنا.",
+    },
+
+    name: {
+      en: "Khalid Al-Harbi",
+      ar: "خالد الحربي",
+    },
+
+    role: {
+      en: "Managing Director, Gulf Vision Co.",
+      ar: "المدير التنفيذي، شركة جلف فيجن",
+    },
+
+    avatar: "/assets/client2.png",
+  },
 ];
+
 
 // Animation variants
 const containerVariants: Variants = {

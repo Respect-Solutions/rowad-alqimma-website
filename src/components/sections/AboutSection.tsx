@@ -52,7 +52,7 @@ export function AboutSection() {
 
             <p className="mx-auto mt-5 max-w-[700px] text-sm leading-[1.8] text-white/55 sm:text-base">
               {isArabic
-                ? "نحن لا نقدم الدعم القانوني فقط، بل نصمم وننفذ ونطوّر البنية التحتية للأعمال."
+                ? "لا نكتفي بتقديم الاستشارات، بل نساعدك على تأسيس أعمالك، وإدارتها، وتنميتها داخل المملكة العربية السعودية."
                 : "We don't just provide legal support we design, execute, and scale business infrastructure."}
             </p>
           </motion.div>
@@ -100,7 +100,7 @@ export function AboutSection() {
                   `}
                 >
                   {isArabic
-                    ? "رواد القمة شركة متخصصة في تأسيس الشركات الأجنبية داخل المملكة العربية السعودية، وتقديم الاستشارات الإدارية والقانونية والتسويقية للمستثمرين الراغبين في دخول السوق السعودي وتحقيق نمو مستدام."
+                    ? "رواد القمة شركة متخصصة في دعم المستثمرين والشركات داخل المملكة العربية السعودية، حيث نقدم حلولًا متكاملة تشمل تأسيس الشركات، والاستشارات القانونية، والاستشارات الإدارية، والاستشارات التسويقية، لمساعدتك على دخول السوق السعودي بثقة وتحقيق نمو مستدام."
                     : "Rowad Al Qimma is a specialized firm in establishing foreign companies inside the Kingdom of Saudi Arabia, providing administrative, legal, and marketing consultations to investors seeking to enter the Saudi market."}
                 </p>
               </div>

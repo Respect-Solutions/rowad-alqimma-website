@@ -4,28 +4,28 @@ import type { Metadata } from "next";
 import { FaWhatsapp } from "react-icons/fa6";
 
 export const metadata: Metadata = {
-title: "Rowad Elqimma",
-description:
-"Building the legal foundations for the future of trade and innovation in Saudi Arabia.",
+  title: "Rowad Al Qimma",
+  description:
+    "Building the legal foundations for the future of trade and innovation in Saudi Arabia.",
 };
 
 export default function RootLayout({
-children,
+  children,
 }: {
-children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-return (
-  <html suppressHydrationWarning>
-    {" "}
-    <body>
-      {children}
+  return (
+    <html suppressHydrationWarning>
+      {" "}
+      <body>
+        {children}
 
-      {/* WhatsApp Floating Button */}
-      <a
-        href="https://wa.me/+966553768622"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="
+        {/* WhatsApp Floating Button */}
+        <a
+          href="https://wa.me/+966553768622"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
 fixed
 bottom-6
 left-6
@@ -49,10 +49,10 @@ hover:scale-[1.08]
 hover:border-white/20
 hover:bg-[#31425D]
 "
-      >
-        <FaWhatsapp size={30} />
-      </a>
-    </body>
-  </html>
-);
+        >
+          <FaWhatsapp size={30} />
+        </a>
+      </body>
+    </html>
+  );
 }

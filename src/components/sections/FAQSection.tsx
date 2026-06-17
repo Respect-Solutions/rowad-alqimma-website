@@ -51,12 +51,12 @@ export function HomeHero() {
           <nav className="mx-auto flex max-w-[1152px] items-center justify-between">
             {/* Logo */}
             <Link
-              aria-label="Rowad Elqimma home"
+              aria-label="Rowad Al Qimma home"
               className="block shrink-0"
               href="/"
             >
               <Image
-                alt="Rowad Elqimma logo"
+                alt="Rowad Al Qimma logo"
                 height={62}
                 src="/assets/navLogo.png"
                 width={56}

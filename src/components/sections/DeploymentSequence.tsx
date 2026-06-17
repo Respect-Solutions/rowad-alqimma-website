@@ -108,7 +108,7 @@ export function DeploymentSequence() {
             className="mx-auto mt-3 max-w-[650px] text-sm leading-[1.7] text-white/55 sm:mt-4 sm:text-lg"
           >
             {isArabic
-              ? "من البداية وحتى التشغيل الكامل."
+              ? "نرافقك في كل مرحلة، من البداية وحتى تشغيل أعمالك بكفاءة."
               : "From onboarding to operational excellence."}
           </motion.p>
         </motion.div>
@@ -147,19 +147,19 @@ export function DeploymentSequence() {
             const translatedDescription =
               step.title === "Consultation"
                 ? isArabic
-                  ? "دراسة الجدوى الأولية والتوافق التنظيمي لنشاطك."
+                  ? "نبدأ بدراسة جدوى مشروعك والتأكد من توافقه مع المتطلبات التنظيمية الخاصة بنشاطك."
                   : step.description
                 : step.title === "Documentation"
                   ? isArabic
-                    ? "إعداد العقود وكافة المستندات والمتطلبات القانونية."
+                    ? "نُعد عقد التأسيس وجميع المستندات والإجراءات القانونية المطلوبة لتأسيس شركتك."
                     : step.description
                   : step.title === "Processing"
                     ? isArabic
-                      ? "التنسيق مع الجهات السعودية لإتمام التراخيص والاعتمادات."
+                      ? "نتولى التنسيق مع الجهات الحكومية في المملكة لإصدار التراخيص واستكمال جميع الموافقات الرسمية."
                       : step.description
                     : step.title === "Completion"
                       ? isArabic
-                        ? "تسليم السجل التجاري والحسابات التشغيلية النهائية."
+                        ? "نسلمك السجل التجاري ونستكمل تجهيز الحسابات التشغيلية لتكون شركتك جاهزة للانطلاق."
                         : step.description
                       : step.description;
 

@@ -1,10 +1,34 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, Variants, useInView } from "framer-motion";
+import {
+  motion,
+  type Variants,
+  useInView,
+} from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
 
-const stats = [
+type ValuesStatsProps = {
+  variant?: "counter" | "features";
+};
+
+type CounterStat = {
+  value: string;
+  title: {
+    en: string;
+    ar: string;
+  };
+};
+
+type FeatureStat = {
+  value: string;
+  description: {
+    en: string;
+    ar: string;
+  };
+};
+
+const counterStats: CounterStat[] = [
   {
     value: "150+",
     title: {
@@ -14,7 +38,7 @@ const stats = [
   },
 
   {
-    value: "40",
+    value: "35-40",
     title: {
       en: "Average days to complete the full formation process",
       ar: "متوسط الأيام لإكمال عملية التأسيس بالكامل",
@@ -34,6 +58,40 @@ const stats = [
     title: {
       en: "Transparency guaranteed in every client interaction",
       ar: "شفافية كاملة في كل تعامل مع العملاء",
+    },
+  },
+];
+
+const featureStats: FeatureStat[] = [
+  {
+    value: "Saudi Arabia",
+    description: {
+      en: "the fastest-growing market in the region",
+      ar: "أسرع الأسواق نموًا في المنطقة",
+    },
+  },
+
+  {
+    value: "150+",
+    description: {
+      en: "companies we've helped enter the market",
+      ar: "شركة ساعدناها على دخول السوق",
+    },
+  },
+
+  {
+    value: "Flexible services",
+    description: {
+      en: "each service separately or as a full package",
+      ar: "كل خدمة بشكل منفصل أو كباقة متكاملة",
+    },
+  },
+
+  {
+    value: "Real insight",
+    description: {
+      en: "into the Saudi consumer and their behavior",
+      ar: "فهم عميق للمستهلك السعودي وسلوكه",
     },
   },
 ];
@@ -82,8 +140,11 @@ const numberHoverVariants: Variants = {
   },
 };
 
-const AnimatedCounter = ({ targetValue }: { targetValue: string }) => {
-  const [count, setCount] = useState(0);
+const AnimatedCounter = ({
+  targetValue,
+}: {
+  targetValue: string;
+  }) => {  const [count, setCount] = useState(0);
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -139,11 +200,19 @@ const AnimatedCounter = ({ targetValue }: { targetValue: string }) => {
     return formatted;
   };
 
-  return <div ref={ref}>{isInView ? displayValue() : "0"}</div>;
+  return (
+    <div ref={ref}>
+      {isInView ? displayValue() : "0"}
+    </div>
+  );
 };
 
-export function ValuesStats() {
+export function ValuesStats({
+  variant = "counter",
+}: ValuesStatsProps) {
   const { isArabic } = useLocale();
+
+  const stats = variant === "counter" ? counterStats : featureStats;
 
   return (
     <section className="bg-[#14263D] px-4 py-12 sm:px-6 lg:px-0">
@@ -184,22 +253,66 @@ export function ValuesStats() {
                 whileHover="hover"
                 className="flex flex-col items-center"
               >
-                <motion.h3
-                  variants={numberHoverVariants}
-                  className="
-                    text-[42px]
-                    font-bold
-                    leading-none
-                    text-white
-                    sm:text-[48px]
-                  "
-                >
-                  <AnimatedCounter targetValue={stat.value} />
-                </motion.h3>
+                {" "}
+                {variant === "counter" ? (
+                  <>
+                    <motion.h3
+                      variants={numberHoverVariants}
+                      className="
+                        text-[42px]
+                        font-bold
+                        leading-none
+                        text-white
+                        sm:text-[48px]
+                      "
+                    >
+                      <AnimatedCounter targetValue={stat.value} />
+                    </motion.h3>
 
-                <p className="mt-3 text-[18px] leading-[1.4] text-white/60">
-                  {isArabic ? stat.title.ar : stat.title.en}
-                </p>
+                    <p
+                      className="
+                        mt-3
+                        text-[18px]
+                        leading-[1.4]
+                        text-white/60
+                      "
+                    >
+                      {isArabic
+                        ? (stat as CounterStat).title.ar
+                        : (stat as CounterStat).title.en}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <motion.h3
+                      variants={numberHoverVariants}
+                      className="
+                        text-[32px]
+                        font-bold
+                        leading-[1.1]
+                        text-white
+                        lg:text-[32px]
+                        whitespace-nowrap
+                      "
+                    >
+                      {stat.value}
+                    </motion.h3>
+
+                    <p
+                      className="
+                        mt-3
+                        max-w-[180px]
+                        text-[16px]
+                        leading-[1.5]
+                        text-white/60
+                      "
+                    >
+                      {isArabic
+                        ? (stat as FeatureStat).description.ar
+                        : (stat as FeatureStat).description.en}
+                    </p>
+                  </>
+                )}
               </motion.div>
             ))}
           </div>

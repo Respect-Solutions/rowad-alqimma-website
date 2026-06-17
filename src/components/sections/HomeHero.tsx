@@ -148,8 +148,8 @@ export function HomeHero() {
               className="mx-auto mt-5 max-w-[90%] text-sm leading-[1.7] text-white/80 sm:mt-6 sm:max-w-none sm:text-[17px] md:text-lg lg:max-w-3xl"
             >
               {isArabic
-                ? "نحن لا نقدم الاستشارات القانونية فقط، بل ننفذ ونبني وندعم أعمالك من التأسيس وحتى النمو داخل المملكة العربية السعودية."
-                : "We turn your  investment ambition into reality. We establish your company inside the Kingdom of Saudi Arabia with trusted legal expertise, full transparency, and fast execution."}
+                ? "نحن شريكك في رحلة دخول السوق السعودي، فلا نكتفي بتقديم الاستشارات، بل نتولى التنفيذ، ونؤسس شركتك، وندعم نمو أعمالك بخبرة قانونية وإدارية واستراتيجية متكاملة."
+                : "We turn your investment ambition into reality. We establish your company inside the Kingdom of Saudi Arabia with trusted legal expertise, full transparency, and fast execution."}
             </motion.p>
 
             <motion.div

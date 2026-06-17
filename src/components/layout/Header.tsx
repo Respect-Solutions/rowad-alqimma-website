@@ -10,20 +10,12 @@ import { useLocale } from "@/hooks/useLocale";
 import { motion } from "framer-motion";
 
 type HeaderProps = {
-  active?:
-    | "Home"
-    | "About"
-    | "Services"
-    | "Projects"
-    | "Contact";
+  active?: "Home" | "About" | "Services" | "Projects" | "Contact";
 
   lightButton?: boolean;
 };
 
-export function Header({
-  active,
-  lightButton = false,
-}: HeaderProps) {
+export function Header({ active, lightButton = false }: HeaderProps) {
   const isContact = active === "Contact";
 
   const { locale, isArabic } = useLocale();
@@ -64,7 +56,7 @@ export function Header({
         {/* Logo */}
         <div className="flex justify-start">
           <Link
-            aria-label="Rowad Elqimma home"
+            aria-label="Rowad Al Qimma home"
             className="flex shrink-0 items-center transition duration-300 hover:scale-[1.03]"
             href={`/${locale}`}
           >
@@ -222,4 +214,3 @@ export function Header({
     </motion.header>
   );
 }
-

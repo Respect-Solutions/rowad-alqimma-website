@@ -56,7 +56,7 @@ export function WhySaudiMarket() {
           <p className="mx-auto mt-8 text-[16px] leading-[1.7] text-white/60 sm:text-[18px]">
             {isArabic
               ? "يُعد السوق السعودي اليوم واحدًا من أسرع الأسواق نموًا في المنطقة، وقد فتحت رؤية 2030 أبوابًا واسعة للاستثمار الأجنبي في مختلف القطاعات. رواد القمة هنا ليرشدك خلال هذه الرحلة ويجعل دخولك إلى السوق السعودي أكثر سهولة وأمانًا ونجاحًا."
-              : "The Saudi market is today one of the fastest-growing markets in the region. Vision 2030 has opened wide doors for foreign investment across multiple sectors. Rawad Al Qimma is here to guide you through this journey — making your entry into this market smooth, safe, and rewarding."}
+              : "The Saudi market is today one of the fastest-growing markets in the region. Vision 2030 has opened wide doors for foreign investment across multiple sectors. Rowad Al Qimma is here to guide you through this journey — making your entry into this market smooth, safe, and rewarding."}
           </p>
         </motion.div>
       </div>

@@ -42,29 +42,29 @@ const numberHoverVariants: Variants = {
 };
 
 // Counter component
+// Counter component
 const AnimatedCounter = ({
   targetValue,
-  suffix = "",
   isArabic = false,
 }: {
   targetValue: string;
-  suffix?: string;
   isArabic?: boolean;
 }) => {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-  // Extract numeric value from strings like "500+", "120+", "15+", "99%"
-  const getNumericValue = (value: string): number => {
-    const numericMatch = value.match(/\d+/);
-    if (!numericMatch) return 0;
-    const num = parseInt(numericMatch[0], 10);
-    // Handle Arabic numerals if needed (they are already converted in translatedValues)
-    return isNaN(num) ? 0 : num;
-  };
+  const ref = useRef<HTMLDivElement>(null);
+
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.3,
+  });
+
+const getNumericValue = (value: string): number => {
+  return Number(value.replace(/[^\d]/g, ""));
+};
 
   const numericTarget = getNumericValue(targetValue);
+
   const hasPlus = targetValue.includes("+");
   const hasPercent = targetValue.includes("%");
 
@@ -72,13 +72,16 @@ const AnimatedCounter = ({
     if (!isInView) return;
 
     let start = 0;
-    const duration = 1500; // 1.5 seconds
-    const stepTime = 16; // ~60fps
+
+    const duration = 1500;
+    const stepTime = 16;
     const steps = duration / stepTime;
+
     const increment = numericTarget / steps;
 
     const timer = setInterval(() => {
       start += increment;
+
       if (start >= numericTarget) {
         setCount(numericTarget);
         clearInterval(timer);
@@ -90,17 +93,32 @@ const AnimatedCounter = ({
     return () => clearInterval(timer);
   }, [isInView, numericTarget]);
 
-  // Format the displayed value
-  const displayValue = (): string => {
-    let formatted = count.toString();
-    if (hasPercent) formatted += "%";
-    if (hasPlus && !hasPercent) formatted += "+";
-    return formatted;
+  const toArabicNumbers = (value: string) => {
+    return value.replace(/\d/g, (digit) => "٠١٢٣٤٥٦٧٨٩"[Number(digit)]);
   };
+
+const displayValue = () => {
+  let formatted = count.toString();
+
+  if (hasPercent) {
+    formatted += "%";
+  }
+
+  if (hasPlus && !hasPercent) {
+    formatted += "+";
+  }
+
+  if (isArabic) {
+    formatted = formatted.replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[Number(d)]);
+    formatted = formatted.replace("%", "٪");
+  }
+
+  return formatted;
+};
 
   return (
     <div ref={ref} className="inline-block">
-      {isInView ? displayValue() : "0"}
+      {isInView ? displayValue() : isArabic ? "٠" : "0"}
     </div>
   );
 };
@@ -110,18 +128,18 @@ export function Stats({ variant = "default" }: StatsProps) {
   const { isArabic } = useLocale();
 
   const translatedLabels = {
-    Companies: isArabic ? "شركة تم تأسيسها" : "Companies established",
-    Years: isArabic ? "مستثمر دولي" : "International Investors",
+    Companies: isArabic ? "شركة أُسست بنجاح" : "Companies established",
+    Years: isArabic ? "مستثمر من مختلف دول العالم" : "International Investors",
     "Global Offices": isArabic ? "قطاع مخدوم" : "Industries Served",
     "Success Rate": isArabic ? "معدل نجاح التنفيذ" : "Execution Success Rate",
   };
 
-  const translatedValues = {
-    "10B+": isArabic ? "+٥٠٠" : "500+",
-    "500+": isArabic ? "+١٢٠" : "120+",
-    "15+": isArabic ? "+١٥" : "15+",
-    "99%": isArabic ? "٩٩٪" : "99%",
-  };
+const translatedValues = {
+  "10B+": "500+",
+  "500+": "120+",
+  "15+": "15+",
+  "99%": "99%",
+};
 
   return (
     <section
@@ -154,16 +172,12 @@ export function Stats({ variant = "default" }: StatsProps) {
             text-center
             sm:grid-cols-2
             lg:grid-cols-4
-            ${
-              isSecondary
-                ? "gap-6 sm:gap-10"
-                : "gap-4 sm:gap-6"
-            }
+            ${isSecondary ? "gap-6 sm:gap-10" : "gap-4 sm:gap-6"}
           `}
         >
           {stats.map(([value, label]) => {
             const targetRaw =
-              translatedValues[value as keyof typeof translatedValues];
+              translatedValues[value as keyof typeof translatedValues] ?? value;
 
             return (
               <motion.div
@@ -176,16 +190,17 @@ export function Stats({ variant = "default" }: StatsProps) {
                 <motion.strong
                   variants={numberHoverVariants}
                   className={`
-                    block
-                    font-bold
-                    leading-none
-                    text-ink
-                    ${
-                      isSecondary
-                        ? "text-3xl sm:text-5xl md:text-6xl"
-                        : "text-2xl sm:text-4xl md:text-5xl"
-                    }
-                  `}
+          block
+          font-bold
+          leading-none
+          text-ink
+
+          ${
+            isSecondary
+              ? "text-3xl sm:text-5xl md:text-6xl"
+              : "text-2xl sm:text-4xl md:text-5xl"
+          }
+        `}
                   style={{ willChange: "transform" }}
                 >
                   <AnimatedCounter
@@ -196,16 +211,17 @@ export function Stats({ variant = "default" }: StatsProps) {
 
                 <span
                   className={`
-                    block
-                    max-w-[220px]
-                    leading-snug
-                    text-soft
-                    ${
-                      isSecondary
-                        ? "mt-2 text-sm sm:text-lg md:text-xl"
-                        : "mt-1 text-sm sm:text-base md:text-lg"
-                    }
-                  `}
+          block
+          max-w-[220px]
+          leading-snug
+          text-soft
+
+          ${
+            isSecondary
+              ? "mt-2 text-sm sm:text-lg md:text-xl"
+              : "mt-1 text-sm sm:text-base md:text-lg"
+          }
+        `}
                 >
                   {translatedLabels[label as keyof typeof translatedLabels]}
                 </span>
