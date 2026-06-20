@@ -239,7 +239,7 @@ export function Footer() {
                     icon: <FaSnapchat size={16} />,
                   },
                   {
-                    href: "https://wa.me/966553768622",
+                    href: "https://wa.me/966554008202",
                     icon: <FaWhatsapp size={16} />,
                   },
                 ].map((social, index) => (

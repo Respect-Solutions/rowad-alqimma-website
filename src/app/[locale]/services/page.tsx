@@ -18,46 +18,60 @@ export default function ServicePage() {
       <SharedHero
         activeNav="Services"
         variant="services"
-        exploreText={isArabic ? "اكتشف خدماتنا" : "Explore Our Services"}
+        exploreText={
+          isArabic
+            ? "استكشف خدماتنا"
+            : "Explore Our Services"
+        }
         title={
           <>
             <span className="text-[#B9C7E4]">
-              {isArabic ? "حلول أعمال" : "Comprehensive"}
+              {isArabic
+                ? "خدمات أعمال"
+                : "Comprehensive"}
             </span>
 
             <br />
 
             <span className="text-[#EFF0F1]">
-              {isArabic ? "متكاملة" : "Business Services"}
+              {isArabic
+                ? "متكاملة"
+                : "Business Services"}
             </span>
           </>
         }
         cards={[
           {
-            title: isArabic ? "النمو والتوسع" : "Market & Growth",
+            title: isArabic
+              ? "السوق والنمو"
+              : "Market & Growth",
 
             description: isArabic
-              ? "نساعدك على دخول السوق السعودي، وبناء حضور قوي، ووضع خطة واضحة للنمو والتوسع."
+              ? "نساعدك على دخول السوق السعودي وبناء علامتك التجارية وتوسيع أعمالك."
               : "We help you enter the Saudi market, build your brand, and scale your operations.",
 
             position: "left",
           },
 
           {
-            title: isArabic ? "نبني نجاحك" : "We Build Your Business",
+            title: isArabic
+              ? "نبني أعمالك"
+              : "We Build Your Business",
 
             description: isArabic
-              ? "من الفكرة وحتى التشغيل، نتولى التنفيذ ونوفر لك الدعم اللازم في كل مرحلة من رحلة أعمالك."
+              ? "لا نقدم الاستشارات فقط، بل ننفذ وندعم أعمالك من التأسيس وحتى النمو."
               : "We don’t just consult — we execute and support your business from setup to growth.",
 
             position: "center",
           },
 
           {
-            title: isArabic ? "أساس قانوني متين" : "Legal Foundation",
+            title: isArabic
+              ? "الأساس القانوني"
+              : "Legal Foundation",
 
             description: isArabic
-              ? "نتولى جميع الإجراءات القانونية والتنظيمية لضمان انطلاقة آمنة ومتوافقة مع الأنظمة السعودية."
+              ? "نتولى جميع الإجراءات القانونية لتأسيس أعمالك بثقة وامتثال كامل."
               : "We handle all legal procedures to establish your business with full compliance and confidence.",
 
             position: "right",
@@ -71,7 +85,7 @@ export default function ServicePage() {
 
       <OurServices />
 
-      <WhyChooseSaudiFormation />
+      <WhyChooseSaudiFormation/>
 
       {/* <WhyChooseApproach /> */}
 
