@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
+import Link from "next/link";
 
 // Animation variants
 const containerVariants: Variants = {
@@ -65,7 +66,8 @@ const cardVariants: Variants = {
 };
 
 export function MarketReadinessIndex() {
-  const { isArabic } = useLocale();
+  const { isArabic, locale } = useLocale();
+
 
   const [capital, setCapital] = useState(95);
   const [regulatory, setRegulatory] = useState(80);
@@ -355,14 +357,16 @@ export function MarketReadinessIndex() {
                 transition={{ delay: 0.4 }}
                 className="mt-5 flex justify-center"
               >
-                <motion.button
-                  variants={buttonHoverVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className="flex h-[48px] items-center justify-center rounded-full bg-[#C9D6FF] px-6 text-sm font-bold text-[#14263D] transition-shadow hover:shadow-lg sm:h-[52px] sm:px-8 md:h-[54px] md:px-10"
-                >
-                  {isArabic ? "ابدأ دخول السوق" : "Start Your Market Entry"}
-                </motion.button>
+                <Link href={`/${locale}/contact-us`}>
+                  <motion.button
+                    variants={buttonHoverVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    className="flex h-[48px] items-center justify-center rounded-full bg-[#C9D6FF] px-6 text-sm font-bold text-[#14263D] transition-shadow hover:shadow-lg sm:h-[52px] sm:px-8 md:h-[54px] md:px-10"
+                  >
+                    {isArabic ? "ابدأ دخول السوق" : "Start Your Market Entry"}
+                  </motion.button>
+                </Link>
               </motion.div>
             </motion.div>
           </div>

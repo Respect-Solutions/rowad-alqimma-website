@@ -90,13 +90,15 @@ export function Footer() {
 
               <div className="mt-4 flex flex-col gap-3 sm:mt-5">
                 <Link
-                  href={`/${locale}/services?service=company-formation#our-services`}
+                  href={`/${locale}/services/company-formation`}
+                  className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic ? "تأسيس الشركات" : "Company Formation"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/services?service=corporate-legal-advisory#our-services`}
+                  href={`/${locale}/services/corporate-legal-advisory`}
+                  className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic
                     ? "الاستشارات القانونية للشركات"
@@ -104,7 +106,8 @@ export function Footer() {
                 </Link>
 
                 <Link
-                  href={`/${locale}/services?service=marketing-strategic-consulting#our-services`}
+                  href={`/${locale}/services/marketing-strategic-consulting`}
+                  className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic
                     ? "الاستشارات التسويقية والاستراتيجية"
@@ -112,7 +115,8 @@ export function Footer() {
                 </Link>
 
                 <Link
-                  href={`/${locale}/services?service=administrative-consulting#our-services`}
+                  href={`/${locale}/services/administrative-consulting`}
+                  className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic
                     ? "الاستشارات الإدارية للشركات"
@@ -127,7 +131,7 @@ export function Footer() {
               className={isArabic ? "text-right" : ""}
             >
               <h3 className="text-base font-bold text-white sm:text-lg">
-                {isArabic ? "الروابط" : "Links"}
+                {isArabic ? "روابط سريعة" : "Links"}
               </h3>
 
               <div className="mt-4 flex flex-col gap-3 sm:mt-5">
@@ -174,7 +178,7 @@ export function Footer() {
               className={isArabic ? "text-right" : ""}
             >
               <h3 className="text-base font-bold text-white sm:text-lg">
-                {isArabic ? "القوانين" : "Legal"}
+                {isArabic ? "سياسات الموقع" : "Legal"}
               </h3>
 
               <div className="mt-4 flex flex-col gap-3 sm:mt-5">
@@ -205,7 +209,7 @@ export function Footer() {
               className={isArabic ? "text-right" : ""}
             >
               <h3 className="text-base font-bold text-white sm:text-lg">
-                {isArabic ? "السوشيال" : "Social"}
+                {isArabic ? "وسائل التواصل" : "Social"}
               </h3>
 
               <div
@@ -289,7 +293,7 @@ export function Footer() {
           >
             <p className="text-xs font-semibold text-white/70 sm:text-sm">
               {isArabic
-                ? "© 2026 رواد القمة. جميع الحقوق محفوظة."
+                ? "© 2026 شركة رواد القمة. جميع الحقوق محفوظة."
                 : "© 2026 Rowad Al Qimma. All rights reserved."}
             </p>
           </motion.div>

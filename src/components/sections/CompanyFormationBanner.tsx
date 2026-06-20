@@ -60,10 +60,10 @@ export function CompanyFormationBanner() {
             >
               {isArabic ? (
                 <>
-                  نحن لا نساعدك فقط في تسجيل شركتك
+                  نرافقك في كل خطوة من رحلة تأسيس شركتك
                   <br />
                   <span className="font-semibold text-white/90">
-                    بل ندعمك في كل مرحلة من رحلتك.
+                    من الفكرة الأولى وحتى الانطلاق بثقة في السوق السعودي.
                   </span>
                 </>
               ) : (

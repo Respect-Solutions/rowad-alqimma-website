@@ -221,11 +221,11 @@ export function CompanyStructures() {
 
       {/* Decorative Rings */}
 
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-52 top-20 h-[420px] w-[420px] rounded-full border border-white/5" />
 
         <div className="absolute -right-52 bottom-20 h-[520px] w-[520px] rounded-full border border-white/5" />
-      </div>
+      </div> */}
     </section>
   );
 }

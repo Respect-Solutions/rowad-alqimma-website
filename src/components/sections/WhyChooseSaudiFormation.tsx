@@ -6,27 +6,27 @@ import { useLocale } from "@/hooks/useLocale";
 const features = [
   {
     en: "150+ companies successfully established in less than a year",
-    ar: "أكثر من 150 شركة تم تأسيسها بنجاح خلال أقل من عام",
+    ar: "أكثر من 150 شركة أُسست بنجاح خلال أقل من عام",
   },
   {
     en: "Specialized legal consultants in Saudi investment law",
-    ar: "مستشارون قانونيون متخصصون في نظام الاستثمار السعودي",
+    ar: "فريق من المستشارين المتخصصين في أنظمة الاستثمار السعودي",
   },
   {
     en: "Full transparency — no hidden fees, no surprises",
-    ar: "شفافية كاملة — بدون رسوم خفية أو مفاجآت",
+    ar: "شفافية كاملة في جميع الإجراءات والتكاليف دون أي رسوم خفية",
   },
   {
     en: "Fast execution — only 35 to 40 days",
-    ar: "تنفيذ سريع — خلال 35 إلى 40 يومًا فقط",
+    ar: "إجراءات تأسيس سريعة خلال 35 إلى 40 يوم عمل في المتوسط",
   },
   {
     en: "Experience with 10+ nationalities from around the world",
-    ar: "خبرة مع أكثر من 10 جنسيات من مختلف أنحاء العالم",
+    ar: "خبرة واسعة في خدمة مستثمرين من أكثر من 10 جنسيات مختلفة",
   },
   {
     en: "Honest and reliable information at every step",
-    ar: "معلومات دقيقة وموثوقة في كل مرحلة",
+    ar: "استشارات دقيقة ومعلومات موثوقة في كل مرحلة من رحلتك الاستثمارية",
   },
 ];
 
@@ -82,7 +82,7 @@ export function WhyChooseSaudiFormation() {
             className="mx-auto text-[34px] font-bold leading-[1.2] text-white sm:text-[48px] lg:text-[56px]"
           >
             {isArabic
-              ? "لماذا تختار رواد القمة لتأسيس شركتك في المملكة العربية السعودية؟"
+              ? "لماذا يختار المستثمرون رواد القمة لتأسيس شركاتهم في المملكة؟"
               : "Why Choose Rowad Al Qimma to Establish Your Company in Saudi Arabia?"}
           </motion.h2>
 
@@ -91,7 +91,7 @@ export function WhyChooseSaudiFormation() {
             className="mx-auto mt-6 max-w-[900px] text-[18px] leading-[1.7] text-white/60"
           >
             {isArabic
-              ? "رواد القمة ليست مجرد شركة خدمات، بل شريكك الاستراتيجي. إليك ما يميزنا:"
+              ? "نقدم أكثر من مجرد خدمة تأسيس شركات، بل نوفر شراكة متكاملة تساعدك على الانطلاق بثقة وتحقيق النجاح في السوق السعودي."
               : "Rowad Al Qimma is not just a service company — we are your strategic partner. Here's what sets us apart:"}
           </motion.p>
         </motion.div>

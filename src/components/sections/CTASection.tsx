@@ -54,7 +54,7 @@ export function CTASection() {
             className="text-[28px] font-bold leading-[1.2] text-main sm:text-4xl md:text-5xl"
           >
             {isArabic
-              ? "هل أنت مستعد لبناء منظومتك القانونية؟"
+              ? "هل أنت مستعد لبناء منظومة أعمالك؟"
               : "Ready to Deploy Your Legal Infrastructure?"}
           </motion.h2>
 
@@ -64,9 +64,9 @@ export function CTASection() {
           >
             {isArabic ? (
               <>
-                لا تكتفِ بتوظيف محامٍ فقط، بل ابنِ نظامًا قانونيًا
+                لا تكتفِ بالحصول على استشارة، بل ابنِ منظومة متكاملة
                 <br className="hidden sm:block" />
-                يتطور مع طموحاتك المستقبلية.
+                تدعم نمو أعمالك وتواكب طموحاتك المستقبلية.
               </>
             ) : (
               <>

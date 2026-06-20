@@ -49,14 +49,39 @@ export default function CompanyFormationPage() {
   return (
     <>
       <ServiceHero
-        titleBlue="Foreign Company Formation"
-        title=" in Saudi Arabia Fast, Trusted & Completely Hassle-Free"
-        badge="Company Formation"
-        description="We handle the entire process of establishing your foreign company inside the Kingdom from legal documents to issuing the commercial registration  with precision and professionalism."
-        summary="Rowad Al Qimma specializes in establishing foreign companies inside the Kingdom of Saudi Arabia. We handle every single step on your behalf — from the first document to the last signature — so you find yourself the owner of an officially registered company in the Saudi market in just 35 to 40 days.
- No complexity. No surprises. No wasted time."
+        titleBlue={{
+          en: "Foreign Company Formation",
+          ar: "تأسيس الشركات الأجنبية",
+        }}
+        title={{
+          en: " in Saudi Arabia — Fast, Trusted & Completely Hassle-Free",
+          ar: " في المملكة العربية السعودية",
+        }}
+        badge={{
+          en: "Company Formation",
+          ar: "تأسيس الشركات",
+        }}
+        description={{
+          en: "We handle the entire process of establishing your foreign company inside the Kingdom—from legal documentation to issuing your Commercial Registration—with precision, speed, and complete professionalism.",
+          ar: "نتولى جميع إجراءات تأسيس شركتك داخل المملكة العربية السعودية، بدءًا من إعداد المستندات القانونية وحتى إصدار السجل التجاري، باحترافية ودقة وسرعة.",
+        }}
+        summary={{
+          en: `Rowad Al Qimma specializes in establishing foreign companies in Saudi Arabia. We manage every stage on your behalf—from preparing legal documents and obtaining government approvals to issuing your Commercial Registration.
+
+With our experienced team, your company can be fully established within 35 to 40 business days, allowing you to enter the Saudi market confidently and without unnecessary delays.
+
+No complexity. No hidden surprises. Just a smooth, transparent process from start to finish.`,
+          ar: `تتخصص رواد القمة في تأسيس الشركات الأجنبية داخل المملكة العربية السعودية، حيث نتولى جميع الإجراءات نيابةً عنك، بدءًا من إعداد المستندات والحصول على الموافقات الرسمية وحتى إصدار السجل التجاري.
+
+بفضل خبرتنا وفريقنا المتخصص، يمكنك تأسيس شركتك خلال 35 إلى 40 يوم عمل فقط، مع ضمان سير جميع الإجراءات بسلاسة وشفافية ووفقًا للأنظمة السعودية.
+
+بدون تعقيدات... بدون مفاجآت... فقط رحلة تأسيس احترافية من البداية وحتى الانطلاق.`,
+        }}
         icon="/assets/market-entry.svg"
-        exploreText="Explore Company Formation"
+        exploreText={{
+          en: "Explore Company Formation",
+          ar: "استكشف خدمات تأسيس الشركات",
+        }}
       />
       <ValuesStats />
       <WhyForeign />

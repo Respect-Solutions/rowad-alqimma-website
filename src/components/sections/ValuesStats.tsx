@@ -1,11 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import {
-  motion,
-  type Variants,
-  useInView,
-} from "framer-motion";
+import { motion, type Variants, useInView } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
 
 type ValuesStatsProps = {
@@ -21,7 +17,10 @@ type CounterStat = {
 };
 
 type FeatureStat = {
-  value: string;
+  value: {
+    en: string;
+    ar: string;
+  };
   description: {
     en: string;
     ar: string;
@@ -33,65 +32,71 @@ const counterStats: CounterStat[] = [
     value: "150+",
     title: {
       en: "Companies successfully established in less than a year",
-      ar: "شركة تم تأسيسها بنجاح خلال أقل من عام",
+      ar: "أكثر من 150 شركة أُسست بنجاح خلال أقل من عام",
     },
   },
-
   {
-    value: "35-40",
+    value: "40",
     title: {
-      en: "Average days to complete the full formation process",
-      ar: "متوسط الأيام لإكمال عملية التأسيس بالكامل",
+      en: "Average company formation completed within 35–40 business days",
+      ar: "متوسط مدة تأسيس الشركة يتراوح بين ٣٥ و٤٠ يوم عمل",
     },
   },
-
   {
     value: "10+",
     title: {
       en: "Nationalities served from around the world",
-      ar: "جنسيات مختلفة تم خدمتها حول العالم",
+      ar: "مستثمرون من أكثر من ١٠ جنسيات مختلفة",
     },
   },
-
   {
     value: "100%",
     title: {
       en: "Transparency guaranteed in every client interaction",
-      ar: "شفافية كاملة في كل تعامل مع العملاء",
+      ar: "التزام كامل بالشفافية في جميع مراحل العمل",
     },
   },
 ];
 
 const featureStats: FeatureStat[] = [
   {
-    value: "Saudi Arabia",
+    value: {
+      en: "Saudi Arabia",
+      ar: "السوق السعودي",
+    },
     description: {
       en: "the fastest-growing market in the region",
-      ar: "أسرع الأسواق نموًا في المنطقة",
+      ar: "إحدى أسرع البيئات الاستثمارية نمواً في المنطقة",
     },
   },
-
   {
-    value: "150+",
+    value: {
+      en: "150+",
+      ar: "150+",
+    },
     description: {
       en: "companies we've helped enter the market",
-      ar: "شركة ساعدناها على دخول السوق",
+      ar: "شركة ساعدناها على دخول السوق السعودي",
     },
   },
-
   {
-    value: "Flexible services",
+    value: {
+      en: "Flexible services",
+      ar: "خدمات مرنة",
+    },
     description: {
       en: "each service separately or as a full package",
-      ar: "كل خدمة بشكل منفصل أو كباقة متكاملة",
+      ar: "اختر كل خدمة بشكل مستقل أو ضمن باقة متكاملة",
     },
   },
-
   {
-    value: "Real insight",
+    value: {
+      en: "Real insight",
+      ar: "رؤية دقيقة",
+    },
     description: {
       en: "into the Saudi consumer and their behavior",
-      ar: "فهم عميق للمستهلك السعودي وسلوكه",
+      ar: "فهم عميق للسوق السعودي واحتياجات المستثمرين",
     },
   },
 ];
@@ -100,10 +105,8 @@ const containerVariants: Variants = {
   hidden: {
     opacity: 0,
   },
-
   visible: {
     opacity: 1,
-
     transition: {
       staggerChildren: 0.12,
       delayChildren: 0.15,
@@ -116,11 +119,9 @@ const itemVariants: Variants = {
     opacity: 0,
     y: 20,
   },
-
   visible: {
     opacity: 1,
     y: 0,
-
     transition: {
       duration: 0.5,
       ease: "easeOut",
@@ -132,7 +133,6 @@ const numberHoverVariants: Variants = {
   hover: {
     scale: 1.03,
     y: -2,
-
     transition: {
       duration: 0.2,
       ease: "easeOut",
@@ -140,11 +140,10 @@ const numberHoverVariants: Variants = {
   },
 };
 
-const AnimatedCounter = ({
-  targetValue,
-}: {
-  targetValue: string;
-  }) => {  const [count, setCount] = useState(0);
+const AnimatedCounter = ({ targetValue }: { targetValue: string }) => {
+  const { isArabic } = useLocale();
+
+  const [count, setCount] = useState(0);
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -154,17 +153,18 @@ const AnimatedCounter = ({
   });
 
   const getNumericValue = (value: string): number => {
-    const numericMatch = value.match(/\d+/);
+    const numbers = value.match(/\d+/g);
 
-    if (!numericMatch) return 0;
+    if (!numbers) return 0;
 
-    return parseInt(numericMatch[0], 10);
+    return parseInt(numbers[numbers.length - 1], 10);
   };
 
   const numericTarget = getNumericValue(targetValue);
 
   const hasPlus = targetValue.includes("+");
   const hasPercent = targetValue.includes("%");
+  const hasRange = targetValue.includes("-");
 
   useEffect(() => {
     if (!isInView) return;
@@ -191,22 +191,34 @@ const AnimatedCounter = ({
     return () => clearInterval(timer);
   }, [isInView, numericTarget]);
 
+  const toArabicNumbers = (text: string) =>
+    text.replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[Number(d)]);
+
   const displayValue = () => {
-    let formatted = count.toString();
+    let formatted = "";
 
-    if (hasPercent) formatted += "%";
-    if (hasPlus && !hasPercent) formatted += "+";
+    if (hasRange) {
+      const first = targetValue.match(/\d+/)?.[0] ?? "0";
+      formatted = `${first}-${count}`;
+    } else {
+      formatted = count.toString();
+    }
 
-    return formatted;
+    if (hasPercent) {
+      formatted += isArabic ? "٪" : "%";
+    }
+
+    if (hasPlus && !hasPercent) {
+      formatted += "+";
+    }
+
+    return isArabic ? toArabicNumbers(formatted) : formatted;
   };
 
   return (
-    <div ref={ref}>
-      {isInView ? displayValue() : "0"}
-    </div>
+    <div ref={ref}>{isInView ? displayValue() : isArabic ? "٠" : "0"}</div>
   );
 };
-
 export function ValuesStats({
   variant = "counter",
 }: ValuesStatsProps) {
@@ -248,12 +260,15 @@ export function ValuesStats({
           >
             {stats.map((stat) => (
               <motion.div
-                key={stat.value}
+                key={
+                  variant === "counter"
+                    ? (stat as CounterStat).value
+                    : (stat as FeatureStat).value.en
+                }
                 variants={itemVariants}
                 whileHover="hover"
                 className="flex flex-col items-center"
               >
-                {" "}
                 {variant === "counter" ? (
                   <>
                     <motion.h3
@@ -266,7 +281,9 @@ export function ValuesStats({
                         sm:text-[48px]
                       "
                     >
-                      <AnimatedCounter targetValue={stat.value} />
+                      <AnimatedCounter
+                        targetValue={(stat as CounterStat).value}
+                      />
                     </motion.h3>
 
                     <p
@@ -295,7 +312,9 @@ export function ValuesStats({
                         whitespace-nowrap
                       "
                     >
-                      {stat.value}
+                      {isArabic
+                        ? (stat as FeatureStat).value.ar
+                        : (stat as FeatureStat).value.en}
                     </motion.h3>
 
                     <p

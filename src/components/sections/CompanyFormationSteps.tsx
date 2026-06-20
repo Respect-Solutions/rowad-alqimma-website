@@ -154,31 +154,9 @@ export function CompanyFormationSteps() {
           >
             {/* Horizontal Line */}
 
-            <div
-              className="
-                absolute
-                left-0
-                right-0
-                top-[44px]
-                hidden
-                h-[2px]
-                bg-white/10
-                xl:block
-              "
-            />
+            
             {/* Bottom Row Line */}
-            <div
-              className="
-    absolute
-    left-0
-    right-0
-    top-[460px]
-    hidden
-    h-[2px]
-    bg-white/10
-    xl:block
-  "
-            />
+            
 
             {steps.map((step) => (
               <motion.div

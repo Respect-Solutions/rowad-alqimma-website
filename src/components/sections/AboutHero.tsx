@@ -66,19 +66,19 @@ export function AboutHero() {
             <div className="mt-8 max-w-[620px] space-y-8">
               <p className="text-lg leading-[1.6] text-white/65">
                 {isArabic
-                  ? "رواد القمة شركة متخصصة في تأسيس الشركات الأجنبية داخل المملكة العربية السعودية، وتقديم الاستشارات الإدارية والقانونية والتسويقية للمستثمرين الراغبين في دخول السوق السعودي."
+                  ? "رواد القمة شركة متخصصة في تأسيس الشركات الأجنبية داخل المملكة العربية السعودية، وتقديم حلول متكاملة تشمل الاستشارات القانونية والإدارية والتسويقية، لمساعدة المستثمرين على الانطلاق بثقة داخل السوق السعودي."
                   : "Rowad Al Qimma is a specialized firm in establishing foreign companies inside the Kingdom of Saudi Arabia, providing administrative, legal, and marketing consultations to investors seeking to enter the Saudi market."}
               </p>
 
               <p className="text-lg leading-[1.6] text-white/65">
                 {isArabic
-                  ? "تأسست الشركة بهدف أن تكون الجسر الموثوق بين المستثمرين العرب والدوليين وبين الفرص الاستثمارية الهائلة التي توفرها المملكة العربية السعودية ضمن رؤية 2030."
+                  ? "انطلقت الشركة لتكون الشريك الموثوق للمستثمرين العرب والدوليين، من خلال تسهيل إجراءات الاستثمار وتحويل الفرص التي تتيحها رؤية المملكة 2030 إلى مشاريع ناجحة ومستدامة."
                   : "We were founded with one clear goal: to be the trusted bridge connecting Arab and international investors with the immense growth opportunities offered by the Saudi market under Vision 2030."}
               </p>
 
               <p className="text-lg leading-[1.6] text-white/65">
                 {isArabic
-                  ? "في أقل من عام، ساعدنا على تأسيس أكثر من 150 شركة لمستثمرين من جنسيات مختلفة حول العالم وما زلنا نواصل النمو."
+                  ? "خلال فترة وجيزة، ساعدنا في تأسيس أكثر من 150 شركة لمستثمرين من مختلف الجنسيات، وما زلنا نواصل تقديم حلول احترافية تدعم نجاح أعمال عملائنا ونموها."
                   : "In less than a year, we launched over 150 companies for investors of different nationalities around the world — and we're still growing."}
               </p>
             </div>
@@ -88,7 +88,7 @@ export function AboutHero() {
               className="mt-3 max-w-[576px] text-sm leading-[1.8] text-muted sm:mt-4 sm:text-lg"
             >
               {isArabic
-                ? "تقف رواد القمة عند نقطة التقاء القيم السعودية الأصيلة والمعايير العالمية الحديثة للأعمال، لنقدم البنية المؤسسية التي تساعد المستثمرين المحليين والدوليين على النجاح ضمن رؤية 2030."
+                ? "نجمع بين الخبرة القانونية، والفهم العميق للأنظمة السعودية، والرؤية الاستراتيجية للأعمال، لنمنح المستثمرين منظومة متكاملة تساعدهم على تأسيس أعمالهم وإدارتها وتحقيق نمو مستدام داخل المملكة."
                 : "Rowad Al Qimma Consultancy stands at the intersection of traditional Saudi values and modern global business standards. We provide the structural backbone for foreign and domestic investors to thrive within Vision 2030's framework."}
             </motion.p>
           </div>
@@ -112,11 +112,10 @@ export function AboutHero() {
             <p className="text-lg leading-[1.5] text-ink sm:text-[28px] md:text-[32px]">
               {isArabic ? (
                 <>
-                  "نحن لا نقدم الاستشارات فقط،
+                  "لا نقدم الاستشارات فقط،
+                  بل نحول رؤيتك إلى
                   <br />
-                  بل ننفذ رؤية
-                  <br />
-                  مشروعك بالكامل."
+                  مشروع ناجح على أرض الواقع."
                 </>
               ) : (
                 <>

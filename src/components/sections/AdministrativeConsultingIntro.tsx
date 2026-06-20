@@ -2,14 +2,25 @@
 
 import { motion, type Variants } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
+import type { ReactNode } from "react";
+
+type LocalizedText = {
+  en: string;
+  ar: string;
+};
+
+type LocalizedNode = {
+  en: ReactNode;
+  ar: ReactNode;
+};
 
 type AdministrativeConsultingIntroProps = {
-  title?: string;
-  description?: string;
-  highlight?: string;
-  conclusion?: React.ReactNode;
-  boldOne?: string;
-  boldTwo?: string;
+  title?: LocalizedText;
+  description?: LocalizedText;
+  highlight?: LocalizedText;
+  conclusion?: LocalizedNode;
+  boldOne?: LocalizedText;
+  boldTwo?: LocalizedText;
 };
 
 const containerVariants: Variants = {
@@ -54,13 +65,17 @@ export function AdministrativeConsultingIntro({
 }: AdministrativeConsultingIntroProps) {
   const { isArabic } = useLocale();
 
+  const t = (text?: LocalizedText) =>
+    text ? (isArabic ? text.ar : text.en) : "";
+
+  const tn = (node?: LocalizedNode) =>
+    node ? (isArabic ? node.ar : node.en) : null;
+
   return (
     <section className="relative overflow-hidden bg-[#14263D] py-20 sm:py-24 lg:py-28">
-      {/* Glow */}
-
       {/* <div className="absolute left-1/2 top-1/2 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4F78FF]/10 blur-[140px]" /> */}
 
-      <div className="relative z-10 mx-auto  px-4">
+      <div className="relative z-10 mx-auto px-4">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -69,47 +84,41 @@ export function AdministrativeConsultingIntro({
             amount: 0.2,
           }}
           variants={containerVariants}
-          className="mx-auto  text-center"
+          className="mx-auto text-center"
         >
           {/* Title */}
-
           <motion.h2
             variants={itemVariants}
             className="text-[34px] font-bold leading-[1.15] text-white sm:text-[46px] lg:text-[58px]"
           >
-            {title}
+            {t(title)}
           </motion.h2>
 
           {/* Description */}
-
           <motion.p
             variants={itemVariants}
             className="mx-auto mt-8 max-w-[1152px] text-[16px] leading-[1.9] text-white/60 sm:text-[18px]"
           >
-            <span className="font-bold text-white">{boldOne}</span>
-            {description}
+            <span className="font-bold text-white">{t(boldOne)}</span>{" "}
+            {t(description)}
           </motion.p>
 
           {/* Highlight */}
-
           <motion.p
             variants={itemVariants}
-            className="mx-auto mt-10 max-w-[1152px] text-[18px] text-white/60 leading-[1.9]  sm:text-[22px]"
+            className="mx-auto mt-10 max-w-[1152px] text-[18px] leading-[1.9] text-white/60 sm:text-[22px]"
           >
-            <span className="font-bold text-white">{boldTwo}</span>
-            {highlight}
+            <span className="font-bold text-white">{t(boldTwo)}</span>{" "}
+            {t(highlight)}
           </motion.p>
 
           {/* Conclusion */}
-
-          <motion.p
+          <motion.div
             variants={itemVariants}
             className="mx-auto mt-8 max-w-[1152px] text-[16px] leading-[1.9] text-white/60 sm:text-[18px]"
           >
-            
-
-            {conclusion}
-          </motion.p>
+            {tn(conclusion)}
+          </motion.div>
         </motion.div>
       </div>
     </section>

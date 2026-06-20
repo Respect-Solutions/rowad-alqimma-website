@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Rowad Al Qimma",
   description:
     "Building the legal foundations for the future of trade and innovation in Saudi Arabia.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -16,13 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
-      {" "}
       <body>
         {children}
 
         {/* WhatsApp Floating Button */}
         <a
-          href="https://wa.me/+966553768622"
+          href="https://wa.me/966553768622"
           target="_blank"
           rel="noopener noreferrer"
           className="

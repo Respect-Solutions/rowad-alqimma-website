@@ -10,7 +10,8 @@ const values = [
     titleAr: "الشفافية",
     description:
       "No hidden fees, no empty promises. Everything is clear from the start.",
-    descriptionAr: "لا رسوم مخفية ولا وعود فارغة. كل شيء واضح منذ البداية.",
+    descriptionAr:
+      "نؤمن بأن الثقة تبدأ بالوضوح، لذلك نعرض جميع الإجراءات والتكاليف منذ البداية دون أي مفاجآت.",
     height: "xl:h-[498px]",
     paddingBottom: "pb-[160px]",
   },
@@ -20,7 +21,8 @@ const values = [
     title: "Integrity",
     titleAr: "النزاهة",
     description: "We stand by what we say and deliver what we promise.",
-    descriptionAr: "نلتزم بما نقوله ونفي بجميع وعودنا.",
+    descriptionAr:
+      "نلتزم بما نعد به، ونجعل المصداقية أساس كل تعامل مع عملائنا.",
     height: "xl:h-[466px]",
     paddingBottom: "pb-[128px]",
   },
@@ -28,10 +30,11 @@ const values = [
   {
     id: "03",
     title: "Speed",
-    titleAr: "السرعة",
+    titleAr: "سرعة الإنجاز",
     description:
       "We respect your time and work efficiently to complete your task quickly.",
-    descriptionAr: "نحترم وقتك ونعمل بكفاءة لإنجاز أعمالك بأسرع وقت.",
+    descriptionAr:
+      "نعمل بكفاءة عالية لإنجاز جميع الإجراءات في أسرع وقت ممكن دون المساس بالجودة.",
     height: "xl:h-[434px]",
     paddingBottom: "pb-[96px]",
   },
@@ -42,7 +45,8 @@ const values = [
     titleAr: "شراكة حقيقية",
     description:
       "We are not just a service provider, we are invested in your success.",
-    descriptionAr: "لسنا مجرد مزود خدمة، بل شريك حقيقي في نجاحك.",
+    descriptionAr:
+      "لا نكتفي بتقديم الخدمة، بل نعمل كشريك يرافقك في كل خطوة حتى تحقق أهدافك.",
     height: "xl:h-[402px]",
     paddingBottom: "pb-[40px]",
   },
@@ -50,10 +54,11 @@ const values = [
   {
     id: "05",
     title: "Diverse Expertise",
-    titleAr: "خبرات متنوعة",
+    titleAr: "خبرة متنوعة",
     description:
       "We've served investors from multiple nationalities and industries.",
-    descriptionAr: "خدمنا مستثمرين من جنسيات وقطاعات متعددة.",
+    descriptionAr:
+      "خبرتنا تمتد إلى العمل مع مستثمرين من جنسيات وقطاعات مختلفة، مما يمنحنا فهماً عميقاً لاحتياجات كل عميل.",
     height: "xl:h-[370px]",
     paddingBottom: "pb-[40px]",
   },

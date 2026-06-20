@@ -225,21 +225,7 @@ export function WhoBenefits() {
 
       {/* Background Glow */}
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          left-1/2
-          top-1/2
-          h-[650px]
-          w-[950px]
-          -translate-x-1/2
-          -translate-y-1/2
-          rounded-full
-          bg-[#4F78FF]/10
-          blur-[140px]
-        "
-      />
+      
 
       
     </section>
