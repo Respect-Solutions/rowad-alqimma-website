@@ -10,7 +10,7 @@ import { useLocale } from "@/hooks/useLocale";
 import { motion } from "framer-motion";
 
 type HeaderProps = {
-  active?: "Home" | "About" | "Services" | "Projects" | "Contact";
+  active?: "Home" | "About" | "Services" | "Projects" | "Contact" | "Social Links";
 
   lightButton?: boolean;
 };
