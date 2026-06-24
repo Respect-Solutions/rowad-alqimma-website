@@ -1,24 +1,67 @@
 import "./globals.css";
 import type { Metadata } from "next";
-
+import { IBM_Plex_Sans } from "next/font/google";
+import { getLocale } from "next-intl/server";
 import { FaWhatsapp } from "react-icons/fa6";
 
+const ibmPlex = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-ibm-plex",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Rowad Al Qimma",
+  title: {
+    default: "Rowad Al Qimma | رواد القمة",
+    template: "%s | Rowad Al Qimma",
+  },
   description:
     "Building the legal foundations for the future of trade and innovation in Saudi Arabia.",
+  metadataBase: new URL("https://rowadalqimma.com"),
+  openGraph: {
+    type: "website",
+    siteName: "Rowad Al Qimma",
+    title: "Rowad Al Qimma | رواد القمة",
+    description:
+      "Building the legal foundations for the future of trade and innovation in Saudi Arabia.",
+    url: "https://rowadalqimma.com",
+    images: [
+      {
+        url: "/assets/home-hero-bg.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Rowad Al Qimma",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rowad Al Qimma | رواد القمة",
+    description:
+      "Building the legal foundations for the future of trade and innovation in Saudi Arabia.",
+    images: ["/assets/home-hero-bg.jpg"],
+  },
   icons: {
     icon: "/favicon.png",
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
+  const dir = locale === "ar" ? "rtl" : "ltr";
+
   return (
-    <html suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={dir}
+      suppressHydrationWarning
+      className={ibmPlex.variable}
+    >
       <body>
         {children}
 
