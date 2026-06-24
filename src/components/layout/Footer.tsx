@@ -65,7 +65,7 @@ export function Footer() {
               className={isArabic ? "text-right" : ""}
             >
               <Link href="/" className="flex items-center gap-3">
-                <IconImage name="logoAbout" width={42} height={42} />
+                <IconImage name="logoAbout" alt="Rowad Al Qimma" width={42} height={42} />
 
                 <span className="text-lg font-bold text-white sm:text-xl">
                   {isArabic ? "رواد القمة" : "Rowad Al Qimma"}
@@ -221,31 +221,38 @@ export function Footer() {
                   {
                     href: "https://www.facebook.com/share/18aWrmRnDH/",
                     icon: <FaFacebookF size={16} />,
+                    label: "Facebook",
                   },
                   {
                     href: "https://www.instagram.com/rowadalqimmaa?igsh=YjFkZjJvdTUwbm5s",
                     icon: <FaInstagram size={16} />,
+                    label: "Instagram",
                   },
                   {
                     href: "https://www.tiktok.com/@rowadalqimma",
                     icon: <FaTiktok size={16} />,
+                    label: "TikTok",
                   },
                   {
                     href: "https://x.com/Rowadalqimmaa",
                     icon: <FaXTwitter size={16} />,
+                    label: "X (Twitter)",
                   },
                   {
                     href: "https://www.snapchat.com/add/rowadrlqimmaa?share_id=IpvW_LbkMGQ&locale=en-US",
                     icon: <FaSnapchat size={16} />,
+                    label: "Snapchat",
                   },
                   {
                     href: "https://wa.me/966554008202",
                     icon: <FaWhatsapp size={16} />,
+                    label: "WhatsApp",
                   },
-                ].map((social, index) => (
+                ].map((social) => (
                   <a
-                    key={index}
+                    key={social.label}
                     href={social.href}
+                    aria-label={social.label}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="

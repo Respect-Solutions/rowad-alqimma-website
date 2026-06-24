@@ -62,6 +62,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
           >
             <IconImage
               name={lightButton ? "logoContact" : "logoAbout"}
+              alt="Rowad Al Qimma"
               width={52}
               height={58}
             />

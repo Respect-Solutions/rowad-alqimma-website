@@ -121,7 +121,7 @@ export default function SocialLinksPage() {
           href="/"
           className="flex items-center gap-3 transition duration-300 hover:opacity-90"
         >
-          <IconImage name="logoAbout" width={42} height={42} />
+          <IconImage name="logoAbout" alt="Rowad Al Qimma" width={42} height={42} />
 
           <h2 className="text-2xl font-bold text-white">Rowad Al Qimma</h2>
         </Link>

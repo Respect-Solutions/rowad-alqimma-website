@@ -5,16 +5,17 @@ type AssetKey = keyof typeof assets;
 
 type IconImageProps = {
   name: AssetKey;
+  alt?: string;
   size?: number;
   width?: number;
   height?: number;
   className?: string;
 };
 
-export function IconImage({ name, size = 24, width, height, className = "" }: IconImageProps) {
+export function IconImage({ name, alt = "", size = 24, width, height, className = "" }: IconImageProps) {
   return (
     <Image
-      alt=""
+      alt={alt}
       className={className}
       height={height ?? size}
       src={assets[name]}

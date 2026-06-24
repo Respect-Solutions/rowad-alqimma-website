@@ -68,6 +68,7 @@ export default async function RootLayout({
         {/* WhatsApp Floating Button */}
         <a
           href="https://wa.me/966553768622"
+          aria-label="Chat on WhatsApp"
           target="_blank"
           rel="noopener noreferrer"
           className="
