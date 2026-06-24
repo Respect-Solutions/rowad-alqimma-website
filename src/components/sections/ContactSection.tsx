@@ -19,15 +19,6 @@ import {
   // FaSnapchatGhost,
 } from "react-icons/fa6";
 
-declare global {
-  interface Window {
-    turnstile?: {
-      reset: (id: string) => void;
-      remove: (id: string) => void;
-    };
-  }
-}
-
 // ─── Schema ────────────────────────────────────────────────────────────────────
 
 const contactSchema = z.object({
@@ -456,6 +447,7 @@ export function ContactSection() {
                     <iframe
                       src="https://www.google.com/maps?q=Saudi+Arabia,+Riyadh,+Qurtubah+District,+Al-Hassan+Ibn+Hussein+St.&output=embed"
                       width="100%"
+                      height="120"
                       loading="lazy"
                     ></iframe>
                   </div>

@@ -2,7 +2,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { ContactHero } from "@/components/sections/ContactHero";
 import { CTASection } from "@/components/sections/CTASection";
-import { FAQSection } from "@/components/sections/FAQSection";
+import { FAQSection } from "@/components/sections/FAQ";
 import { InquirySection } from "@/components/sections/InquirySection";
 
 export function ProjectsPage() {
