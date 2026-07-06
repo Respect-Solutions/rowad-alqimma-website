@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { useLocale } from "@/hooks/useLocale";
+import { Button } from "@/components/ui/Button";
 
 type LocalizedText = {
   en: string;
@@ -79,7 +80,7 @@ export function ServiceHero({
   };
 
   return (
-    <section className="relative h-[100vh] overflow-hidden bg-[#14263D]">
+    <section className="relative  overflow-hidden bg-[#14263D]">
       {/* Bottom Arc */}
       <div className="absolute bottom-[-620px] left-1/2 h-[1300px] w-[1600px] -translate-x-1/2 rounded-full border-t-[120px] border-[#B4C5FF] blur-[80px]" />
 
@@ -132,7 +133,7 @@ export function ServiceHero({
           </motion.div>
 
           {/* Hero Content */}
-          <div className="flex flex-1 flex-col items-center justify-center text-center">
+          <div className="flex flex-1 flex-col items-center justify-center text-center mt-8">
             <motion.h1
               variants={itemVariants}
               className="text-[64px] font-bold leading-[1.08] text-white sm:text-[52px] lg:text-[64px]"
@@ -156,6 +157,16 @@ export function ServiceHero({
               <p className="mx-auto text-[18px] leading-[1.8] text-white">
                 {t(summary)}
               </p>
+              <div className="mt-8 flex justify-center">
+                <Link href={`/${locale}/contact-us`}>
+                  <Button
+                    variant="light"
+                    className="h-[56px] min-w-[240px] rounded-xl px-8 text-base font-semibold transition duration-300 hover:scale-[1.02]"
+                  >
+                    {isArabic ? "تحدث مع خبير" : "Talk to an Expert"}
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
 
             {/* Explore */}
