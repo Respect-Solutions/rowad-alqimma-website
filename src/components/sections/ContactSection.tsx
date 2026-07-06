@@ -19,15 +19,6 @@ import {
   // FaSnapchatGhost,
 } from "react-icons/fa6";
 
-declare global {
-  interface Window {
-    turnstile?: {
-      reset: (id: string) => void;
-      remove: (id: string) => void;
-    };
-  }
-}
-
 // ─── Schema ────────────────────────────────────────────────────────────────────
 
 const contactSchema = z.object({
@@ -193,11 +184,12 @@ export function ContactSection() {
           >
             {/* Full Name */}
             <motion.div variants={itemVariants}>
-              <label className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+              <label htmlFor="contact-fullName" className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
                 {isArabic ? "الاسم الكامل" : "Full Name"}
               </label>
 
               <input
+                id="contact-fullName"
                 type="text"
                 placeholder={isArabic ? "محمد أحمد" : "Khalid Bin Ahmed"}
                 disabled={isLoading}
@@ -218,11 +210,12 @@ export function ContactSection() {
             <div className="mt-6 grid gap-6 md:grid-cols-2">
               {/* Company */}
               <motion.div variants={itemVariants}>
-                <label className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+                <label htmlFor="contact-company" className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
                   {isArabic ? "الشركة" : "Company"}
                 </label>
 
                 <input
+                  id="contact-company"
                   type="text"
                   placeholder={isArabic ? "اسم الشركة" : "Global Corp"}
                   disabled={isLoading}
@@ -241,11 +234,12 @@ export function ContactSection() {
 
               {/* Email */}
               <motion.div variants={itemVariants}>
-                <label className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+                <label htmlFor="contact-email" className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
                   {isArabic ? "البريد الإلكتروني" : "Email Address"}
                 </label>
 
                 <input
+                  id="contact-email"
                   type="email"
                   placeholder="k.ahmed@corp.com"
                   disabled={isLoading}
@@ -265,11 +259,12 @@ export function ContactSection() {
 
             {/* Textarea */}
             <motion.div variants={itemVariants} className="mt-6">
-              <label className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+              <label htmlFor="contact-vision" className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
                 {isArabic ? "رؤيتك الاستراتيجية" : "Your Strategic Vision"}
               </label>
 
               <textarea
+                id="contact-vision"
                 placeholder={
                   isArabic
                     ? "صف أهدافك وخططك لدخول السوق..."
@@ -456,6 +451,7 @@ export function ContactSection() {
                     <iframe
                       src="https://www.google.com/maps?q=Saudi+Arabia,+Riyadh,+Qurtubah+District,+Al-Hassan+Ibn+Hussein+St.&output=embed"
                       width="100%"
+                      height="120"
                       loading="lazy"
                     ></iframe>
                   </div>
@@ -491,6 +487,7 @@ md:py-8
                 {/* Facebook */}
                 <a
                   href="https://www.facebook.com/share/18aWrmRnDH/"
+                  aria-label="Facebook"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
@@ -517,6 +514,7 @@ md:py-8
                 {/* Instagram */}
                 <a
                   href="https://www.instagram.com/rowadalqimmaa?igsh=YjFkZjJvdTUwbm5s"
+                  aria-label="Instagram"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
@@ -543,6 +541,7 @@ md:py-8
                 {/* TikTok */}
                 <a
                   href="https://www.tiktok.com/@rowadalqimma"
+                  aria-label="TikTok"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
@@ -569,6 +568,7 @@ md:py-8
                 {/* X */}
                 <a
                   href="https://x.com/Rowadalqimmaa"
+                  aria-label="X (Twitter)"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
@@ -595,6 +595,7 @@ md:py-8
                 {/* Snapchat */}
                 <a
                   href="https://www.snapchat.com/add/rowadrlqimmaa?share_id=IpvW_LbkMGQ&locale=en-US"
+                  aria-label="Snapchat"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
@@ -620,6 +621,7 @@ md:py-8
                 {/* Whatsapp */}
                 <a
                   href="https://wa.me/+966553768622"
+                  aria-label="WhatsApp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="

@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 
 const sanitize = (str: string) =>
@@ -56,6 +54,8 @@ export async function POST(req: Request) {
     }
 
     // ── Send Email ────────────────────────────────────────────────────────────
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
       from: "Rowad Alqimma Website <onboarding@resend.dev>",

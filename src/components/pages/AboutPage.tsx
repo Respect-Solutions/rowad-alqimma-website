@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { DeploymentSequence } from "@/components/sections/DeploymentSequence";
 import { Stats } from "@/components/sections/Stats";
-import { TrustAndCta } from "@/components/sections/Trust";
+import { Trust } from "@/components/sections/Trust";
 import { VisionMission } from "@/components/sections/VisionMission";
 import { WhoWeAre } from "@/components/sections/WhoWeAre";
 
@@ -24,7 +24,7 @@ export function AboutPage({
       {variant !== "home" ? <VisionMission /> : null}
       <Stats />
       <DeploymentSequence />
-      <TrustAndCta />
+      <Trust />
       <Footer />
     </main>
   );
