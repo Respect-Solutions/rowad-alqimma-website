@@ -164,6 +164,13 @@ export function Footer() {
                 </Link>
 
                 <Link
+                  href={`/${locale}/articles`}
+                  className="text-sm text-white/55 transition hover:text-white"
+                >
+                  {isArabic ? "المقالات" : "Articles"}
+                </Link>
+
+                <Link
                   href={`/${locale}/contact-us`}
                   className="text-sm text-white/55 transition hover:text-white"
                 >

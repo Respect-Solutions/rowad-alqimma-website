@@ -10,7 +10,7 @@ import { useLocale } from "@/hooks/useLocale";
 import { motion } from "framer-motion";
 
 type HeaderProps = {
-  active?: "Home" | "About" | "Services" | "Projects" | "Contact" | "Social Links";
+  active?: "Home" | "About" | "Services" | "Projects" | "Articles" | "Contact" | "Social Links";
 
   lightButton?: boolean;
 };
@@ -30,6 +30,8 @@ export function Header({ active, lightButton = false }: HeaderProps) {
     Services: isArabic ? "الخدمات" : "Services",
 
     Projects: isArabic ? "المشاريع" : "Projects",
+
+    Articles: isArabic ? "المقالات" : "Articles",
   };
 
   // Prevent body scroll
