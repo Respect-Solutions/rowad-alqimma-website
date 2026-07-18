@@ -3,6 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { Button } from "../ui/Button";
 import { useLocale } from "@/hooks/useLocale";
+import Link from "next/link";
 
 // Animation variants
 const containerVariants: Variants = {
@@ -88,12 +89,14 @@ export function CTASection() {
               whileTap="tap"
               className="w-full sm:w-auto"
             >
-              <Button
-                className="h-[52px] w-full sm:min-w-[260px] sm:w-auto md:h-[62px] md:min-w-[438px]"
-                variant="dark"
-              >
-                {isArabic ? "ابدأ تأسيس شركتك" : "Start Your Business"}
-              </Button>
+              <Link href={`/${locale}/contact-us`}>
+                <Button
+                  className="h-[52px] w-full sm:min-w-[260px] sm:w-auto md:h-[62px] md:min-w-[438px]"
+                  variant="dark"
+                >
+                  {isArabic ? "ابدأ تأسيس شركتك" : "Start Your Business"}
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </motion.div>
