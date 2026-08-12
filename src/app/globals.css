@@ -81,3 +81,66 @@ textarea {
   cursor: pointer;
 }
 
+/* ----------- */
+
+.article-body {
+  color: #dfe4ec;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.article-body p {
+  margin: 0 0 22px;
+}
+
+.article-body h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #eff0f1;
+  margin: 40px 0 16px;
+}
+
+.article-body h2:first-child {
+  margin-top: 0;
+}
+
+.article-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #eff0f1;
+  margin: 32px 0 14px;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 22px;
+  padding-inline-start: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.article-body a {
+  color: #b9c7e4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-body blockquote {
+  margin: 32px 0;
+  padding: 24px 28px;
+  border-radius: 18px;
+  border-inline-start: 3px solid #8fa8ff;
+  background: rgba(235, 241, 255, 0.08);
+  font-size: 17px;
+  font-weight: 500;
+  color: #eff0f1;
+  font-style: italic;
+}
+
+.article-body img {
+  width: 100%;
+  border-radius: 20px;
+  margin: 28px 0;
+}
+

@@ -130,7 +130,7 @@ export function HomeHero() {
             >
               {isArabic ? (
                 <>
-                  ابنِ وأدر وطوّر أعمالك
+                  ابنِ وأدر وطوّر أعمالك{" "}
                   <br className="hidden md:block" />
                   قانونيًا واستراتيجيًا
                 </>

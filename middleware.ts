@@ -32,6 +32,12 @@ export default createMiddleware({
       ar: "/الخدمات",
       en: "/services",
     },
+
+    // صفحة المقالات
+    "/articles": {
+      ar: "/المقالات",
+      en: "/articles",
+    },
   },
 });
 

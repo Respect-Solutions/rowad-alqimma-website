@@ -166,41 +166,51 @@ lg:gap-6
             {/* Featured Card */}
             <motion.div
               variants={itemVariants}
-              className="relative overflow-hidden rounded-[20px] border border-[#B4C5FF] bg-[#10233D] px-5 py-8 sm:rounded-[24px] sm:px-8 sm:py-10 md:rounded-[28px] md:px-10 md:py-12"
+              className="group relative overflow-hidden rounded-[20px] border border-[#B4C5FF] bg-[#10233D] transition-colors duration-300 hover:bg-[#152a48] sm:rounded-[24px] md:rounded-[28px]"
             >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={featuredService.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.35 }}
-                  className="flex flex-col items-center justify-center text-center sm:min-h-[280px] lg:min-h-[320px]"
-                >
-                  {/* Icon */}
-                  <div className="flex h-[90px] w-[90px] items-center justify-center sm:h-[110px] sm:w-[110px] md:h-[120px] md:w-[120px]">
-                    <Image
-                      src={featuredService.icon}
-                      alt={featuredService.title}
-                      width={100}
-                      height={100}
-                      className="h-auto"
-                    />
-                  </div>
+              <Link
+                href={`/${locale}/services/${featuredService.slug}`}
+                aria-label={
+                  isArabic ? featuredService.titleAr : featuredService.title
+                }
+                className="block cursor-pointer px-5 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12"
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={featuredService.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.35 }}
+                    className="flex flex-col items-center justify-center text-center sm:min-h-[280px] lg:min-h-[320px]"
+                  >
+                    {/* Icon */}
+                    <div className="flex h-[90px] w-[90px] items-center justify-center sm:h-[110px] sm:w-[110px] md:h-[120px] md:w-[120px]">
+                      <Image
+                        src={featuredService.icon}
+                        alt={featuredService.title}
+                        width={100}
+                        height={100}
+                        className="h-auto"
+                      />
+                    </div>
 
-                  {/* Title */}
-                  <h3 className="mt-6 text-[26px] font-bold leading-[1.1] text-white sm:mt-8 sm:text-3xl md:text-4xl lg:text-[52px]">
-                    {isArabic ? featuredService.titleAr : featuredService.title}
-                  </h3>
+                    {/* Title */}
+                    <h3 className="mt-6 text-[26px] font-bold leading-[1.1] text-white sm:mt-8 sm:text-3xl md:text-4xl lg:text-[52px]">
+                      {isArabic
+                        ? featuredService.titleAr
+                        : featuredService.title}
+                    </h3>
 
-                  {/* Description */}
-                  <p className="mt-4 max-w-[480px] text-sm leading-[1.7] text-white/60 sm:mt-5 sm:text-base">
-                    {isArabic
-                      ? featuredService.descriptionAr
-                      : featuredService.description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+                    {/* Description */}
+                    <p className="mt-4 max-w-[480px] text-sm leading-[1.7] text-white/60 sm:mt-5 sm:text-base">
+                      {isArabic
+                        ? featuredService.descriptionAr
+                        : featuredService.description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </Link>
             </motion.div>
 
             {/* Side Services */}
