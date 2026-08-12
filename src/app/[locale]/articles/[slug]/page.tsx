@@ -12,7 +12,9 @@ type PageProps = {
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const article = await getArticleBySlug(params.locale, params.slug).catch(() => null);
+  // params.slug arrives percent-encoded from Next.js; decode before passing so
+  // getArticleBySlug doesn't double-encode non-ASCII (Arabic) slugs.
+  const article = await getArticleBySlug(params.locale, decodeURIComponent(params.slug)).catch(() => null);
 
   if (!article) return {};
 
@@ -23,7 +25,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ArticleDetailPage({ params }: PageProps) {
-  const article = await getArticleBySlug(params.locale, params.slug).catch(() => null);
+  // Decode percent-encoded slug — see generateMetadata above for explanation.
+  // No .catch() here: getArticleBySlug returns null for a real missing article
+  // (genuine 404) and throws for network/API errors (should surface as 500,
+  // not a silent fake-404 that hides real failures).
+  const article = await getArticleBySlug(params.locale, decodeURIComponent(params.slug));
 
   if (!article) {
     notFound();
