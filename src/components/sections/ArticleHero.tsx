@@ -30,7 +30,7 @@ export function ArticleHero({ title, date, readingMinutes }: Props) {
       <div className="absolute bottom-[-620px] left-1/2 h-[1300px] w-[1600px] -translate-x-1/2 rounded-full border-t-[120px] border-[#B4C5FF] blur-[80px]" />
 
       <div className="relative z-10 mx-auto max-w-[1152px] px-4 sm:px-6 lg:px-0">
-        <motion.div initial="hidden" animate="visible" variants={containerVariants}>
+        <motion.div initial={false} animate="visible" variants={containerVariants}>
           <motion.div variants={itemVariants}>
             <Link
               href="/articles"

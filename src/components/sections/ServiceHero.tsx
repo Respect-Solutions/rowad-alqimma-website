@@ -87,7 +87,7 @@ export function ServiceHero({
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1152px] flex-col px-4 py-8 sm:px-6 lg:px-0">
         <motion.div
-          initial="hidden"
+          initial={false}
           animate="visible"
           variants={containerVariants}
           className="flex min-h-screen flex-col"

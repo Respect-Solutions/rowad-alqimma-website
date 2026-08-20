@@ -49,7 +49,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -30 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="relative z-50 px-4 py-4 sm:px-6 sm:py-5 md:px-10 md:py-6 lg:px-16 lg:py-8"
