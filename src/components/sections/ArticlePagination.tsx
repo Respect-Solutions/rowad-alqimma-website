@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 type Props = {
   locale: string;
@@ -7,11 +7,12 @@ type Props = {
   isArabic: boolean;
 };
 
-export function ArticlePagination({ locale, currentPage, totalPages, isArabic }: Props) {
+export function ArticlePagination({ currentPage, totalPages, isArabic }: Props) {
   if (totalPages <= 1) return null;
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-  const pageHref = (page: number) => `/${locale}/articles${page > 1 ? `?page=${page}` : ""}`;
+  const pageHref = (page: number) =>
+    page > 1 ? { pathname: "/articles" as const, query: { page } } : "/articles";
 
   const arrow = (direction: "prev" | "next") => {
     const forward = direction === "next" ? !isArabic : isArabic;

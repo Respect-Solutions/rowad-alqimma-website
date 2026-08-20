@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, type Variants } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { useLocale } from "@/hooks/useLocale";
 import { Button } from "@/components/ui/Button";
+import type { AppPathname } from "@/i18n/routing";
 
 type LocalizedText = {
   en: string;
@@ -19,7 +20,7 @@ type ServiceHeroProps = {
   description: LocalizedText;
   summary: LocalizedText;
   icon: string;
-  backHref?: string;
+  backHref?: AppPathname;
   exploreText?: LocalizedText;
 };
 
@@ -65,7 +66,7 @@ export function ServiceHero({
   backHref = "/services",
   exploreText,
 }: ServiceHeroProps) {
-  const { locale, isArabic } = useLocale();
+  const { isArabic } = useLocale();
 
   const t = (text: LocalizedText) => (isArabic ? text.ar : text.en);
 
@@ -100,7 +101,7 @@ export function ServiceHero({
           >
             {/* Back Button */}
             <Link
-              href={`/${locale}${backHref}`}
+              href={backHref}
               className={`group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-white/75 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white ${
                 isArabic ? "flex-row-reverse" : ""
               }`}
@@ -158,7 +159,7 @@ export function ServiceHero({
                 {t(summary)}
               </p>
               <div className="mt-8 flex justify-center">
-                <Link href={`/${locale}/contact-us`}>
+                <Link href="/contact-us">
                   <Button
                     variant="light"
                     className="h-[56px] min-w-[240px] rounded-xl px-8 text-base font-semibold transition duration-300 hover:scale-[1.02]"

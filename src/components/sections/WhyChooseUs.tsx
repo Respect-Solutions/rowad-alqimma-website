@@ -92,13 +92,10 @@ export function WhyChooseUs() {
                 flex
                 flex-wrap
                 items-end
+                justify-start
                 gap-2
                 sm:gap-3
-                ${
-                  isArabic
-                    ? "justify-end text-right"
-                    : "justify-start text-left"
-                }
+                ${isArabic ? "text-right" : "text-left"}
               `}
             >
               <h2 className="text-[34px] font-bold leading-none text-white sm:text-4xl lg:text-[52px]">

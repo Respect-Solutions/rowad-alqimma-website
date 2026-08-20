@@ -1,9 +1,55 @@
 import { MetadataRoute } from "next";
+import { getArticles } from "@/lib/seodashboard";
 
 const BASE_URL = "https://rowadalqimma.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+async function getAllArticleSlugs(locale: string): Promise<string[]> {
+  const pageSize = 50;
+  const slugs: string[] = [];
+  let page = 1;
+
+  while (true) {
+    const { items, totalCount } = await getArticles({ locale, page, pageSize });
+    slugs.push(...items.map((item) => item.slug));
+
+    if (items.length === 0 || slugs.length >= totalCount) break;
+    page += 1;
+  }
+
+  return slugs;
+}
+
+async function getArticleEntries(): Promise<MetadataRoute.Sitemap> {
+  try {
+    const [arSlugs, enSlugs] = await Promise.all([
+      getAllArticleSlugs("ar"),
+      getAllArticleSlugs("en"),
+    ]);
+
+    const arEntries: MetadataRoute.Sitemap = arSlugs.map((slug) => ({
+      url: `${BASE_URL}/ar/المقالات/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    }));
+
+    const enEntries: MetadataRoute.Sitemap = enSlugs.map((slug) => ({
+      url: `${BASE_URL}/en/articles/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    }));
+
+    return [...arEntries, ...enEntries];
+  } catch {
+    // seodashboard unreachable or not configured — fall back to static pages only
+    return [];
+  }
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+  const articleEntries = await getArticleEntries();
 
   return [
     // ── Home ───────────────────────────────────────────────────────────────────
@@ -50,13 +96,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Company Formation ──────────────────────────────────────────────────────
     {
-      url: `${BASE_URL}/ar/services/company-formation`,
+      url: `${BASE_URL}/ar/الخدمات/تأسيس-الشركات-الأجنبية`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
       alternates: {
         languages: {
-          ar: `${BASE_URL}/ar/services/company-formation`,
+          ar: `${BASE_URL}/ar/الخدمات/تأسيس-الشركات-الأجنبية`,
           en: `${BASE_URL}/en/services/company-formation`,
         },
       },
@@ -64,13 +110,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Administrative Consulting ──────────────────────────────────────────────
     {
-      url: `${BASE_URL}/ar/services/administrative-consulting`,
+      url: `${BASE_URL}/ar/الخدمات/الاستشارات-الإدارية-للشركات`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
       alternates: {
         languages: {
-          ar: `${BASE_URL}/ar/services/administrative-consulting`,
+          ar: `${BASE_URL}/ar/الخدمات/الاستشارات-الإدارية-للشركات`,
           en: `${BASE_URL}/en/services/administrative-consulting`,
         },
       },
@@ -78,13 +124,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Corporate Legal Advisory ───────────────────────────────────────────────
     {
-      url: `${BASE_URL}/ar/services/corporate-legal-advisory`,
+      url: `${BASE_URL}/ar/الخدمات/الاستشارات-القانونية-للشركات`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
       alternates: {
         languages: {
-          ar: `${BASE_URL}/ar/services/corporate-legal-advisory`,
+          ar: `${BASE_URL}/ar/الخدمات/الاستشارات-القانونية-للشركات`,
           en: `${BASE_URL}/en/services/corporate-legal-advisory`,
         },
       },
@@ -92,13 +138,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Marketing & Strategic Consulting ──────────────────────────────────────
     {
-      url: `${BASE_URL}/ar/services/marketing-strategic-consulting`,
+      url: `${BASE_URL}/ar/الخدمات/الاستشارات-التسويقية-والاستراتيجية`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
       alternates: {
         languages: {
-          ar: `${BASE_URL}/ar/services/marketing-strategic-consulting`,
+          ar: `${BASE_URL}/ar/الخدمات/الاستشارات-التسويقية-والاستراتيجية`,
           en: `${BASE_URL}/en/services/marketing-strategic-consulting`,
         },
       },
@@ -139,5 +185,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.5,
     },
+
+    // ── Articles (fetched from seodashboard CMS) ─────────────────────────────
+    ...articleEntries,
   ];
 }

@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, type Variants } from "framer-motion";
 import { Header } from "../layout/Header";
 import { useLocale } from "@/hooks/useLocale";
 
 export function HomeHero() {
-  const { isArabic, locale } = useLocale();
+  const { isArabic } = useLocale();
 
   // ─── Animation Variants ─────────────────────────────────────────────
 
@@ -163,7 +163,7 @@ export function HomeHero() {
                 className="w-full max-w-[520px]"
               >
                 <Link
-                  href={`/${locale}/contact-us`}
+                  href="/contact-us"
                   className="
         flex
         h-[62px]

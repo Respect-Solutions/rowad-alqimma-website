@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import type { AppPathname } from "@/i18n/routing";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -77,7 +78,7 @@ const itemVariants: Variants = {
 };
 
 export function OurServices() {
-  const { isArabic, locale } = useLocale();
+  const { isArabic } = useLocale();
   const searchParams = useSearchParams();
   const serviceFromUrl = searchParams.get("service");
 
@@ -169,7 +170,7 @@ lg:gap-6
               className="group relative overflow-hidden rounded-[20px] border border-[#B4C5FF] bg-[#10233D] transition-colors duration-300 hover:bg-[#152a48] sm:rounded-[24px] md:rounded-[28px]"
             >
               <Link
-                href={`/${locale}/services/${featuredService.slug}`}
+                href={`/services/${featuredService.slug}` as AppPathname}
                 aria-label={
                   isArabic ? featuredService.titleAr : featuredService.title
                 }
@@ -280,7 +281,7 @@ sm:px-5
               className="w-full sm:w-auto"
             >
               <Link
-                href={`/${locale}/contact-us`}
+                href="/contact-us"
                 className="flex h-[54px] w-full items-center justify-center rounded-[14px] bg-[#0F223D] px-8 text-sm font-bold text-white sm:h-[58px] sm:min-w-[280px] md:min-w-[320px]"
               >
                 {isArabic ? "ابدأ شركتك" : "Start Your Company"}
@@ -295,7 +296,7 @@ sm:px-5
               className="w-full sm:w-auto"
             >
               <Link
-                href={`/${locale}/services/${featuredService.slug}`}
+                href={`/services/${featuredService.slug}` as AppPathname}
                 className="flex h-[54px] w-full items-center justify-center rounded-[14px] border border-white/10 bg-transparent px-8 text-sm font-semibold text-white/80 transition-all duration-300 hover:border-white/20 hover:bg-white/5 hover:text-white sm:h-[58px] sm:min-w-[280px] md:min-w-[320px]"
               >
                 {isArabic ? "عرض الخدمة" : "View Service"}

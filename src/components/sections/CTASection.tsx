@@ -3,7 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { Button } from "../ui/Button";
 import { useLocale } from "@/hooks/useLocale";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 // Animation variants
 const containerVariants: Variants = {
@@ -36,7 +36,7 @@ const buttonHoverVariants: Variants = {
 };
 
 export function CTASection() {
-  const { isArabic, locale } = useLocale();
+  const { isArabic } = useLocale();
 
   return (
     <section className="px-4 py-10 sm:px-6 sm:py-12 md:px-16 md:py-16">
@@ -89,7 +89,7 @@ export function CTASection() {
               whileTap="tap"
               className="w-full sm:w-auto"
             >
-              <Link href={`/${locale}/contact-us`}>
+              <Link href="/contact-us">
                 <Button
                   className="h-[52px] w-full sm:min-w-[260px] sm:w-auto md:h-[62px] md:min-w-[438px]"
                   variant="dark"

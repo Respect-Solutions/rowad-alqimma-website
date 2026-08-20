@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, type Variants } from "framer-motion";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useLocale } from "@/hooks/useLocale";
@@ -33,7 +33,7 @@ export function ArticleHero({ title, date, readingMinutes }: Props) {
         <motion.div initial="hidden" animate="visible" variants={containerVariants}>
           <motion.div variants={itemVariants}>
             <Link
-              href={`/${locale}/articles`}
+              href="/articles"
               className={`group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-white/75 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white ${
                 isArabic ? "flex-row-reverse" : ""
               }`}

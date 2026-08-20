@@ -70,11 +70,7 @@ export function VisionMission() {
           }`}
         >
           {/* Header */}
-          <div
-            className={`flex items-center gap-3 sm:gap-4 ${
-              isArabic ? "flex-row-reverse" : ""
-            }`}
-          >
+          <div className="flex items-center gap-3 sm:gap-4">
             <h2 className="text-[28px] font-bold text-white sm:text-[40px] lg:text-[48px]">
               {isArabic ? "رؤيتنا" : "Our Vision"}
             </h2>
@@ -106,19 +102,15 @@ export function VisionMission() {
               duration: 0.25,
             },
           }}
-          className="flex items-center"
+          className="flex"
         >
           <div
-            className={`relative w-full rounded-[24px] border border-white/10 bg-[#27354C] px-5 py-6 backdrop-blur-[12px] sm:rounded-[28px] sm:px-8 md:px-10 md:py-10 ${
+            className={`relative flex w-full flex-col rounded-[24px] border border-white/10 bg-[#27354C] px-5 py-6 backdrop-blur-[12px] sm:rounded-[28px] sm:px-8 md:px-10 md:py-10 lg:min-h-[520px] ${
               isArabic ? "text-right" : ""
             }`}
           >
             {/* Header */}
-            <div
-              className={`flex items-center gap-3 sm:gap-4 ${
-                isArabic ? "flex-row-reverse" : ""
-              }`}
-            >
+            <div className="flex items-center gap-3 sm:gap-4">
               <h2 className="text-[28px] font-bold text-white sm:text-[40px] lg:text-[48px]">
                 {isArabic ? "مهمتنا" : "Our Mission"}
               </h2>
