@@ -26,6 +26,11 @@ const nextConfig = {
 
   images: {
     remotePatterns: articlesImagePatterns(),
+    // Article cover images essentially never change after publish, but
+    // seodashboard's connection is intermittently unreachable — the default
+    // 60s TTL means Next re-fetches the original from that flaky host far
+    // more often than needed. Cache the optimized result for 30 days instead.
+    minimumCacheTTL: 2592000,
   },
 
   async headers() {
