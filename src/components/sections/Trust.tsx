@@ -132,29 +132,14 @@ return (
       <p className="text-base leading-[1.8] text-soft sm:text-lg">
         "{isArabic ? testimonial.quote.ar : testimonial.quote.en}"{" "}
       </p>
-      <div
-        className={`mt-auto flex items-center gap-4 pt-6 ${
-          isArabic ? "flex-row-reverse" : ""
-        }`}
-      >
-        <span className="relative size-12 overflow-hidden rounded-xl">
-          <Image
-            alt={isArabic ? testimonial.name.ar : testimonial.name.en}
-            fill
-            src={testimonial.avatar}
-            className="object-cover"
-          />
+      <div className="mt-auto pt-6">
+        <strong className="block text-sm font-bold leading-[1.2] text-ink">
+          {isArabic ? testimonial.name.ar : testimonial.name.en}
+        </strong>
+
+        <span className="block text-xs leading-[1.2] text-soft">
+          {isArabic ? testimonial.role.ar : testimonial.role.en}
         </span>
-
-        <div>
-          <strong className="block text-sm font-bold leading-[1.2] text-ink">
-            {isArabic ? testimonial.name.ar : testimonial.name.en}
-          </strong>
-
-          <span className="block text-xs leading-[1.2] text-soft">
-            {isArabic ? testimonial.role.ar : testimonial.role.en}
-          </span>
-        </div>
       </div>
     </motion.div>
   </motion.article>

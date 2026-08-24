@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import { navItems } from "@/data/site";
 import { Button } from "@/components/ui/Button";
@@ -18,7 +18,7 @@ type HeaderProps = {
 export function Header({ active, lightButton = false }: HeaderProps) {
   const isContact = active === "Contact";
 
-  const { locale, isArabic } = useLocale();
+  const { isArabic } = useLocale();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -49,7 +49,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -30 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="relative z-50 px-4 py-4 sm:px-6 sm:py-5 md:px-10 md:py-6 lg:px-16 lg:py-8"
@@ -60,7 +60,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
           <Link
             aria-label="Rowad Al Qimma home"
             className="flex shrink-0 items-center transition duration-300 hover:scale-[1.03]"
-            href={`/${locale}`}
+            href="/"
           >
             <IconImage
               name={lightButton ? "logoContact" : "logoAbout"}
@@ -80,7 +80,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
               return item.label === active ? (
                 <Link
                   className="rounded-lg border-2 border-white/10 bg-white/10 px-5 py-2 text-base font-medium leading-[1.2] text-[#f6f4ef] backdrop-blur-md transition duration-300 hover:bg-white/15 lg:px-8 lg:text-lg"
-                  href={`/${locale}${item.href}`}
+                  href={item.href}
                   key={item.label}
                   style={{
                     animationDelay: `${index * 80}ms`,
@@ -91,7 +91,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
               ) : (
                 <Link
                   className="relative text-base font-medium leading-[1.2] text-soft transition duration-300 hover:text-white after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full lg:text-lg"
-                  href={`/${locale}${item.href}`}
+                  href={item.href}
                   key={item.label}
                   style={{
                     animationDelay: `${index * 80}ms`,
@@ -106,7 +106,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
 
         {/* Desktop Right Side */}
         <div className="hidden items-center justify-end gap-3 lg:flex lg:gap-4">
-          <Link href={`/${locale}/contact-us`}>
+          <Link href="/contact-us">
             <Button
               className={`h-[49px] whitespace-nowrap rounded-lg px-4 py-0 text-sm transition duration-300 hover:scale-[1.03] lg:px-5 ${
                 isContact
@@ -175,7 +175,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
               return item.label === active ? (
                 <Link
                   key={item.label}
-                  href={`/${locale}${item.href}`}
+                  href={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   className="rounded-xl border border-white/10 bg-white/10 px-5 py-3 text-center text-base font-medium text-white transition duration-300 hover:bg-white/15 sm:py-4 sm:text-lg"
                   style={{
@@ -187,7 +187,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
               ) : (
                 <Link
                   key={item.label}
-                  href={`/${locale}${item.href}`}
+                  href={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   className="rounded-xl px-5 py-3 text-center text-base font-medium text-white/75 transition duration-300 hover:bg-white/5 hover:text-white sm:text-lg"
                   style={{
@@ -201,7 +201,7 @@ export function Header({ active, lightButton = false }: HeaderProps) {
 
             {/* CTA */}
             <Link
-              href={`/${locale}/contact-us`}
+              href="/contact-us"
               onClick={() => setIsMenuOpen(false)}
             >
               <Button

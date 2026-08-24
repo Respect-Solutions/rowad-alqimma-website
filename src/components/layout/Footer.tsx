@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import {
   FaFacebookF,
   FaInstagram,
@@ -40,7 +40,7 @@ const itemVariants: Variants = {
 };
 
 export function Footer() {
-  const { isArabic, locale } = useLocale();
+  const { isArabic } = useLocale();
 
   return (
     <footer className="pt-8 sm:pt-10">
@@ -90,14 +90,14 @@ export function Footer() {
 
               <div className="mt-4 flex flex-col gap-3 sm:mt-5">
                 <Link
-                  href={`/${locale}/services/company-formation`}
+                  href="/services/company-formation"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic ? "تأسيس الشركات" : "Company Formation"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/services/corporate-legal-advisory`}
+                  href="/services/corporate-legal-advisory"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic
@@ -106,7 +106,7 @@ export function Footer() {
                 </Link>
 
                 <Link
-                  href={`/${locale}/services/marketing-strategic-consulting`}
+                  href="/services/marketing-strategic-consulting"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic
@@ -115,7 +115,7 @@ export function Footer() {
                 </Link>
 
                 <Link
-                  href={`/${locale}/services/administrative-consulting`}
+                  href="/services/administrative-consulting"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic
@@ -136,42 +136,42 @@ export function Footer() {
 
               <div className="mt-4 flex flex-col gap-3 sm:mt-5">
                 <Link
-                  href={`/${locale}/`}
+                  href="/"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic ? "الرئيسية" : "Home"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/about`}
+                  href="/about"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic ? "من نحن" : "About Us"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/services`}
+                  href="/services"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic ? "الخدمات" : "Services"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/projects`}
+                  href="/projects"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic ? "المشاريع" : "Projects"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/articles`}
+                  href="/articles"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic ? "المقالات" : "Articles"}
                 </Link>
 
                 <Link
-                  href={`/${locale}/contact-us`}
+                  href="/contact-us"
                   className="text-sm text-white/55 transition hover:text-white"
                 >
                   {isArabic ? "تواصل معنا" : "Contact"}

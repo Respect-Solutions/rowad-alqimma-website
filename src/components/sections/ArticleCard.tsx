@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import type { ArticleSummary } from "@/lib/seodashboard";
 import { formatArticleDate } from "@/lib/seodashboard";
@@ -15,7 +15,8 @@ export function ArticleCard({ article, locale }: Props) {
   return (
     <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3 }} className="h-full">
       <Link
-        href={`/${locale}/articles/${article.slug}`}
+        href={{ pathname: "/articles/[slug]", params: { slug: article.slug } }}
+        locale={locale}
         className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-white/10 bg-[#27354CB2] transition-colors duration-300 hover:border-accent hover:bg-[#2A3D5B]"
       >
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#1b2c46]">

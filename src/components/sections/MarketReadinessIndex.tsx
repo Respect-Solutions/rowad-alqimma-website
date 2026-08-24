@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 // Animation variants
 const containerVariants: Variants = {
@@ -66,7 +66,7 @@ const cardVariants: Variants = {
 };
 
 export function MarketReadinessIndex() {
-  const { isArabic, locale } = useLocale();
+  const { isArabic } = useLocale();
 
 
   const [capital, setCapital] = useState(95);
@@ -357,7 +357,7 @@ export function MarketReadinessIndex() {
                 transition={{ delay: 0.4 }}
                 className="mt-5 flex justify-center"
               >
-                <Link href={`/${locale}/contact-us`}>
+                <Link href="/contact-us">
                   <motion.button
                     variants={buttonHoverVariants}
                     whileHover="hover"

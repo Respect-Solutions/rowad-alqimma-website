@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, type Variants } from "framer-motion";
 import { Header } from "../layout/Header";
 import { useLocale } from "@/hooks/useLocale";
 
 export function HomeHero() {
-  const { isArabic, locale } = useLocale();
+  const { isArabic } = useLocale();
 
   // ─── Animation Variants ─────────────────────────────────────────────
 
@@ -107,7 +107,7 @@ export function HomeHero() {
       <div className="relative z-10 flex flex-1 flex-col">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="px-4 pt-4 sm:px-6 md:px-12 lg:px-16"
@@ -119,7 +119,7 @@ export function HomeHero() {
         <motion.div
           className="mt-auto px-6 pb-16 text-center sm:px-8 sm:pb-20 md:px-12 md:pb-24 lg:px-16"
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           animate="visible"
         >
           <div className="mx-auto">
@@ -163,7 +163,7 @@ export function HomeHero() {
                 className="w-full max-w-[520px]"
               >
                 <Link
-                  href={`/${locale}/contact-us`}
+                  href="/contact-us"
                   className="
         flex
         h-[62px]

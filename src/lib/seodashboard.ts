@@ -69,9 +69,16 @@ export type ArticleDetail = ArticleSummary & {
 async function wagtailGet<T>(path: string): Promise<T> {
   const { apiUrl } = getConfig();
 
-  const res = await fetch(`${apiUrl}${path}`, {
-    next: { revalidate: 300 },
-  });
+  const fetchOnce = () => fetch(`${apiUrl}${path}`, { next: { revalidate: 300 } });
+
+  let res: Response;
+  try {
+    res = await fetchOnce();
+  } catch {
+    // seodashboard has intermittent connection blips — retry once before
+    // giving up, rather than failing the whole page on a transient hiccup.
+    res = await fetchOnce();
+  }
 
   if (!res.ok) {
     throw new Error(`seodashboard request failed (${res.status}): ${path}`);

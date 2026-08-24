@@ -1,14 +1,18 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { IBM_Plex_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { getLocale } from "next-intl/server";
 import Script from "next/script";
 
 import { FaWhatsapp } from "react-icons/fa6";
 
-const ibmPlex = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+// Self-hosted (no build-time fetch to Google Fonts). This is IBM Plex Sans's
+// variable-weight latin file — one file covers the full 400-700 range used
+// across the site, matching what next/font/google previously served.
+const ibmPlex = localFont({
+  src: "../fonts/ibm-plex-sans-latin-variable.woff2",
+  weight: "400 700",
+  style: "normal",
   variable: "--font-ibm-plex",
   display: "swap",
 });
@@ -66,7 +70,7 @@ export default async function RootLayout({
     >
       <body>
         {/* Google Tag Manager */}
-        <Script id="gtm" strategy="afterInteractive">
+        <Script id="gtm" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){
               w[l]=w[l]||[];
