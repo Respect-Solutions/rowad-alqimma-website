@@ -43,12 +43,13 @@ export default async function ArticleDetailPage({ params }: PageProps) {
 
       {article.coverImageUrl && (
         <div className="mx-auto mb-4 max-w-[1152px] px-4 sm:px-6 lg:px-0">
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[28px] border border-white/10 sm:rounded-[32px]">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[28px] border border-white/10 sm:rounded-[32px]">
             <Image
               src={article.coverImageUrl}
               alt={article.coverImageAlt || article.title}
               fill
               priority
+              quality={90}
               sizes="(min-width: 1152px) 1152px, 100vw"
               className="object-cover"
             />
