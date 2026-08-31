@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { Footer } from "@/components/layout/Footer";
 import { CTASection } from "@/components/sections/CTASection";
 import { ArticleHero } from "@/components/sections/ArticleHero";
 import { ArticleBody } from "@/components/sections/ArticleBody";
-import { getArticleBySlug, getBodyReadingMinutes } from "@/lib/seodashboard";
+import { getArticleBySlug, getBodyReadingMinutes, resolveRedirect } from "@/lib/seodashboard";
+import { getPathname } from "@/i18n/navigation";
 
 type PageProps = {
   params: { locale: string; slug: string };
@@ -32,6 +33,16 @@ export default async function ArticleDetailPage({ params }: PageProps) {
   const article = await getArticleBySlug(params.locale, decodeURIComponent(params.slug));
 
   if (!article) {
+    const currentPath = getPathname({
+      locale: params.locale,
+      href: { pathname: "/articles/[slug]", params: { slug: decodeURIComponent(params.slug) } },
+    });
+    const redirection = await resolveRedirect(currentPath);
+
+    if (redirection) {
+      (redirection.permanent ? permanentRedirect : redirect)(redirection.destination);
+    }
+
     notFound();
   }
 
