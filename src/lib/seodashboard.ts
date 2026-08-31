@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { getPathname } from "@/i18n/navigation";
 
 // ─── Config ────────────────────────────────────────────────────────────────
 
@@ -230,6 +231,67 @@ export async function getArticleBySlug(locale: string, slug: string): Promise<Ar
 
   const item = data.items[0];
   return item ? toArticleDetail(item) : null;
+}
+
+// ─── Redirect resolution ────────────────────────────────────────────────────
+// Wagtail's Redirects dashboard (wagtail.contrib.redirects) is only consulted
+// by Django's own request handling, which this site never routes through —
+// it only calls the JSON API. This resolves a dashboard-configured redirect
+// for a given browser-visible path via a small custom endpoint, so editors'
+// redirects take effect without a frontend deploy.
+
+type ResolveRedirectApiResponse =
+  | { found: false }
+  | {
+      found: true;
+      is_permanent: boolean;
+      target: { kind: "url"; url: string };
+    }
+  | {
+      found: true;
+      is_permanent: boolean;
+      target: {
+        kind: "page";
+        page_type: string;
+        slug: string;
+        parent_slug: string;
+        grandparent_slug: string;
+      };
+    };
+
+export type RedirectResolution = { destination: string; permanent: boolean } | null;
+
+export async function resolveRedirect(path: string): Promise<RedirectResolution> {
+  const hostname = process.env.SEODASHBOARD_SITE_HOSTNAME;
+  const qs = new URLSearchParams({ path });
+  if (hostname) qs.set("hostname", hostname);
+
+  let data: ResolveRedirectApiResponse;
+  try {
+    data = await wagtailGet<ResolveRedirectApiResponse>(`/api/v2/redirects/resolve/?${qs.toString()}`);
+  } catch {
+    // Fail open — a CMS hiccup here must not turn a real 404 into a 500.
+    return null;
+  }
+
+  if (!data.found) return null;
+
+  if (data.target.kind === "url") {
+    return { destination: data.target.url, permanent: data.is_permanent };
+  }
+
+  // Only the articles section is CMS-backed on this frontend today — anything
+  // else, don't guess, treat as not-found.
+  if (data.target.page_type !== "home.GenericDetailPage" || data.target.parent_slug !== ARTICLES_SECTION_SLUG) {
+    return null;
+  }
+
+  const locale = data.target.grandparent_slug === "en" ? "en" : "ar";
+
+  return {
+    destination: getPathname({ locale, href: { pathname: "/articles/[slug]", params: { slug: data.target.slug } } }),
+    permanent: data.is_permanent,
+  };
 }
 
 // ─── Presentation helpers ──────────────────────────────────────────────────
