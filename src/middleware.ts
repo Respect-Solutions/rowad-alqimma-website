@@ -8,5 +8,5 @@ export const config = {
   // before the locale migration) reach next-intl's locale-prefix redirect
   // and the [...rest] catch-all too, instead of hitting Next's default 404
   // before this integration ever runs.
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/((?!api|_next|_vercel|social-links|.*\\..*).*)"],
 };
